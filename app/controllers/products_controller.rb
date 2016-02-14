@@ -10,17 +10,12 @@ class ProductsController < ApplicationController
   end
 
   def show
-    logger.info "*"*100
-    logger.info "params[:id]"
-    logger.info params[:id]
-    @product = Product.find(params[:id])
-    @review = @product.reviews.build
-    @reviews = @product.reviews
-    logger.info "*"*100
-    logger.info "@product"
-    logger.info @product
-    respond_with(@product)
-    # @reviews = Review.where(product_id: @product.id).order("created_at DESC")
+    @reviews = Review.where(product_id: @product.id).order("created_at DESC")
+    # TODO: decide which implementation to use
+    # @product = Product.find(params[:id])
+    # @review = @product.reviews.build
+    # @reviews = @product.reviews
+    # respond_with(@product)
   end
 
   def new
@@ -34,6 +29,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     respond_with(@product) if @product.save
+    # TODO: decide which implementation to use
     # if @product.save
     #   redirect_to @product
     # else
