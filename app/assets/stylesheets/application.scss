@@ -1,0 +1,6 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap_variables";
+@import "bootstrap";
+@import "bootstrap_overrides";
+@import "font-awesome-sprockets";
+@import "font-awesome";
