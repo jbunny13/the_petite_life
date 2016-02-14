@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+products = 	[
+						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
+						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
+						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
+						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
+						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
+						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
+						]
+
+products.each do |product|
+	Product.create!(product)
+end

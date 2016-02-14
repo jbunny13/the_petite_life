@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   respond_to :html, :json
   responders :flash
 
@@ -9,23 +10,30 @@ class ProductsController < ApplicationController
   end
 
   def show
+    logger.info "*"*100
+    logger.info "params[:id]"
+    logger.info params[:id]
+    @product = Product.find(params[:id])
+    @review = @product.reviews.build
+    @reviews = @product.reviews
+    logger.info "*"*100
+    logger.info "@product"
+    logger.info @product
     respond_with(@product)
+    # @reviews = Review.where(product_id: @product.id).order("created_at DESC")
   end
 
   def new
     @product = Product.new
-    respond_with(@product)
+    # respond_with(@product)
   end
 
   def edit
   end
 
   def create
-    @product = Product.all
     @product = Product.new(product_params)
-    @product.save
-    respond_with(@product)
-
+    respond_with(@product) if @product.save
     # if @product.save
     #   redirect_to @product
     # else
@@ -36,19 +44,11 @@ class ProductsController < ApplicationController
   def update
     @product.update(product_params)
     respond_with(@product)
-
-    # if @product.update(product_params)
-    #   redirect_to @product
-    # else
-    #   render 'edit'
-    # end
   end
 
   def destroy
     @product.destroy
     respond_with(@product)
-
-    # redirect_to products_path
   end
 
   private
@@ -57,6 +57,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :category, :description)
+      params.require(:product).permit(:name, :category, :description, :image)
     end
 end

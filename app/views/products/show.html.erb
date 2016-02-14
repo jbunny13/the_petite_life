@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<%= image_tag @product.image.url(:medium) %>
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
@@ -15,11 +14,18 @@
   <%= @product.description %>
 </p>
 
-<h2>Reviews</h2>
-<%= render @product.reviews %>
-
 <h2>Add a review:</h2>
 <%= render 'reviews/form' %>
+
+<h2>Reviews</h2>
+<div class="col-md-7 col-md-offset-1">
+	<% @reviews.each do |review| %>
+		<div class="reviews">
+			<p><%= review.rating %></p>
+			<p><%= review.comment %></p>
+		</div>
+	<% end %>
+</div>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
