@@ -15,6 +15,7 @@ gem 'font-awesome-sass'
 gem 'devise'
 gem 'responders'
 gem 'paperclip', '~> 4.3'
+gem 'forgery'
 
 group :development, :test do
   gem 'byebug'
