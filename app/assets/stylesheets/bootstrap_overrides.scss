@@ -1,22 +1,27 @@
-body { 
-	padding-top: 70px;
-	padding-left: 200px;
-	padding-right: 200px;
+$cyan: #00e5e6;
+$black: #000000;
+$pink: #ff00ff;
+
+.cyan-text { color: $cyan }
+.black-text { color: $black }
+.pink-text { color: $pink }
+
+body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 130px;
+    margin-left: 130px;
 }
 .navbar-brand {
 	font-size: 40px;
 	font-weight: bold;
 } 
-.cyan {
-	color: #00e5e6;
-}
-.black {
-	color: #000000;
-}
-.pink {
-	color: #ff00ff;
-}
 .panel-title-1 {
   margin-top: 0;
   margin-bottom: 0;
  }
+
