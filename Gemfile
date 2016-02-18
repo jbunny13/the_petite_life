@@ -16,6 +16,7 @@ gem 'devise'
 gem 'responders'
 gem 'paperclip', '~> 4.3'
 gem 'active_link_to'
+gem 'forgery'
 
 group :development, :test do
   gem 'byebug'
