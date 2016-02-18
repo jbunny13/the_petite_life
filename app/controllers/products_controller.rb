@@ -42,6 +42,11 @@ class ProductsController < ApplicationController
     respond_with(@product)
   end
 
+  def popular
+    @products = Product.all
+    respond_with(@products)
+  end
+
   def destroy
     @product.destroy
     respond_with(@product)
