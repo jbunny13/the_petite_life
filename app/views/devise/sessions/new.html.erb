@@ -2,7 +2,7 @@
 <%= devise_error_messages! %>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2>Sign in</h2>
+      <h2>Log in</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form'}) do |f| %>
     </div>
     <div class="panel-body">
@@ -14,7 +14,7 @@
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control input-lg' %>
       </div>
-        <%= f.submit 'Sign in', class: 'btn btn-default btn-lg' %>
+        <%= f.submit 'Log in', class: 'btn btn-default btn-lg' %>
         <% if devise_mapping.rememberable? -%>
           <div class="checkbox" style="width:150px">
             <label>
