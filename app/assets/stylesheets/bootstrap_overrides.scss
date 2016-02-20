@@ -1,6 +1,12 @@
 $cyan: #00e5e6;
 $black: #000000;
 $pink: #ff00ff;
+$lightest-pink: #f2dede;
+$light-pink: #eed3d7;
+$light-red: #b94a48;
+$lightest-green: #dff0d8;
+$light-green: #d6e9c6;
+$light-forest-green: #496e2b;
 
 .cyan-text { color: $cyan }
 .black-text { color: $black }
@@ -24,30 +30,15 @@ body {
   margin-top: 0;
   margin-bottom: 0;
  }
- .alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
+ .alert-error, .alert-alert {
+    background-color: $lightest-pink;
+    border-color: $light-pink;
+    color: $light-red;
     text-align: left;
  }
-
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
-
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
+.alert-success, .alert-notice {
+    background-color: $lightest-green;
+    border-color: $light-green;
+    color: $light-forest-green;
     text-align: left;
  }

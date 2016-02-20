@@ -4,9 +4,4 @@
 @import "bootstrap_overrides";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-.form-container {
-    max-width: 500px;
-    padding: 15px;
-    margin: 0 auto;
-}
+@import "forms";
