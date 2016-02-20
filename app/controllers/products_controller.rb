@@ -11,16 +11,10 @@ class ProductsController < ApplicationController
 
   def show
     @reviews = Review.where(product_id: @product.id).order("created_at DESC")
-    # TODO: decide which implementation to use
-    # @product = Product.find(params[:id])
-    # @review = @product.reviews.build
-    # @reviews = @product.reviews
-    # respond_with(@product)
   end
 
   def new
     @product = Product.new
-    # respond_with(@product)
   end
 
   def edit
@@ -28,13 +22,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    respond_with(@product) if @product.save
-    # TODO: decide which implementation to use
-    # if @product.save
-    #   redirect_to @product
-    # else
-    #   render 'new'
-    # end
+    if @product.save
+      respond_with(@product)
+    else
+      render 'new'
+    end
   end
 
   def update
