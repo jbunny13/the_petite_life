@@ -17,6 +17,8 @@ gem 'responders'
 gem 'paperclip', '~> 4.3'
 gem 'active_link_to'
 gem 'forgery'
+gem 'jquery-turbolinks'
+gem 'devise_zxcvbn'
 
 group :development, :test do
   gem 'byebug'
