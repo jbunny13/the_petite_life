@@ -1,6 +1,6 @@
 <div class="form-container">
   <%= devise_error_messages! %>
-  <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, role: 'form' }) do |f| %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h2>Resend unlock instructions</h2>
