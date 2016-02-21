@@ -46,5 +46,5 @@ Rails.application.configure do
   # For Paperclip gem
   Paperclip.options[:command_path] = "/usr/local/bin/convert"
 
-  config.serve_static_assets = true
+  config.serve_static_files = true
 end
