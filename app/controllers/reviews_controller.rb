@@ -16,8 +16,12 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.product_id = @product.id
-    flash[:notice] = "Review was successfully created."
-    respond_with(@product) if @review.save
+    if @review.save
+      flash[:notice] = "Review was successfully created."
+      respond_with(@product)
+    else
+      render 'new'
+    end
   end
 
   def update
