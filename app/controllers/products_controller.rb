@@ -12,11 +12,7 @@ class ProductsController < ApplicationController
   def show
     @reviews = Review.where(product_id: @product.id).order("created_at DESC")
 
-    if @reviews.blank?
-      @average_review = 0
-    else
-      @average_review = @reviews.average(:rating).round(2)
-    end
+    @average_review = @reviews.blank? ? 0 : @reviews.average(:rating).round(2)
   end
 
   def new
