@@ -17,6 +17,8 @@ gem 'responders'
 gem 'paperclip', '~> 4.3'
 gem 'active_link_to'
 gem 'forgery'
+gem 'jquery-turbolinks'
+gem 'devise_zxcvbn'
 
 group :development, :test do
   gem 'byebug'
@@ -26,4 +28,5 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'rails_layout'
 end

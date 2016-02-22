@@ -38,11 +38,11 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= active_link_to "Account", edit_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
-          <li><%= active_link_to "Sign Out", destroy_user_session_path, method: :delete, wrap_tag: 'li', active: :exclusive %></li>
+          <li><%= active_link_to current_user.email, edit_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
+          <li><%= active_link_to "Log Out", destroy_user_session_path, method: :delete, wrap_tag: 'li', active: :exclusive %></li>
         <% else %>
           <li><%= active_link_to "Sign Up", new_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
-          <li><%= active_link_to "Sign In", new_user_session_path, wrap_tag: 'li', active: :exclusive %></li>
+          <li><%= active_link_to "Log In", new_user_session_path, wrap_tag: 'li', active: :exclusive %></li>
         <% end %>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
