@@ -18,6 +18,7 @@ gem 'active_link_to'
 gem 'forgery'
 gem 'jquery-turbolinks'
 gem 'devise_zxcvbn'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
