@@ -7,11 +7,14 @@ class Ability
     case user.role
       when 'user'
         can :read, [Product, Review]
-        can [:create, :update, :destroy], Review
+        can [:create], Review
+        can [:update, :destroy], Review, active: true, user_id: user.id
       when 'contributor'
-        can [:create,:update, :destroy], Product
+        can :create, Product
+        can :update, Product, active: true, user_id: user.id
       when 'moderator'
         can :manage, Product
+        can :destroy, Review
       when 'internal_admin'
         can :manage, :all
       else # when guest or visitor
