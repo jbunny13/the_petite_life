@@ -12,9 +12,18 @@ products = 	[
 						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
 						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
 						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
-						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
+						{name: 'Osprey Ariel 55', category: 'Travel', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'}
 						]
 
 products.each do |product|
 	Product.create!(product)
+end
+
+users = [
+        {email: 'jnguyen72086@gmail.com', password: 'sfs%1w!nning@8009B!'},
+        {email: 'pocketsizeme@gmail.com', password: '89$231qu@driv!um$@%'},
+        ]
+
+users.each do |user|
+  User.create!(user)
 end
