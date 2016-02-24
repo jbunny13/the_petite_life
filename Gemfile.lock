@@ -51,6 +51,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (8.2.2)
+    cancancan (1.13.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -211,6 +212,7 @@ DEPENDENCIES
   awesome_print
   bootstrap-sass (~> 3.3.6)
   byebug
+  cancancan
   coffee-rails (~> 4.1.0)
   devise
   devise_zxcvbn

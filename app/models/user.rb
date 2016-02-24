@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable
   has_many :reviews, dependent: :destroy
+  ROLES = %w[user contributor moderator internal_admin]
 end
