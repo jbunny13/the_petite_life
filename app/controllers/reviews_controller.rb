@@ -26,6 +26,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review.update(review_params)
+    respond_with(@product)
   end
 
   def destroy
