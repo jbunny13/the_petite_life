@@ -8,6 +8,9 @@
 
     <div class="panel-body">
       <div class="form-group">
+
+        <p class="text-right">Permissions: <%= current_user.role.capitalize %></p>
+
         <%= f.label :first_name %>
         <%= f.text_field :first_name, autofocus: true, class: 'form-control input-lg' %>
 
