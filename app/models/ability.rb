@@ -4,21 +4,21 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    case user.role
-      when 'user'
-        can :read, [Product, Review]
-        can [:create], Review
-        can [:update, :destroy], Review, active: true, user_id: user.id
-      when 'contributor'
-        can :create, Product
-        can :update, Product, active: true, user_id: user.id
-      when 'moderator'
-        can :manage, Product
-        can :destroy, Review
-      when 'internal_admin'
-        can :manage, :all
-      else # when guest or visitor
-        can :read, [Product, Review]
+    if user.role? :user
+      can :read, [Product, Review]
+      can [:create], Review
+      can [:update, :destroy], Review, active: true, user_id: user.id
+    end
+    if user.role? :contributor
+      can :create, Product
+      can :update, Product, active: true, user_id: user.id
+    end
+    if user.role? :moderator
+      can :manage, Product
+      can :destroy, Review
+    end
+    if user.role? :internal_admin
+      can :manage, :all
     end
 
     # Define abilities for the passed in user here. For example:
