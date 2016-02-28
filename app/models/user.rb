@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   has_many :products
   has_many :reviews, dependent: :destroy
   ROLES = %w[user contributor moderator internal_admin]
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
