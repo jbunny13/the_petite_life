@@ -7,11 +7,11 @@ class Ability
     if user.role? :user
       can :read, [Product, Review]
       can [:create], Review
-      can [:update, :destroy], Review, active: true, user_id: user.id
+      can [:update, :destroy], Review, user_id: user.id
     end
     if user.role? :contributor
       can :create, Product
-      can :update, Product, active: true, user_id: user.id
+      can :update, Product, user_id: user.id
     end
     if user.role? :moderator
       can :manage, Product
