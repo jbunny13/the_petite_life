@@ -22,10 +22,10 @@ products.each do |product|
 end
 
 users = [
-        {email: 'jnguyen72086@gmail.com', password: 'sfs%1w!nning@8009B!', role: 'internal_admin'},
-        {email: 'pocketsizeme@gmail.com', password: '89$231qu@driv!um$@%', role: 'user'},
-        {email: 'jenny.nguyen720@gmail.com', password: '209#@820fjdsj@!*@F@jjf', role: 'contributor'},
-        {email: 'jenny@thepetitelife.com', password: 'fjs083s@34FHs!!fdsf', role: 'moderator'},
+        {first_name: 'Jenny', last_name: 'Nguyen', email: 'jnguyen72086@gmail.com', password: 'sfs%1w!nning@8009B!', role: 'internal_admin'},
+        {first_name: 'Jenny', last_name: 'Nguyen', email: 'pocketsizeme@gmail.com', password: '89$231qu@driv!um$@%', role: 'user'},
+        {first_name: 'Jenny', last_name: 'Nguyen', email: 'jenny.nguyen720@gmail.com', password: '209#@820fjdsj@!*@F@jjf', role: 'contributor'},
+        {first_name: 'Jenny', last_name: 'Nguyen', email: 'jenny@thepetitelife.com', password: 'fjs083s@34FHs!!fdsf', role: 'moderator'},
         ]
 
 users.each do |user|
