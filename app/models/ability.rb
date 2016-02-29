@@ -9,14 +9,17 @@ class Ability
       can [:create], Review
       can [:update, :destroy], Review, user_id: user.id
     end
+
     if user.role? :contributor
       can :create, Product
       can :update, Product, user_id: user.id
     end
+
     if user.role? :moderator
       can :manage, Product
       can :destroy, Review
     end
+    
     if user.role? :internal_admin
       can :manage, :all
     end
