@@ -19,6 +19,8 @@ gem 'active_link_to'
 gem 'forgery'
 gem 'jquery-turbolinks'
 gem 'devise_zxcvbn'
+gem 'figaro'
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug'
@@ -29,4 +31,5 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rails_layout'
+  gem 'awesome_print'
 end

@@ -18,4 +18,15 @@
   </div>
 </center>
 
-<%= link_to 'New Product', new_product_path, class:'btn' %>
+<% if can? :create, Product %>
+  <div class="form-container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Looks like you're a contributor, moderator, or an admin!</h4>
+      </div>
+      <div class="panel-body">
+        <%= link_to 'Add New Product', new_product_path, class:'btn' %>
+      </div>
+    </div>
+  </div>
+<% end %>
