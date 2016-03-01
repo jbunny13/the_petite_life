@@ -20,6 +20,7 @@ gem 'jquery-turbolinks'
 gem 'devise_zxcvbn'
 gem 'figaro'
 gem 'cancancan'
+gem 'pg_search'
 
 group :development, :test do
   gem 'byebug'
