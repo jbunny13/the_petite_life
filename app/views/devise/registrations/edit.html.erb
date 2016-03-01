@@ -8,8 +8,17 @@
 
     <div class="panel-body">
       <div class="form-group">
+
+        <p class="text-right">Permissions: <%= current_user.role.capitalize %></p>
+
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, autofocus: true, class: 'form-control input-lg' %>
+
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control input-lg' %>
+
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: 'form-control input-lg' %>
+        <%= f.email_field :email, class: 'form-control input-lg' %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting on email confirmation for: <%= resource.unconfirmed_email %></div>

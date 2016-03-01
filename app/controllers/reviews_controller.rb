@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.product_id = @product.id
+
     if @review.save
       flash[:notice] = "Review was successfully created."
       respond_with(@product)
@@ -25,11 +26,17 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.update(review_params)
+    if @review.update(review_params)
+      flash[:notice] = "Review was successfully updated."
+      respond_with(@product)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     @review.destroy
+    flash[:notice] = "Review was successfully destroyed."
     respond_with(@product)
   end
 
