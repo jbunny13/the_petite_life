@@ -5,5 +5,5 @@ class Product < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "400x500#", thumb: "250x200>" }, default_url: "missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   include PgSearch
-  multisearchable :against => [:name, :category, :description]
+  multisearchable against: [:name, :category, :description]
 end

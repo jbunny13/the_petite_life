@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     	get 'popular'
     end
   end
-  
+  resources :searches, path: :search, only: [:index]
+
   root 'products#index'
 end

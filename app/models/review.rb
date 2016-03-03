@@ -4,5 +4,5 @@ class Review < ActiveRecord::Base
   validates :rating, presence: true
   validates :comment, presence: true, length: { minimum: 5 }
   include PgSearch
-  multisearchable :against => :comment
+  multisearchable against: :comment
 end
