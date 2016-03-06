@@ -2,11 +2,12 @@ class SearchesController < ApplicationController
   respond_to :html, :json
 
   def index
-    if params[:query]
-      @pg_search_documents = PgSearch.multisearch(params[:query])
-      respond_with(@pg_search_documents)
+    @pg_search_documents = PgSearch.multisearch(params[:query])
+
+    if @pg_search_documents.empty? 
+      flash.now[:notice] = "Your search returned no results!"  
     else
-      @pg_search_documents = []
+      respond_with(@pg_search_documents)
     end
   end
 end

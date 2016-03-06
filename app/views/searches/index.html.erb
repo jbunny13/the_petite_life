@@ -1,14 +1,10 @@
 <h2>Petite Results</h2>
 <p><%= Forgery('lorem_ipsum').paragraphs(2) %></p>
 <h3>  &nbsp; </h3>
-<% if @pg_search_documents.any? %>
-  <% @pg_search_documents.each do |pgsd| %>
-    <% if pgsd.searchable.class == Product %>
-      <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
-    <% elsif pgsd.searchable.class == Review %>
-      <p><%= link_to pgsd.searchable.product.name %>: <%= pgsd.searchable.comment %></p><hr>
-    <% end %>
+<% @pg_search_documents.each do |pgsd| %>
+  <% if pgsd.searchable.class == Product %>
+    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
+  <% elsif pgsd.searchable.class == Review %>
+    <p><%= link_to pgsd.searchable.product.name %>: <%= pgsd.searchable.comment %></p><hr>
   <% end %>
-<% else %>
-  <p>Looks like your search for "<b><em><%= params[:query] %></em></b>" returned no results!</p>
 <% end %>
