@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   before_action :set_product
   before_action :authenticate_user!
   respond_to :html, :json
-  # responders :flash
 
   def new
     @review = Review.new
@@ -50,6 +49,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:rating, :comment)
+      params.require(:review).permit(:rating, :content)
     end
 end

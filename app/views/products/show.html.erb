@@ -29,7 +29,7 @@
       <li class="list-group-item">
         <div class="star-rating" data-score= <%= review.rating %> ></div>
           <p>By <%= review.user.full_name %> on <%= review.created_at.strftime("%B %d, %Y") %></p>
-          <p><%= review.comment %></p>
+          <p><%= review.content %></p>
           <p>
             <% if can? :update, review %>
               <%= link_to 'Edit review', edit_product_review_path(@product, review), class: 'btn btn-default' %>
