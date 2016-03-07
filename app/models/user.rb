@@ -3,7 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable
+
+  has_many :articles
+  has_many :comments
   has_many :products
+  has_many :references
   has_many :reviews, dependent: :destroy
 
   ROLES = %w[user contributor moderator internal_admin]
