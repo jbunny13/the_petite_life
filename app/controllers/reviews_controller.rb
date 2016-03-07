@@ -4,6 +4,9 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   respond_to :html, :json
 
+  def show
+  end
+
   def new
     @review = Review.new
   end
