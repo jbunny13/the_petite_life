@@ -82,8 +82,31 @@ ActiveRecord::Schema.define(version: 20160307053245) do
     t.datetime "image_updated_at"
   end
 
+  create_table "products_tags", id: false, force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "tag_id",     null: false
+  end
+
+  add_index "products_tags", ["product_id", "tag_id"], name: "index_products_tags_on_product_id_and_tag_id", using: :btree
+  add_index "products_tags", ["tag_id", "product_id"], name: "index_products_tags_on_tag_id_and_product_id", using: :btree
+
+  create_table "references", force: :cascade do |t|
+    t.string   "name"
+    t.text     "uri"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "references_tags", id: false, force: :cascade do |t|
+    t.integer "reference_id", null: false
+    t.integer "tag_id",       null: false
+  end
+
+  add_index "references_tags", ["reference_id", "tag_id"], name: "index_references_tags_on_reference_id_and_tag_id", using: :btree
+  add_index "references_tags", ["tag_id", "reference_id"], name: "index_references_tags_on_tag_id_and_reference_id", using: :btree
+
   create_table "reviews", force: :cascade do |t|
-    t.text     "comment"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "rating"
