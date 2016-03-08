@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
-  respond_to :html
+  respond_to :html, :json
+  responders :flash
 
   def index
     @articles = Article.all
@@ -9,12 +11,11 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    respond_with(@article)
+    @comments = Comment.where(article_id: @article.id).order(created_at: :desc)
   end
 
   def new
     @article = Article.new
-    respond_with(@article)
   end
 
   def edit
@@ -22,8 +23,13 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.save
-    respond_with(@article)
+    @article.user_id = current_user.id
+
+    if @article.save
+      respond_with(@article)
+    else
+      render 'new'
+    end
   end
 
   def update

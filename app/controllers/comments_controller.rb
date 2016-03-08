@@ -1,20 +1,15 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:index, :edit, :update, :destroy]
+  before_action :set_article
+  before_action :authenticate_user!
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
-    @comments = Comment.all
-    respond_with(@comments)
-  end
-
-  def show
-    respond_with(@comment)
   end
 
   def new
     @comment = Comment.new
-    respond_with(@comment)
   end
 
   def edit
@@ -22,18 +17,30 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.save
-    respond_with(@comment)
+    @comment.user_id = current_user.id
+    @comment.article_id = @article.id
+
+    if @comment.save
+      flash[:notice] = "Comment was successfully created."
+      respond_with(@article)
+    else
+      render 'new'
+    end
   end
 
   def update
-    @comment.update(comment_params)
-    respond_with(@comment)
+    if @comment.update(comment_params)
+      flash[:notice] = "Comment was successfully updated."
+      respond_with(@article)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     @comment.destroy
-    respond_with(@comment)
+    flash[:notice] = "Comment was successfully destroyed."
+    respond_with(@article)
   end
 
   private
@@ -41,7 +48,11 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
     end
 
+    def set_article
+      @article = Article.find(params[:article_id])
+    end
+
     def comment_params
-      params.require(:comment).permit(:content, :user_id, :article_id)
+      params.require(:comment).permit(:user_id, :article_id, :content)
     end
 end

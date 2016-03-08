@@ -1,4 +1,4 @@
-<%= form_for(@article) do |f| %>
+<%= form_for @article, html: { multipart: true, role: 'form' } do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -11,15 +11,26 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :user_id %>
+      <p>Author: <%= current_user.full_name %></p>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.file_field :image %>
+    </div>
+
+    <div class="field">
+      <%= f.label :content %><br>
+      <%= f.text_area :content, autofocus: true, class: 'form-control input-lg', rows: 10 %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit class: 'btn btn-default btn-lg' %>
 <% end %>

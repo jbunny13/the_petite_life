@@ -1,14 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%= link_to articles_path, class: 'btn btn-default' do %>
+  <span class="fa fa-chevron-left">  &nbsp; &nbsp; Back to all articles</span>
+<% end %><br /><br />
 
-<p>
-  <strong>Name:</strong>
-  <%= @article.name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @article.user %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag @article.image.url(:medium) %>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title-1"><%= @article.name %></h2>
+        <h4>Author: <%= @article.user.full_name %></h4>
+        <% if can? :update, Article %>
+          <br /><%= link_to 'Edit this article', edit_article_path(@article), class: 'btn btn-default' %>
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <p><%= @article.content %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<%= render template: 'comments/index' %>
