@@ -10,7 +10,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2 class="panel-title-1"><%= @product.name %></h2>
-        <% if can? :update, Product %>
+        <% if can? :update, @product %>
           <br /><%= link_to 'Edit this product', edit_product_path(@product), class: 'btn btn-default' %>
         <% end %>
       </div>
