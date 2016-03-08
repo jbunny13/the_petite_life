@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :tags
-  resources :references
+  resources :references, path: 'resources'
   resources :articles do
     resources :comments, except: [:show]
   end
