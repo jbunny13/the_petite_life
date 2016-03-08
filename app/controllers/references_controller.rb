@@ -1,7 +1,9 @@
 class ReferencesController < ApplicationController
   before_action :set_reference, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
-  respond_to :html
+  respond_to :html, :json
+  responders :flash
 
   def index
     @references = Reference.all
@@ -22,8 +24,13 @@ class ReferencesController < ApplicationController
 
   def create
     @reference = Reference.new(reference_params)
-    @reference.save
-    respond_with(@reference)
+    @reference.user_id = current_user.id
+    
+    if @reference.save
+      respond_with(@reference)
+    else
+      render 'new'
+    end
   end
 
   def update

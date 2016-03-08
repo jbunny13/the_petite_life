@@ -1,31 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing References</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Uri</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<center>
+  <h1>Resources Index</h1>
+  <div class="row">
     <% @references.each do |reference| %>
-      <tr>
-        <td><%= reference.name %></td>
-        <td><%= reference.uri %></td>
-        <td><%= reference.user %></td>
-        <td><%= link_to 'Show', reference %></td>
-        <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
-        <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <p>
+        <%= link_to reference.name, reference.uri, target: 'blank' %> | 
+        <%= link_to 'View resource', reference_path(reference) %>
+        <% if can? :update, reference %>
+           | <%= link_to 'Edit resource', edit_reference_path(reference) %>
+        <% end %>
+      </p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</center>
 
-<br>
+<% if can? :create, Reference %>
+  <div class="form-container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Looks like you can add a new resource!</h4>
+      </div>
+      <div class="panel-body">
+        <%= link_to 'Add New Resource', new_reference_path, class: 'btn' %>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<%= link_to 'New Reference', new_reference_path %>

@@ -1,4 +1,4 @@
-<%= form_for(@reference) do |f| %>
+<%= form_for(@reference, html: { role: 'form'}) do |f| %>
   <% if @reference.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@reference.errors.count, "error") %> prohibited this reference from being saved:</h2>
@@ -11,19 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :uri %><br>
-    <%= f.text_area :uri %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: 'form-control input-lg' %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :uri %><br>
+      <%= f.text_field :uri, class: 'form-control input-lg' %>
+    </div>
+
+    <div class="field">
+      <p>User: <%= current_user.full_name %></p>
+    </div>
+
+    <%= f.submit 'Save', class: 'btn btn-default' %>
   </div>
 <% end %>

@@ -1,19 +1,12 @@
-<p id="notice"><%= notice %></p>
+<%= link_to references_path, class: 'btn btn-default' do %>
+  <span class="fa fa-chevron-left">  &nbsp; &nbsp; Back to all resources</span>
+<% end %><br /><br />
 
-<p>
-  <strong>Name:</strong>
-  <%= @reference.name %>
-</p>
-
-<p>
-  <strong>Uri:</strong>
-  <%= @reference.uri %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @reference.user %>
-</p>
-
-<%= link_to 'Edit', edit_reference_path(@reference) %> |
-<%= link_to 'Back', references_path %>
+<div class="row">
+  <p>Name: <%= @reference.name %></p>
+  <p>Link: <%= link_to @reference.uri, @reference.uri %></p>
+  <p>User: <%= @reference.user.full_name %></p>
+    <% if can? :update, @reference %>
+      <br /><%= link_to 'Edit this resource', edit_reference_path(@reference), class: 'btn btn-default' %>
+    <% end %>
+</div>
