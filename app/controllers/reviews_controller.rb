@@ -1,11 +1,11 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:index, :edit, :update, :destroy]
   before_action :set_product
   before_action :authenticate_user!
-  
+
   respond_to :html, :json
 
-  def show
+  def index
   end
 
   def new
@@ -53,6 +53,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:rating, :content)
+      params.require(:review).permit(:user_id, :product_id, :rating, :content)
     end
 end
