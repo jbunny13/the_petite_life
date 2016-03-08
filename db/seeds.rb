@@ -7,14 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 products =  [
-            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
-            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
-            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
-            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
-            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
-            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
-            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'},
-            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing'}
+            {name: 'Osprey Ariel 55 (Internal Admin)', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', user_id: '1'},
+            {name: 'Osprey Ariel 55 (User)', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', user_id: '2'},
+            {name: 'Osprey Ariel 55 (Contributor)', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', user_id: '3'},
+            {name: 'Osprey Ariel 55 (Moderator)', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', user_id: '4'},
+            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', user_id: '1'},
+            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', user_id: '2'},
+            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', user_id: '3'},
+            {name: 'Osprey Ariel 55', description: 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', user_id: '4'}
             ]
 
 products.each do |product|
