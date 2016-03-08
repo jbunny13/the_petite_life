@@ -6,3 +6,4 @@
 //= require raty
 //= require zxcvbn
 //= require global
+//= require local_time

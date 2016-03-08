@@ -20,6 +20,7 @@ gem 'jquery-turbolinks'
 gem 'devise_zxcvbn'
 gem 'figaro'
 gem 'cancancan'
+gem 'local_time'
 
 group :development, :test do
   gem 'byebug'
