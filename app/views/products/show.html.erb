@@ -10,6 +10,14 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2 class="panel-title-1"><%= @product.name %></h2>
+        <h3 class="panel-title-1">Categories:</h3>
+        <ul>
+          <% @product.categories.each do |category| %>
+            <li><%= category.name %></li>
+          <% end %>
+        </ul>
+
+
         <% if can? :update, @product %>
           <br /><%= link_to 'Edit this product', edit_product_path(@product), class: 'btn btn-default' %>
         <% end %>
