@@ -1,9 +1,16 @@
-<p id="notice"><%= notice %></p>
+<%= link_to categories_path, class: 'btn btn-default' do %>
+  <span class="fa fa-chevron-left">  &nbsp; &nbsp; Back to all categories</span>
+<% end %><br /><br />
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<div class="row">
+  <h2>Category: <%= @category.name %></h2>
+    <% @category.products.each do |product| %>
+      <p><%= link_to product.name, product_path(product) %></p>
+    <% end %>
+</div>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div class="row">
+  <% if can? :update, @category %>
+    <br /><%= link_to 'Edit this category', edit_category_path(@category), class: 'btn btn-default' %>
+  <% end %>
+</div>
