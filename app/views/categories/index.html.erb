@@ -1,26 +1,22 @@
 <center>
   <h1>Categories Index</h1>
-  <div class="row">
-    <% @categories.each do |category| %>
-      <p>
-        <%= link_to category.name, category_path(category) %>
-        <% if can? :update, category %>
-           | <%= link_to 'Edit category', edit_category_path(category) %>
-        <% end %>
-      </p>
-    <% end %>
-  </div>
+  <% if can? :create, Category %>
+    <p>
+      Looks like you can add a new category!<br />
+      <%= link_to 'Add new category', new_category_path, class:'btn btn-default' %><br />
+    </p>
+  <% end %>
 </center>
 
-<% if can? :create, Category %>
-  <div class="form-container">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Looks like you can add a new category!</h4>
-      </div>
-      <div class="panel-body">
-        <%= link_to 'Add New Category', new_category_path, class:'btn' %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<ul class="list-group">
+  <% @categories.each do |category| %>
+    <li class="list-group-item">
+      <h4>
+        <%= link_to category.name, category_path(category) %>
+      </h4>
+      <% if can? :update, category %>
+         [ <%= link_to 'Edit category', edit_category_path(category) %> ]
+      <% end %>
+    </li>
+  <% end %>
+</ul>

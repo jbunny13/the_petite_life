@@ -1,28 +1,22 @@
 <center>
   <h1>Resources Index</h1>
-  <div class="row">
-    <% @references.each do |reference| %>
-      <p>
-        <%= link_to reference.name, reference.uri, target: 'blank' %> | 
-        <%= link_to 'View resource', reference_path(reference) %>
-        <% if can? :update, reference %>
-           | <%= link_to 'Edit resource', edit_reference_path(reference) %>
-        <% end %>
-      </p>
-    <% end %>
-  </div>
+  <% if can? :create, Reference %>
+    <p>Looks like you can add a new resource!<br />
+    <%= link_to 'Add new resource', new_reference_path, class:'btn btn-default' %>
+    <br /></p>
+  <% end %>
 </center>
 
-<% if can? :create, Reference %>
-  <div class="form-container">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Looks like you can add a new resource!</h4>
-      </div>
-      <div class="panel-body">
-        <%= link_to 'Add New Resource', new_reference_path, class: 'btn' %>
-      </div>
-    </div>
-  </div>
-<% end %>
-
+<ul class="list-group">
+  <% @references.each do |reference| %>
+    <li class="list-group-item">
+      <h4>
+        <%= link_to reference.name, reference.uri, target: 'blank' %>
+      </h4>
+      [ <%= link_to 'View resource', reference_path(reference) %>
+      <% if can? :update, reference %>
+         | <%= link_to 'Edit resource', edit_reference_path(reference) %>
+      <% end %> ]
+    </li>
+  <% end %>
+</ul>
