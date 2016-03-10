@@ -38,14 +38,6 @@ ActiveRecord::Schema.define(version: 20160308053443) do
   add_index "articles_categories", ["article_id", "category_id"], name: "index_articles_categories_on_article_id_and_category_id", using: :btree
   add_index "articles_categories", ["category_id", "article_id"], name: "index_articles_categories_on_category_id_and_article_id", using: :btree
 
-  create_table "articles_tags", id: false, force: :cascade do |t|
-    t.integer "article_id", null: false
-    t.integer "tag_id",     null: false
-  end
-
-  add_index "articles_tags", ["article_id", "tag_id"], name: "index_articles_tags_on_article_id_and_tag_id", using: :btree
-  add_index "articles_tags", ["tag_id", "article_id"], name: "index_articles_tags_on_tag_id_and_article_id", using: :btree
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -93,14 +85,6 @@ ActiveRecord::Schema.define(version: 20160308053443) do
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
-  create_table "products_tags", id: false, force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "tag_id",     null: false
-  end
-
-  add_index "products_tags", ["product_id", "tag_id"], name: "index_products_tags_on_product_id_and_tag_id", using: :btree
-  add_index "products_tags", ["tag_id", "product_id"], name: "index_products_tags_on_tag_id_and_product_id", using: :btree
-
   create_table "references", force: :cascade do |t|
     t.string   "name"
     t.text     "uri"
@@ -110,14 +94,6 @@ ActiveRecord::Schema.define(version: 20160308053443) do
   end
 
   add_index "references", ["user_id"], name: "index_references_on_user_id", using: :btree
-
-  create_table "references_tags", id: false, force: :cascade do |t|
-    t.integer "reference_id", null: false
-    t.integer "tag_id",       null: false
-  end
-
-  add_index "references_tags", ["reference_id", "tag_id"], name: "index_references_tags_on_reference_id_and_tag_id", using: :btree
-  add_index "references_tags", ["tag_id", "reference_id"], name: "index_references_tags_on_tag_id_and_reference_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
@@ -130,12 +106,6 @@ ActiveRecord::Schema.define(version: 20160308053443) do
 
   add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
-
-  create_table "tags", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

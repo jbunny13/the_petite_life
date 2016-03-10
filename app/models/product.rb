@@ -2,7 +2,6 @@ class Product < ActiveRecord::Base
   belongs_to :user, required: true
   has_many :reviews, dependent: :destroy
   has_and_belongs_to_many :categories
-  has_and_belongs_to_many :tags
 
   validates :name, presence: true, length: { minimum: 5 }
   

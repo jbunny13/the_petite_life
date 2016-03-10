@@ -5,7 +5,7 @@ class Ability
     user ||= User.new
 
     if user.role? :user
-      can :read, [Product, Review, Article, Comment, Category, Reference, Tag]
+      can :read, [Product, Review, Article, Comment, Category, Reference]
       can [:create], [Review, Comment, Reference]
       can [:update, :destroy], [Review, Comment, Reference], user_id: user.id
     end
@@ -16,7 +16,7 @@ class Ability
     end
 
     if user.role? :moderator
-      can :manage, [Product, Article, Reference, Tag]
+      can :manage, [Product, Article, Reference]
       can :destroy, [Review, Comment]
     end
     
