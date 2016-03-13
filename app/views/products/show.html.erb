@@ -1,5 +1,5 @@
 <%= link_to products_path, class: 'btn btn-default' do %>
-  <span class="fa fa-chevron-left">  &nbsp; &nbsp; Back to all products</span>
+  <span class="fa fa-chevron-left">&nbsp;&nbsp;&nbsp;</span>Back to all products
 <% end %><br /><br />
 
 <div class="row">
@@ -9,18 +9,26 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 class="panel-title-1"><%= @product.name %></h2>
-        <h3 class="panel-title-1">Categories:</h3>
-        <ul>
+        <h2 class="panel-title-1"><%= @product.name %></h2><br />
+        <h3 class="panel-title-1">Categories</h3>
+        <ul class="list-unstyled">
           <% @product.categories.each do |category| %>
             <li><%= category.name %></li>
           <% end %>
         </ul>
+        <h3 class="panel-title-1">Tags</h3>
+        <%= render @product.tags %>
+                  
 
+          <p><br />
+            <% if can? :update, @product %>
+              <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-default' %>
+            <% end %>
 
-        <% if can? :update, @product %>
-          <br /><%= link_to 'Edit this product', edit_product_path(@product), class: 'btn btn-default' %>
-        <% end %>
+            <% if can? :destroy, @product %>
+              <%= link_to 'Delete', @product, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </p>
       </div>
       <div class="panel-body">
         <p><%= @product.description %></p>

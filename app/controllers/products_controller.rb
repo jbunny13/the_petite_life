@@ -6,8 +6,12 @@ class ProductsController < ApplicationController
   responders :flash
 
   def index
-    @products = Product.all
-    respond_with(@products)
+    if params[:tag].present?
+      @products = Product.tagged_with(params[:tag])
+    else
+      @products = Product.all
+      respond_with(@products)
+    end
   end
 
   def show
@@ -49,6 +53,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:user_id, :name, :description, :image, category_ids: [])
+      params.require(:product).permit(:user_id, :name, :description, :image, :tag_list, category_ids: [])
     end
 end

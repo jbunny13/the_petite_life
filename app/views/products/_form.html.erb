@@ -13,26 +13,36 @@
 
   <div class="form-group">
     <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name %><br /><br />
+      <%= f.label :name, 'Product Name' %><br />
+      <%= f.text_field :name, class: 'form-control' %><br />
+    </div>
+
+    <div class="field">
+      <%= f.label :user_id, 'Created By' %><br>
+      <p class="form-control-static"><%= current_user.full_name %></p><br />
     </div>
 
     <div class="field">
       <p><b>Categories</b></p>
       <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
-        <%= b.check_box%>
+        <%= b.check_box %>
         <%= b.label class: 'fw-normal' %><br />
       <% end %><br />
     </div>
 
     <div class="field">
+      <%= f.label :tag_list, 'Tags (separated by commas) [e.g., bunnies, rainbows, unicorns]' %><br />
+      <%= f.text_field :tag_list, class: 'form-control' %><br />
+    </div>
+
+    <div class="field">
       <%= f.label :description %><br />
-      <%= f.text_area :description %><br /><br />
+      <%= f.text_area :description, class: 'form-control' %><br /><br />
     </div>
     
     <div class="field">
       <%= f.label :image %>
-      <%= f.file_field :image %><br />
+      <%= f.file_field :image, class: 'btn btn-default form-control' %><br />
     </div>
 
     <%= f.submit 'Save', class: 'btn btn-default' %>
