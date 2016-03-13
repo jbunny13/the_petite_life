@@ -21,6 +21,7 @@ gem 'devise_zxcvbn'
 gem 'figaro'
 gem 'cancancan'
 gem 'local_time'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development, :test do
   gem 'byebug'
