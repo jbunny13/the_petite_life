@@ -17,6 +17,6 @@
       <%= f.text_field :name %>
     </div>
   
-    <%= f.submit class: 'btn btn-default btn-lg' %>
+    <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
   </div>
 <% end %>

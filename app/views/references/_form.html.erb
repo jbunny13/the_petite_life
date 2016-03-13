@@ -27,6 +27,6 @@
       <p class="form-control-static"><%= current_user.full_name %></p>
     </div>
 
-    <%= f.submit 'Save', class: 'btn btn-default' %>
+    <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
   </div>
 <% end %>

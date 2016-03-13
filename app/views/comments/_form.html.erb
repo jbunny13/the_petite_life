@@ -22,6 +22,6 @@
       <%= f.text_area :content, autofocus: true, class: 'form-control input-lg', rows: 5 %><br />
     </div>
     
-    <%= f.submit 'Save', class: 'btn btn-default' %>
+    <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
   </div>
 <% end %>
