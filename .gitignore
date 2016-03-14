@@ -17,3 +17,6 @@
 
 # Ignore ERD
 erd.pdf
+
+# Ignore images uploaded via Paperclip
+public/system/products/images/*
