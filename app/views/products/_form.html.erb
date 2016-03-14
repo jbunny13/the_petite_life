@@ -31,8 +31,10 @@
     </div>
 
     <div class="field">
-      <%= f.label :tag_list, 'Tags (separated by commas) [e.g., bunnies, rainbows, unicorns]' %><br />
-      <%= f.text_field :tag_list, class: 'form-control' %><br />
+      <%= f.label :tag_list, "Tags" %>
+      <%= f.select :tag_list, options_for_select(ActsAsTaggableOn::Tag.all.pluck(:name), @product.tag_list), {}, { multiple: true, class: "taggable", style: "width: 100%;" } %>
+      <br />
+      <br />
     </div>
 
     <div class="field">
@@ -48,3 +50,16 @@
     <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+
+    $('select.taggable').select2({
+      theme: "bootstrap",
+      tags: true,
+      multiple: true,
+      placeholder: 'Start typing to select or add a tag'
+    }); 
+
+  });
+</script>

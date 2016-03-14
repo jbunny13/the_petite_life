@@ -18,17 +18,16 @@
         </ul>
         <h3 class="panel-title-1">Tags</h3>
         <%= render @product.tags %>
-                  
 
-          <p><br />
-            <% if can? :update, @product %>
-              <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-default' %>
-            <% end %>
+        <p><br />
+          <% if can? :update, @product %>
+            <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-default' %>
+          <% end %>
 
-            <% if can? :destroy, @product %>
-              <%= link_to 'Delete', @product, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
-          </p>
+          <% if can? :destroy, @product %>
+            <%= link_to 'Delete', @product, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </p>
       </div>
       <div class="panel-body">
         <p><%= @product.description %></p>

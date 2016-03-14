@@ -7,3 +7,4 @@
 //= require zxcvbn
 //= require global
 //= require local_time
+//= require select2-full

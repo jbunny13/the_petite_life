@@ -7,6 +7,7 @@ $light-red: #b94a48;
 $lightest-green: #dff0d8;
 $light-green: #d6e9c6;
 $light-forest-green: #496e2b;
+$white: #ffffff;
 
 .cyan-text { color: $cyan }
 .black-text { color: $black }
@@ -58,7 +59,23 @@ body {
     float: right;
 }
 .label-tag {
-    line-height: 2.2;
-    margin-right: .25em;
+    line-height: 1.1;
     background-color: $cyan;
+    display: inline-block;
+    max-width: 100%;
+    margin: 4px 4px 0px 0px;
+    font-size: 83%;
+    font-weight: bold;
+    color: $white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    padding: 4px;
+}
+a.label-tag:hover,
+a.label-tag:focus {
+  color: $white;
+  text-decoration: none;
+  cursor: pointer;
 }

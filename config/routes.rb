@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :reviews, except: [:show]
   end
   resources :references, path: 'resources'
-  resources :tags, only: [:index, :show]
+  resources :tags
 end
