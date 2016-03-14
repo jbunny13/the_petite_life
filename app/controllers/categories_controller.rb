@@ -38,7 +38,6 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    respond_with(@category)
   end
 
   private

@@ -6,12 +6,9 @@ class ProductsController < ApplicationController
   responders :flash
 
   def index
-    if params[:tag].present?
-      @products = Product.tagged_with(params[:tag])
-    else
-      @products = Product.all
-      respond_with(@products)
-    end
+    tag = params[:tag]
+    @products = tag.present? ? Product.tagged_with(tag) : Product.all
+    respond_with(@products)
   end
 
   def show
@@ -44,7 +41,6 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    respond_with(@product)
   end
 
   private

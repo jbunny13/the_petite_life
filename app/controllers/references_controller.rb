@@ -6,12 +6,9 @@ class ReferencesController < ApplicationController
   responders :flash
 
   def index
-    if params[:tag].present?
-      @references = Reference.tagged_with(params[:tag])
-    else
-      @references = Reference.all
-      respond_with(@references)
-    end
+    tag = params[:tag]
+    @references = tag.present? ? Reference.tagged_with(tag) : Reference.all
+    respond_with(@references)
   end
 
   def show
@@ -44,7 +41,6 @@ class ReferencesController < ApplicationController
 
   def destroy
     @reference.destroy
-    respond_with(@reference)
   end
 
   private

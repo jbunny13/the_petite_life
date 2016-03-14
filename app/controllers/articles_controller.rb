@@ -6,16 +6,14 @@ class ArticlesController < ApplicationController
   responders :flash
 
   def index
-    if params[:tag].present?
-      @articles = Article.tagged_with(params[:tag])
-    else
-      @articles = Article.all
-      respond_with(@articles)
-    end
+    tag = params[:tag]
+    @articles = tag.present? ? Article.tagged_with(tag) : Article.all
+    respond_with(@articles)
   end
 
   def show
     @comments = Comment.where(article_id: @article.id).order(created_at: :desc)
+    respond_with(@article)
   end
 
   def new
@@ -43,7 +41,6 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    respond_with(@article)
   end
 
   private
