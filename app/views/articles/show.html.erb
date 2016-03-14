@@ -11,9 +11,24 @@
       <div class="panel-heading">
         <h2 class="panel-title-1"><%= @article.name %></h2>
         <h4>Author: <%= @article.user.full_name %></h4>
-        <% if can? :update, Article %>
-          <br /><%= link_to 'Edit this article', edit_article_path(@article), class: 'btn btn-default' %>
+        <h3 class="panel-title-1">Categories</h3>
+          <% @article.categories.each do |category| %>
+            <%= render partial: 'categories/category_link', locals: { category: category } %>
+          <% end %>
+          <br />
+
+        <h3 class="panel-title-1">Tags</h3>
+        <%= render @article.tags %>
+
+        <p><br />
+        <% if can? :update, @article %>
+          <br /><%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-default' %>
         <% end %>
+
+        <% if can? :destroy, @article %>
+            <%= link_to 'Delete', @article, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </p>
       </div>
       <div class="panel-body">
         <p><%= @article.content %></p>

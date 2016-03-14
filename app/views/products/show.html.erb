@@ -11,11 +11,11 @@
       <div class="panel-heading">
         <h2 class="panel-title-1"><%= @product.name %></h2><br />
         <h3 class="panel-title-1">Categories</h3>
-        <ul class="list-unstyled">
-          <% @product.categories.each do |category| %>
-            <li><%= category.name %></li>
-          <% end %>
-        </ul>
+        <% @product.categories.each do |category| %>
+          <%= render partial: 'categories/category_link', locals: { category: category } %>
+        <% end %>
+        <br />
+            
         <h3 class="panel-title-1">Tags</h3>
         <%= render @product.tags %>
 
@@ -25,7 +25,7 @@
           <% end %>
 
           <% if can? :destroy, @product %>
-            <%= link_to 'Delete', @product, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Delete', @product, class: 'btn btn-default', method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </p>
       </div>

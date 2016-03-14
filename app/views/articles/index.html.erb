@@ -5,27 +5,8 @@
     <%= link_to 'Add new article', new_article_path, class:'btn btn-default' %>
     <br /></p>
   <% end %>
-</center>
 
-<% @articles.each do |article| %>
   <div class="row">
-    <div class="col-xs-6 col-md-4">
-      <div class="thumbnail">
-        <%= link_to (image_tag article.image.url(:thumb), class: 'image'), article %>
-      </div>
-    </div>
-        
-    <div class="caption col-xs-12 col-sm-6 col-md-8">
-      <h4><%= link_to article.name, article_path(article) %></h4>
-      <p>Author: <%= article.user.full_name %></p>
-      <p>
-        <% if can? :create, article %>
-          <%= link_to 'Edit', edit_article_path(article) %>
-        <% end %>
-        <% if can? :destroy, article %>
-           | <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </p>
-    </div>
+    <%= render @articles %>
   </div>
-<% end %>
+</center>

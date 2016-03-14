@@ -6,8 +6,12 @@ class ArticlesController < ApplicationController
   responders :flash
 
   def index
-    @articles = Article.all
-    respond_with(@articles)
+    if params[:tag].present?
+      @articles = Article.tagged_with(params[:tag])
+    else
+      @articles = Article.all
+      respond_with(@articles)
+    end
   end
 
   def show
@@ -48,6 +52,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:user_id, :name, :image, :content)
+      params.require(:article).permit(:user_id, :name, :image, :content, tag_list: [], category_ids: [])
     end
 end

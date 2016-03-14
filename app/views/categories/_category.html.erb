@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="well">
+    <h2 class="pink-text">
+      <%= category.name %>
+      <% if can? :update, category %>
+        <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-default' %>
+      <% end %>
+
+      <% if can? :destroy, category %>
+        <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure? You\'re about to delete this category forever!' }, class: 'btn btn-default' %>
+      <% end %>
+    </h2>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Articles</h3>
+  <% if category.articles.any? %>
+    <%= render partial: 'articles/article', collection: category.articles %>
+  <% else %>
+    <p>No articles found</p>
+  <% end %>
+</div>
+
+<div class="row">
+  <h3>Products</h3>
+  <% if category.products.any? %>
+    <%= render partial: 'products/product', collection: category.products %>
+  <% else %>
+    <p>No products found</p>
+  <% end %>
+</div>
+
+<div class="row">
+  <h3>Resources</h3>
+  <% if category.references.any? %>
+    <%= render partial: 'references/reference', collection: category.references %>
+  <% else %>
+    <p>No references found</p>
+  <% end %>
+</div>

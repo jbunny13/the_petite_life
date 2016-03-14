@@ -10,13 +10,7 @@
 <ul class="list-group">
   <% @references.each do |reference| %>
     <li class="list-group-item">
-      <h4>
-        <%= link_to reference.name, reference.uri, target: 'blank' %>
-      </h4>
-      [ <%= link_to 'View resource', reference_path(reference) %>
-      <% if can? :update, reference %>
-         | <%= link_to 'Edit resource', edit_reference_path(reference) %>
-      <% end %> ]
+      <%= render reference %>
     </li>
   <% end %>
 </ul>

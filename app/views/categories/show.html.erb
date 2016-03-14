@@ -1,16 +1,7 @@
-<%= link_to categories_path, class: 'btn btn-default' do %>
-  <span class="fa fa-chevron-left">  &nbsp; &nbsp; Back to all categories</span>
-<% end %><br /><br />
-
 <div class="row">
-  <h2>Category: <%= @category.name %></h2>
-    <% @category.products.each do |product| %>
-      <p><%= link_to product.name, product_path(product) %></p>
-    <% end %>
-</div>
-
-<div class="row">
-  <% if can? :update, @category %>
-    <br /><%= link_to 'Edit this category', edit_category_path(@category), class: 'btn btn-default' %>
+  <%= link_to categories_path, class: 'btn btn-default' do %>
+    <span class="fa fa-chevron-left">&nbsp;&nbsp;&nbsp;</span>Back to all categories
   <% end %>
 </div>
+
+<%= render partial: 'category', locals: { category: @category } %>

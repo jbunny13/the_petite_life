@@ -1,0 +1,14 @@
+<h4>
+  <%= link_to reference.name, reference.uri, target: 'blank' %>
+</h4>
+
+[
+  <%= link_to 'Show', reference_path(reference) %>
+  <% if can? :update, reference %>
+    | <%= link_to 'Edit', edit_reference_path(reference) %>
+  <% end %> 
+  
+  <% if can? :destroy, reference %>
+     | <%= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+]

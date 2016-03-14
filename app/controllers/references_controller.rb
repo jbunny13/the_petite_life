@@ -6,8 +6,12 @@ class ReferencesController < ApplicationController
   responders :flash
 
   def index
-    @references = Reference.all
-    respond_with(@references)
+    if params[:tag].present?
+      @references = Reference.tagged_with(params[:tag])
+    else
+      @references = Reference.all
+      respond_with(@references)
+    end
   end
 
   def show
@@ -49,6 +53,6 @@ class ReferencesController < ApplicationController
     end
 
     def reference_params
-      params.require(:reference).permit(:name, :uri, :user_id)
+      params.require(:reference).permit(:name, :uri, :user_id, tag_list: [], category_ids: [])
     end
 end

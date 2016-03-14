@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :products
   has_and_belongs_to_many :categories
+  acts_as_taggable
 
   validates :name, presence: true, length: { minimum: 5 }
   validates :content, presence: true, length: { minimum: 5 }

@@ -5,10 +5,31 @@
 </div>
 
 <div class="row">
-  <p>Name: <%= @reference.name %></p>
-  <p>Link: <%= link_to @reference.uri, @reference.uri %></p>
-  <p>User: <%= @reference.user.full_name %></p>
+  <h3 class="panel-title-1">Resource Name</h3>
+  <p><%= @reference.name %></p>
+
+  <h3 class="panel-title-1">URL</h3>
+  <p><%= link_to @reference.uri, @reference.uri %></p>
+
+  <h3 class="panel-title-1">Added By</h3>
+  <p><%= @reference.user.full_name %></p>
+
+  <h3 class="panel-title-1">Categories</h3>
+  <% @reference.categories.each do |category| %>
+    <%= render partial: 'categories/category_link', locals: { category: category } %>
+  <% end %>
+  <br />
+  
+  <h3 class="panel-title-1">Tags</h3>
+  <%= render @reference.tags %>
+
+  <p><br />
     <% if can? :update, @reference %>
-      <br /><%= link_to 'Edit this resource', edit_reference_path(@reference), class: 'btn btn-default' %>
+      <br /><%= link_to 'Edit', edit_reference_path(@reference), class: 'btn btn-default' %>
     <% end %>
+
+    <% if can? :destroy, @reference %>
+      <%= link_to 'Delete', @reference, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </p>
 </div>
