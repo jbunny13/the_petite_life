@@ -43,8 +43,13 @@
     </div>
     
     <div class="field">
-      <%= f.label :image %>
-      <%= f.file_field :image, class: 'btn btn-default form-control' %><br />
+      <%= f.label :image %><br />
+      <% if @product.image.exists? %>
+        <%= image_tag @product.image.url(:thumb) %><br /><br />
+      <% end %>
+      <div class="file-input-button">
+        <%= f.file_field :image, class: 'btn btn-default form-control' %><br />
+      </div>
     </div>
 
     <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
