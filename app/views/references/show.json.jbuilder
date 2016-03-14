@@ -1,1 +1,1 @@
-json.extract! @reference, :id, :name, :uri, :user_id, :created_at, :updated_at
+json.extract! @reference, :id, :name, :uri, :created_at, :updated_at, :tag_list, :categories
