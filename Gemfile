@@ -23,6 +23,7 @@ gem 'cancancan'
 gem 'local_time'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'select2-rails'
+gem 'pg_search'
 
 group :development, :test do
   gem 'byebug'
