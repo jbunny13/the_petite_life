@@ -1,0 +1,11 @@
+<center>
+  <h1>All Categories</h1>
+  <% if can? :create, Category %>
+    <p>
+      Looks like you can add a new category!<br />
+      <%= link_to 'Add new category', new_category_path, class:'btn btn-default' %><br />
+    </p>
+  <% end %>
+</center>
+
+<%= render @categories %>

@@ -1,12 +1,15 @@
 $cyan: #00e5e6;
 $black: #000000;
-$pink: #ff00ff;
+$pink: #F300FF;
+$dark-pink: #E257E8;
+$gray: #8A848A;
 $lightest-pink: #f2dede;
 $light-pink: #eed3d7;
 $light-red: #b94a48;
 $lightest-green: #dff0d8;
 $light-green: #d6e9c6;
 $light-forest-green: #496e2b;
+$white: #ffffff;
 
 .cyan-text { color: $cyan }
 .black-text { color: $black }
@@ -21,6 +24,9 @@ body {
     padding-left: 0px;
     margin-right: 130px;
     margin-left: 130px;
+}
+.nav > li > a {
+  padding: 10px 5px;
 }
 .navbar-brand {
 	font-size: 40px;
@@ -42,3 +48,56 @@ body {
     color: $light-forest-green;
     text-align: left;
  }
+.fw-normal {
+    font-weight: normal;
+}
+.inline {
+    display: inline;
+}
+.f-left {
+    float: left;
+}
+.f-right {
+    float: right;
+}
+.label-tag {
+    line-height: 1.1;
+    background-color: $cyan;
+    display: inline-block;
+    max-width: 100%;
+    margin: 4px 4px 0px 0px;
+    font-size: 83%;
+    font-weight: bold;
+    color: $white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    padding: 4px;
+}
+a.label-tag:hover,
+a.label-tag:focus {
+  color: $white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.well {
+    min-height: 10px;
+    padding: 0px 0px 0px 3px;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+a {
+  color: $gray;
+  text-decoration: none;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  &:hover,
+  &:focus {
+    color: $pink;
+    text-decoration: none;
+  }
+}

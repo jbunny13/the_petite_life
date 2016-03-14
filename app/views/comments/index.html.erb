@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title-1">Comments</h3>
+  </div>
+
+  <div class="panel-body">
+  <h4 class="panel-title">Got something to add?</h4><br />
+    <%= link_to "Add a comment", new_article_comment_path(@article), class: 'btn btn-default btn-lg' %>
+  </div>
+
+  <ul class="list-group">
+    <% @article.comments.each do |comment| %>
+      <li class="list-group-item">
+          <p>By <%= comment.user.full_name %> on <%= local_time(comment.created_at) %></p>
+          <p><%= comment.content %></p>
+          <p>
+            <% if can? :update, comment %>
+              <%= link_to 'Edit comment', edit_article_comment_path(@article, comment), class: 'btn btn-default' %>
+            <% end %>
+
+            <% if can? :destroy, comment %>
+              <%= link_to 'Delete comment', [@article, comment], method: :delete, class: 'btn btn-default', data: {confirm: "Are you sure you want to delete this comment?"} %>
+            <% end %>
+          </p>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -11,10 +11,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301012826) do
+ActiveRecord::Schema.define(version: 20160310013944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.text     "content"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
+
+  create_table "articles_categories", id: false, force: :cascade do |t|
+    t.integer "article_id",  null: false
+    t.integer "category_id", null: false
+  end
+
+  add_index "articles_categories", ["article_id", "category_id"], name: "index_articles_categories_on_article_id_and_category_id", using: :btree
+  add_index "articles_categories", ["category_id", "article_id"], name: "index_articles_categories_on_category_id_and_article_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_products", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "product_id",  null: false
+  end
+
+  add_index "categories_products", ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id", using: :btree
+  add_index "categories_products", ["product_id", "category_id"], name: "index_categories_products_on_product_id_and_category_id", using: :btree
+
+  create_table "categories_references", id: false, force: :cascade do |t|
+    t.integer "category_id",  null: false
+    t.integer "reference_id", null: false
+  end
+
+  add_index "categories_references", ["category_id", "reference_id"], name: "index_categories_references_on_category_id_and_reference_id", using: :btree
+  add_index "categories_references", ["reference_id", "category_id"], name: "index_categories_references_on_reference_id_and_category_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
@@ -28,7 +83,6 @@ ActiveRecord::Schema.define(version: 20160301012826) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.string   "category"
     t.text     "description"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -36,10 +90,23 @@ ActiveRecord::Schema.define(version: 20160301012826) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "user_id"
   end
 
+  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
+
+  create_table "references", force: :cascade do |t|
+    t.string   "name"
+    t.text     "uri"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "references", ["user_id"], name: "index_references_on_user_id", using: :btree
+
   create_table "reviews", force: :cascade do |t|
-    t.text     "comment"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "rating"
@@ -49,6 +116,26 @@ ActiveRecord::Schema.define(version: 20160301012826) do
 
   add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -80,6 +167,11 @@ ActiveRecord::Schema.define(version: 20160301012826) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "articles", "users"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
+  add_foreign_key "products", "users"
+  add_foreign_key "references", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
 end

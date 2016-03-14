@@ -1,0 +1,70 @@
+<%= form_for @article, html: { multipart: true, role: 'form' } do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :name, 'Article Title' %><br>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :user_id, 'Author' %><br>
+      <p class="form-control-static"><%= current_user.full_name %></p><br />
+    </div>
+
+    <div class="field">
+      <p><b>Categories</b></p>
+      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+        <%= b.check_box %>
+        <%= b.label class: 'fw-normal' %><br />
+      <% end %><br />
+    </div>
+
+    <div class="field">
+      <%= f.label :tag_list, "Tags" %>
+      <%= f.select :tag_list, options_for_select(ActsAsTaggableOn::Tag.all.pluck(:name), @article.tag_list), {}, { multiple: true, class: "taggable", style: "width: 100%;" } %>
+      <br />
+      <br />
+    </div>
+
+    <div class="field">
+      <%= f.label :image %><br />
+      <% if @article.image.exists? %>
+        <%= image_tag @article.image.url(:thumb) %><br /><br />
+      <% end %>
+      <div class="file-input-button">
+        <%= f.file_field :image, class: 'btn btn-default form-control' %><br />
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :content %><br>
+      <%= f.text_area :content, autofocus: true, class: 'form-control input-lg', rows: 10 %>
+    </div>
+  </div>
+
+  <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
+<% end %>
+
+<script>
+  $(document).ready(function() {
+
+    $('select.taggable').select2({
+      theme: "bootstrap",
+      tags: true,
+      multiple: true,
+      placeholder: 'Start typing to select or add a tag'
+    }); 
+
+  });
+</script>

@@ -5,19 +5,19 @@ class Ability
     user ||= User.new
 
     if user.role? :user
-      can :read, [Product, Review]
-      can [:create], Review
-      can [:update, :destroy], Review, user_id: user.id
+      can :read, [Product, Review, Article, Comment, Category, Reference]
+      can [:create], [Review, Comment, Reference]
+      can [:update, :destroy], [Review, Comment, Reference], user_id: user.id
     end
 
     if user.role? :contributor
-      can :create, Product
-      can :update, Product, user_id: user.id
+      can :create, [Product, Article]
+      can :update, [Product, Article], user_id: user.id
     end
 
     if user.role? :moderator
-      can :manage, Product
-      can :destroy, Review
+      can :manage, [Product, Article, Reference]
+      can :destroy, [Review, Comment]
     end
     
     if user.role? :internal_admin

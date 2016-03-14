@@ -11,23 +11,60 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :name, 'Product Name' %><br />
+      <%= f.text_field :name, class: 'form-control' %><br />
+    </div>
+
+    <div class="field">
+      <%= f.label :user_id, 'Created By' %><br />
+      <p class="form-control-static"><%= current_user.full_name %></p><br />
+    </div>
+
+    <div class="field">
+      <p><b>Categories</b></p>
+      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+        <%= b.check_box %>
+        <%= b.label class: 'fw-normal' %><br />
+      <% end %><br />
+    </div>
+
+    <div class="field">
+      <%= f.label :tag_list, "Tags" %>
+      <%= f.select :tag_list, options_for_select(ActsAsTaggableOn::Tag.all.pluck(:name), @product.tag_list), {}, { multiple: true, class: "taggable", style: "width: 100%;" } %>
+      <br />
+      <br />
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, class: 'form-control' %><br /><br />
+    </div>
+    
+    <div class="field">
+      <%= f.label :image %><br />
+      <% if @product.image.exists? %>
+        <%= image_tag @product.image.url(:thumb) %><br /><br />
+      <% end %>
+      <div class="file-input-button">
+        <%= f.file_field :image, class: 'btn btn-default form-control' %><br />
+      </div>
+    </div>
+
+    <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+
+    $('select.taggable').select2({
+      theme: "bootstrap",
+      tags: true,
+      multiple: true,
+      placeholder: 'Start typing to select or add a tag'
+    }); 
+
+  });
+</script>

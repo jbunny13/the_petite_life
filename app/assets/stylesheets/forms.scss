@@ -1,5 +1,21 @@
 .form-container {
-    max-width: 500px;
+    max-width: 400px;
     padding: 15px;
     margin: 0 auto;
+}
+.select2-dropdown .select2-dropdown--below {
+    top: 50px;   
+}
+.select2-container--open .select2-dropdown {
+    left: 130px;
+}
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+    background-color: $cyan;
+    color: #fff;
+}
+.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice {
+    color: #fff;
+    background: $cyan;
+    border: 1px solid $cyan;
+    border-radius: 5px;
 }

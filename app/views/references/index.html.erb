@@ -1,0 +1,16 @@
+<center>
+  <h1>Resources Index</h1>
+  <% if can? :create, Reference %>
+    <p>Looks like you can add a new resource!<br />
+    <%= link_to 'Add new resource', new_reference_path, class:'btn btn-default' %>
+    <br /></p>
+  <% end %>
+</center>
+
+<ul class="list-group">
+  <% @references.each do |reference| %>
+    <li class="list-group-item">
+      <%= render reference %>
+    </li>
+  <% end %>
+</ul>

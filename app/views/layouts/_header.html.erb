@@ -19,22 +19,23 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= active_link_to 'Home', root_path, wrap_tag: 'li', active: :exclusive %></li>
-        <li><%= active_link_to 'Popular', popular_products_path, wrap_tag: 'li', active: :exclusive %></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+          <!--
+          <a href="/categories" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+          -->
+          <%= link_to categories_path, class: 'dropdown-toggle', data: {toggle: 'dropdown'}, role: 'button', aria: {expanded: 'false'} do %>
+            Categories <span class="caret"></span>
+          <% end %>
           <ul class="dropdown-menu">
-            <li><a href="#">Fashion</a></li>
-            <li><a href="#">Travel</a></li>
-            <li><a href="#">Outdoors</a></li>
-            <li><a href="#">Office</a></li>
-            <!--
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-            -->
+            <li><%= link_to 'All Categories', categories_path %></li>
+            <% Category.all.each do |category| %>
+              <li><%= link_to category.name, category_path(category) %></li>
+            <% end %>
           </ul>
         </li>
+        <li><%= active_link_to 'Articles', articles_path, wrap_tag: 'li', active: :exclusive %></li>
+        <li><%= active_link_to 'Products', products_path, wrap_tag: 'li', active: :exclusive %></li>
+        <li><%= active_link_to 'Resources', references_path, wrap_tag: 'li', active: :exclusive %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

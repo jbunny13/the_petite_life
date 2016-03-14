@@ -1,0 +1,12 @@
+<center>
+  <h1>Articles Index</h1>
+  <% if can? :create, Article %>
+    <p>Looks like you can add a new article!<br />
+    <%= link_to 'Add new article', new_article_path, class:'btn btn-default' %>
+    <br /></p>
+  <% end %>
+
+  <div class="row">
+    <%= render @articles %>
+  </div>
+</center>

@@ -20,6 +20,9 @@ gem 'jquery-turbolinks'
 gem 'devise_zxcvbn'
 gem 'figaro'
 gem 'cancancan'
+gem 'local_time'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'select2-rails'
 gem 'pg_search'
 
 group :development, :test do
@@ -32,6 +35,7 @@ group :development do
   gem 'spring'
   gem 'rails_layout'
   gem 'awesome_print'
+  gem 'rails-erd'
 end
 
 group :production do
