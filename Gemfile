@@ -24,6 +24,7 @@ gem 'local_time'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'select2-rails'
 gem 'pg_search'
+gem 'factory_girl_rails', '~> 4.0'
 
 group :development, :test do
   gem 'byebug'
@@ -40,4 +41,9 @@ end
 
 group :production do
   gem 'rails_12factor'
+end
+
+group :test do
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end
