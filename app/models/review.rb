@@ -6,6 +6,5 @@ class Review < ActiveRecord::Base
   validates :content, presence: true, length: { minimum: 5 }
 
   include PgSearch
-  multisearchable against: :comment
-
+  multisearchable against: :content
 end
