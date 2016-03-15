@@ -9,12 +9,18 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 class="panel-title-1"><%= @product.name %></h2><br />
+        <h2 class="panel-title-1"><%= @product.name %></h2>
+
+        <h4>Added By</h4>
+        <p><%= @product.user.full_name %></p>
+        
+        <h4>Created</h4>
+        <p><%= local_time_ago(@product.created_at) %></p>
+        
         <h3 class="panel-title-1">Categories</h3>
         <% @product.categories.each do |category| %>
           <%= render partial: 'categories/category_link', locals: { category: category } %>
         <% end %>
-        <br />
             
         <h3 class="panel-title-1">Tags</h3>
         <%= render @product.tags %>
