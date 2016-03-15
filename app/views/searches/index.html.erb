@@ -3,8 +3,25 @@
 <h3>  &nbsp; </h3>
 <% @pg_search_documents.each do |pgsd| %>
   <% if pgsd.searchable.class == Product %>
+    <h3>Products</h3>
     <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
   <% elsif pgsd.searchable.class == Review %>
-    <p><%= link_to pgsd.searchable.product.name %>: <%= pgsd.searchable.comment %></p><hr>
+    <h3>Product Reviews</h3>
+    <p><%= link_to pgsd.searchable.product.name %>: <%= pgsd.searchable.content %></p><hr>
+  <% elsif pgsd.searchable.class == Article %>
+    <h3>Articles</h3>
+    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
+  <% elsif pgsd.searchable.class == Comment %>
+    <h3>Article Comments</h3>
+    <p><%= link_to pgsd.searchable.article.name %>: <%= pgsd.searchable.content %></p><hr>
+  <% elsif pgsd.searchable.class == Reference %>
+    <h3>Resources</h3>
+    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
+  <% elsif pgsd.searchable.class == Category %>
+    <h3>Categories</h3>
+    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
+  <% elsif pgsd.searchable.class == Tag %>
+    <h3>Tags</h3>
+    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
   <% end %>
 <% end %>

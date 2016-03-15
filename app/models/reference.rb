@@ -5,4 +5,7 @@ class Reference < ActiveRecord::Base
 
   validates :name, presence: true, length: { minimum: 5 }
   validates :uri, presence: true, length: { minimum: 10 }
+
+  include PgSearch
+  multisearchable against: :name
 end
