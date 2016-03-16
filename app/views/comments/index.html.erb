@@ -11,7 +11,10 @@
   <ul class="list-group">
     <% @article.comments.each do |comment| %>
       <li class="list-group-item">
-          <p>By <%= comment.user.full_name %> on <%= local_time(comment.created_at) %></p>
+          <p>
+            <%= comment.user.full_name %> | 
+            <%= local_time_ago(comment.created_at) %>
+          </p>
           <p><%= comment.content %></p>
           <p>
             <% if can? :update, comment %>
