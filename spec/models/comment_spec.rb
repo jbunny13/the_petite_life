@@ -1,5 +1,13 @@
 require 'rails_helper'
+require 'spec_helper'
+require 'support/shared_examples'
 
-RSpec.describe Comment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Comment, type: :model do
+  describe 'validations' do
+    let(:comment) { build :comment }
+
+    describe 'content' do
+      it_behaves_like 'text field', :content=
+    end
+  end
 end
