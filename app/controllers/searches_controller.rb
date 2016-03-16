@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  skip_authorization_check
+  
   respond_to :html, :json
 
   def index
