@@ -19,6 +19,7 @@ describe Article, type: :model do
         article.image = ''
         expect(article).to be_valid
       end
+      
     end
   end
 end
