@@ -4,22 +4,22 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    if user.role?('user')
-      can :read, [Product, Review, Article, Comment, Category, Reference]
-      can [:create], [Review, Comment, Reference]
+    if user.role? :user
+      can :read, [Product, Article, Category, ActsAsTaggableOn::Tag]
+      can [:read, :create], [Review, Comment, Reference]
       can [:update, :destroy], [Review, Comment, Reference], user_id: user.id
     end
 
-    if user.role?('contributor')
-      can :create, [Product, Article]
+    if user.role? :contributor
+      can :create, [Product, Article, ActsAsTaggableOn::Tag]
       can [:update, :destroy], [Product, Article], user_id: user.id
     end
 
-    if user.role?('moderator')
-      can :manage, [Product, Review, Article, Comment, Reference]
+    if user.role? :moderator
+      can :update, [Product, Article, Reference]
     end
     
-    if user.role?('internal_admin')
+    if user.role? :internal_admin
       can :manage, :all
     end
 

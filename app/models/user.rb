@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   
   validates :role, presence: true, inclusion: ROLES
 
-  def role?(role_query)
-    role == role_query
+  def role?(base_role)
+    role.present? && ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
   def full_name
