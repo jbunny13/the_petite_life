@@ -10,9 +10,12 @@ class User < ActiveRecord::Base
   has_many :references
   has_many :reviews, dependent: :destroy
 
-  ROLES = %w[user contributor moderator internal_admin]
-  def role?(base_role)
-    role.present? && ROLES.index(base_role.to_s) <= ROLES.index(role)
+  ROLES = %w[user contributor moderator internal_admin].freeze
+  
+  validates :role, presence: true, inclusion: ROLES
+
+  def role?(role_query)
+    role == role_query
   end
 
   def full_name

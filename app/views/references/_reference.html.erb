@@ -1,7 +1,7 @@
 <h4><%= link_to reference.name, reference.uri, target: 'blank' %></h4>
 
 [
-  <%= link_to 'Show', reference_path(reference) %>
+  <%= link_to 'Details', reference_path(reference) %>
   <% if can? :update, reference %>
     | <%= link_to 'Edit', edit_reference_path(reference) %>
   <% end %> 
