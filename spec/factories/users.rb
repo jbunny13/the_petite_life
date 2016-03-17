@@ -8,7 +8,7 @@ FactoryGirl.define do
     last_name "Allen"
     email
     password "$232#qu@driv!um$@%"
-    role { ['user', 'contributor', 'moderator', 'internal_admin'].sample }
+    role { User::ROLES.sample }
     created_at { 2.days.ago }
     updated_at { 1.day.ago }
   end

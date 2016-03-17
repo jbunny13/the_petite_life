@@ -2,40 +2,45 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe User, type: :model do
+  let(:user)  { build :user }
+  
   describe 'validations' do
-    let(:user)  { build :user }
-    let(:valid_roles) { User::ROLES }
+    context 'roles' do
+      User::ROLES.each do |role|
+        it "'#{role}' is valid" do
+          user.role = role
+          expect(user).to be_valid
+        end
+      end
 
-    it 'has a valid role' do
-      expect(valid_roles).to include(user.role)
-    end
-
-    it 'does not have an invalid role' do
-      invalid_roles = [nil, 'asskisser', '18201293801', '12~3921jw~!@~#$%#&&']
-      expect(valid_roles).not_to include(invalid_roles.sample)
+      [nil, 'asskisser', '18201293801', '12~3921jw~!@~#$%#&&'].each do |role|
+        it "'#{role}' is invalid" do
+          user.role = role
+          expect(user).to_not be_valid
+        end
+      end      
     end
   end
 
-  describe 'methods' do
-    let(:user) { build(:user, role: 'user') }
+  describe '#role?' do
+    let(:matching_role) { 'user' }
+    let(:non_matching_role) { 'contributor' }
+    
+    before { user.role = matching_role }
 
-    context '#role?' do
-      it 'returns true when user role matches queried role' do
-        role_query = 'user'
-        expect(user.role == role_query).to be(true)
-      end
-
-      it 'returns false when user role does not match queried role' do
-        role_query = 'contributor'
-        expect(user.role == role_query).to be(false)
-      end
+    it 'returns true when user role matches queried role' do
+      expect(user.role?(matching_role)).to be(true)
     end
 
-    context '#full_name' do
-      it 'returns first name and last name as a single string' do
-        user
-        expect('Channing Allen').to eq(user.full_name)
-      end
+    it 'returns false when user role does not match queried role' do
+      expect(user.role?(non_matching_role)).to be(false)
+    end
+  end
+
+  describe '#full_name' do
+    it 'returns first name and last name as a single string' do
+      user
+      expect(user.full_name).to eq('Channing Allen')
     end
   end
 end
