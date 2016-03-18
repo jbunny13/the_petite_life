@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product.slug = nil
     @product.update(product_params)
     respond_with(@product)
   end

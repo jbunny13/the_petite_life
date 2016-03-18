@@ -33,6 +33,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    @category.slug = nil
     @category.update(category_params)
     respond_with(@category)
   end

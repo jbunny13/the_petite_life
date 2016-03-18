@@ -36,6 +36,7 @@ class ReferencesController < ApplicationController
   end
 
   def update
+    @reference.slug = nil
     @reference.update(reference_params)
     respond_with(@reference)
   end

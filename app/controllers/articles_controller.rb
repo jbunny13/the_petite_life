@@ -36,6 +36,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article.slug = nil
     @article.update(article_params)
     respond_with(@article)
   end
