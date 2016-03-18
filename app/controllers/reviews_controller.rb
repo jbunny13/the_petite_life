@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:index, :edit, :update, :destroy]
   before_action :set_product
   before_action :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource except: :index
 
   respond_to :html, :json
 
@@ -50,7 +50,7 @@ class ReviewsController < ApplicationController
     end
 
     def set_product
-      @product = Product.find(params[:product_id])
+      @product = Product.friendly.find(params[:id])
     end
 
     def review_params

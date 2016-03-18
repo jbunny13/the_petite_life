@@ -7,4 +7,7 @@ class Category < ActiveRecord::Base
 
   include PgSearch
   multisearchable against: :name
+  
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
 end

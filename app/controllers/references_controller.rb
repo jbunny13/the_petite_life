@@ -36,6 +36,7 @@ class ReferencesController < ApplicationController
   end
 
   def update
+    @reference.slug = nil
     @reference.update(reference_params)
     respond_with(@reference)
   end
@@ -46,10 +47,11 @@ class ReferencesController < ApplicationController
 
   private
     def set_reference
-      @reference = Reference.find(params[:id])
+      @reference = Reference.friendly.find(params[:id])
+      redirect_to action: 'show', id: @reference.friendly_id, status: 301 unless @reference.friendly_id == params[:id]
     end
 
     def reference_params
-      params.require(:reference).permit(:name, :uri, :user_id, tag_list: [], category_ids: [])
+      params.require(:reference).permit(:name, :uri, :user_id, :slug, tag_list: [], category_ids: [])
     end
 end

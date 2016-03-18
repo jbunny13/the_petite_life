@@ -36,6 +36,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article.slug = nil
     @article.update(article_params)
     respond_with(@article)
   end
@@ -46,10 +47,11 @@ class ArticlesController < ApplicationController
 
   private
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.friendly.find(params[:id])
+      redirect_to action: 'show', id: @article.friendly_id, status: 301 unless @article.friendly_id == params[:id]
     end
 
     def article_params
-      params.require(:article).permit(:user_id, :name, :image, :content, tag_list: [], category_ids: [])
+      params.require(:article).permit(:user_id, :name, :image, :content, :slug, tag_list: [], category_ids: [])
     end
 end

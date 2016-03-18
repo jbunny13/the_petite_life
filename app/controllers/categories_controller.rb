@@ -33,6 +33,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    @category.slug = nil
     @category.update(category_params)
     respond_with(@category)
   end
@@ -43,10 +44,11 @@ class CategoriesController < ApplicationController
 
   private
     def set_category
-      @category = Category.find(params[:id])
+      @category = Category.friendly.find(params[:id])
+      redirect_to action: 'show', id: @category.friendly_id, status: 301 unless @category.friendly_id == params[:id]
     end
 
     def category_params
-      params.require(:category).permit(:name, product_ids: [])
+      params.require(:category).permit(:name, :slug)
     end
 end

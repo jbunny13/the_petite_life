@@ -6,6 +6,11 @@ class Reference < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 5 }
   validates :uri, presence: true, length: { minimum: 10 }
 
+  include ValidateTag
+
   include PgSearch
   multisearchable against: :name
+  
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
 end

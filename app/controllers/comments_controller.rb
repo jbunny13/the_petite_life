@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:index, :edit, :update, :destroy]
   before_action :set_article
   before_action :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource except: :index
 
   respond_to :html, :json
 
@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
     end
 
     def set_article
-      @article = Article.find(params[:article_id])
+      @article = Article.friendly.find(params[:article_id])
     end
 
     def comment_params
