@@ -20,4 +20,7 @@ class Article < ActiveRecord::Base
 
   include PgSearch
   multisearchable against: [:name, :content]
+  
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
 end

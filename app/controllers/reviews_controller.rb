@@ -50,7 +50,7 @@ class ReviewsController < ApplicationController
     end
 
     def set_product
-      @product = Product.find(params[:product_id])
+      @product = Product.friendly.find(params[:id])
     end
 
     def review_params
