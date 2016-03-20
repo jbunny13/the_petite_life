@@ -18,4 +18,8 @@ class Product < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
+
+  def average_rating
+    self.reviews.blank? ? 0 : self.reviews.average(:rating).round(2)
+  end
 end

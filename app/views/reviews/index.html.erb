@@ -4,7 +4,7 @@
   </div>
 
   <div class="panel-body">
-    <div class="star-rating" data-score= <%= @average_review %> ></div>
+    <div class="star-rating" data-score= <%= @product.average_rating %> ></div>
     <p><em>(<%= pluralize(@reviews.length, "Review") %>)</em></p>
 
     <h4 class="panel-title">What do you think of <%= @product.name %>?</h4>
