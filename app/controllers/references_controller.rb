@@ -43,6 +43,7 @@ class ReferencesController < ApplicationController
 
   def destroy
     @reference.destroy
+    redirect_to references_path
   end
 
   private

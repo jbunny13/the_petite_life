@@ -43,6 +43,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
+    redirect_to articles_path
   end
 
   private
