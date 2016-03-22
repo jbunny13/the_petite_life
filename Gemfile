@@ -27,6 +27,7 @@ gem 'select2-rails'
 gem 'pg_search'
 gem 'factory_girl_rails', '~> 4.0'
 gem 'friendly_id', '~> 5.1.0'
+gem 'aws-sdk', '>= 2.0.0'
 
 group :development, :test do
   gem 'byebug'
