@@ -265,4 +265,6 @@ Devise.setup do |config|
 
   # For zxcvbn
   config.min_password_score = 2
+
+  config.secret_key = ENV["DEVISE_SECRET_KEY"]
 end
