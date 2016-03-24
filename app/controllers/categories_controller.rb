@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   responders :flash
 
   def index
-    @categories = Category.all
+    @categories = Category.all.includes(:articles, {products: :reviews}, :references)
     respond_with(@categories)
   end
 

@@ -5,7 +5,7 @@
 
   <div class="panel-body">
     <div class="star-rating" data-score= <%= @product.average_rating %> ></div>
-    <p><em>(<%= pluralize(@reviews.length, "Review") %>)</em></p>
+    <p><em>(<%= pluralize(@product.reviews.length, "Review") %>)</em></p>
 
     <h4 class="panel-title">What do you think of <%= @product.name %>?</h4>
     <p>Share your thoughts with the community.</p>
@@ -14,7 +14,7 @@
   </div>
 
   <ul class="list-group">
-    <% @reviews.each do |review| %>
+    <% @product.reviews.each do |review| %>
       <li class="list-group-item">
         <div class="star-rating" data-score= <%= review.rating %> ></div>
           <p>

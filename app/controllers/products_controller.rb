@@ -7,13 +7,18 @@ class ProductsController < ApplicationController
   responders :flash
 
   def index
-    tag = params[:tag]
-    @products = tag.present? ? Product.tagged_with(tag) : Product.all
+    # tag = params[:tag]
+    # @products = tag.present? ? Product.tagged_with(tag) : Product.all
+
+    @products = Product.includes(:reviews).where(nil)
+    # @products = @products.by_name
+    # @products = @products.most_recent
+
     respond_with(@products)
   end
 
   def show
-    @reviews = Review.where(product_id: @product.id).order("created_at DESC")
+    respond_with(@product)
   end
 
   def new

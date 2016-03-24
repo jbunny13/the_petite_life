@@ -13,7 +13,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @comments = Comment.where(article_id: @article.id).order(created_at: :desc)
     respond_with(@article)
   end
 
