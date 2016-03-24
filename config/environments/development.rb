@@ -50,5 +50,12 @@ Rails.application.configure do
   # For Paperclip gem
   Paperclip.options[:command_path] = "/usr/local/bin/convert"
 
+  # For Bullet gem: help to kill N+1 queries
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.add_footer = true
+  end
+
   config.serve_static_files = true
 end
