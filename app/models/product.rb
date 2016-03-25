@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
 
   include ValidateTag
   
-  has_attached_file :image, styles: { medium: "400x500#", thumb: "250x200>" }, default_url: "missing.png"
+  has_attached_file :image, styles: { medium: "400x500>", thumb: "250x200>" }, default_url: "missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   
   include PgSearch

@@ -1,7 +1,7 @@
 <center>
   <h1>Tagged <span class="label-tag"><%= @tag.name %></span></h1>
 </center>
-  
+<div class="container-fluid">
 <div class="row">
   <h2>Articles</h2>
   <% if @articles.any? %>
@@ -27,4 +27,5 @@
   <% else %>
     <p>No references found</p>
   <% end %>
+</div>
 </div>

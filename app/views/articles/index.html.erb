@@ -5,8 +5,19 @@
     <%= link_to 'Add new article', new_article_path, class:'btn btn-default' %>
     <br /></p>
   <% end %>
-
+<div class="container-fluid">
   <div class="row">
     <%= render @articles %>
   </div>
+</div>
 </center>
+
+<script>
+$(document).ready(function() {
+  var maxHeight = 0;
+  $(".thumbnail").each(function(){
+    if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+  });
+  $(".thumbnail").height(maxHeight);
+});
+</script>

@@ -1,12 +1,31 @@
-<center>
-  <h1>Products Index</h1>
-  <% if can? :create, Product %>
-    <p>Looks like you can add a new product!<br />
-    <%= link_to 'Add new product', new_product_path, class:'btn btn-default' %>
-    <br /></p>
-  <% end %>
+<div class="container-fluid">
+  <center>
+    <h1>Products Index</h1>
+    <% if can? :create, Product %>
+      <p>Looks like you can add a new product!<br />
+      <%= link_to 'Add new product', new_product_path, class:'btn btn-default' %>
+      <br /></p>
+    <% end %>
 
-  <div class="row">
-    <%= render @products %>
-  </div>
-</center>
+    <div class="text-right">
+      <b>Sort By: </b>
+      <%= link_to 'Name (A-Z)', products_path(sort: 'by_name') %> | 
+      <%= link_to 'Most Recent', products_path(sort: 'most_recent') %> | 
+      <%= link_to 'Highest Rated', products_path(sort: 'highest_rated') %>
+    </div><br /><br />
+
+    <div class="row">
+      <%= render @products %>
+    </div>
+  </center>
+</div>
+
+<script>
+$(document).ready(function() {
+  var maxHeight = 0;
+  $(".thumbnail").each(function(){
+    if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+  });
+  $(".thumbnail").height(maxHeight);
+});
+</script>
