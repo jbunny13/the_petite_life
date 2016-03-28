@@ -6,13 +6,20 @@ class ProductsController < ApplicationController
   respond_to :html, :json
   responders :flash
 
-  def index
-    # tag = params[:tag]
-    # @products = tag.present? ? Product.tagged_with(tag) : Product.all
-
+  def index 
     @products = Product.includes(:reviews).where(nil)
-    # @products = @products.by_name
-    # @products = @products.most_recent
+
+    sort = params[:sort]
+    case sort
+      when 'most_recent'
+        @products = @products.most_recent
+      when 'by_name'
+        @products = @products.by_name
+      when 'average_rating'
+        @products = @products.average_rating
+      else
+        @products
+    end
 
     respond_with(@products)
   end
@@ -57,6 +64,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:user_id, :name, :description, :image, :slug, tag_list: [], category_ids: [])
+      params.require(:product).permit(:user_id, :name, :description, :image, :slug, :sort, tag_list: [], category_ids: [])
     end
 end

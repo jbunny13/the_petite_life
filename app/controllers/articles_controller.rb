@@ -7,8 +7,7 @@ class ArticlesController < ApplicationController
   responders :flash
 
   def index
-    tag = params[:tag]
-    @articles = tag.present? ? Article.tagged_with(tag) : Article.all
+    @articles = Article.where(nil)
     respond_with(@articles)
   end
 
