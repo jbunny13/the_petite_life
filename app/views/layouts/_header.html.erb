@@ -23,7 +23,7 @@
             Categories <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><%= active_link_to 'All Categories', categories_path, wrap_tag: 'li', active: :exclusive %></li>
+            <li><%= active_link_to 'All', categories_path, wrap_tag: 'li', active: :exclusive %></li>
             <% Category.all.each do |category| %>
               <li><%= active_link_to category.name, category_path(category), wrap_tag: 'li', active: :exclusive %></li>
             <% end %>

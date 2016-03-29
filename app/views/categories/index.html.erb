@@ -8,4 +8,17 @@
   <% end %>
 </center>
 
-<%= render @categories %>
+<div class="container-fluid">
+  <h3>Articles</h3>
+  <%= render partial: 'articles/article', collection: Article.all %>
+</div>
+
+<div class="container-fluid">
+  <h3>Products</h3>
+  <%= render partial: 'products/product', collection: Product.all %>
+</div>
+
+<div class="container-fluid">
+  <h3>Resources</h3>
+  <%= render partial: 'references/reference', collection: Reference.all %>
+</div>

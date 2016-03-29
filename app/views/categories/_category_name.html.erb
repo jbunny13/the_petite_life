@@ -1,0 +1,14 @@
+<div>
+  <div class="well">
+    <h2 class="pink-text">
+      <%= category.name %>
+      <% if can? :update, category %>
+        <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-default' %>
+      <% end %>
+
+      <% if can? :destroy, category %>
+        <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure? You\'re about to delete this category forever!' }, class: 'btn btn-default' %>
+      <% end %>
+    </h2>
+  </div>
+</div>
