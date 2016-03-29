@@ -3,12 +3,12 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
   responders :flash
 
   def index
     tag = params[:tag]
-    @products = tag.present? ? Product.tagged_with(tag) : Product.all
+    @products = tag.present? ? Product.tagged_with(tag).page(params[:page]).per(4) : Product.all.page(params[:page]).per(4)
     respond_with(@products)
   end
 

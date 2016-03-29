@@ -3,10 +3,29 @@
   <% if can? :create, Product %>
     <p>Looks like you can add a new product!<br />
     <%= link_to 'Add new product', new_product_path, class:'btn btn-default' %>
-    <br /></p>
+    </p>
+    <br /><br />
   <% end %>
 
-  <div class="row">
+  <div class="num_entries">
+    <%= page_entries_info @products %>
+  </div>
+
+  <div class="paginate">
+    <%= paginate @products, remote: true %>
+    <br /><br />
+  </div>
+
+  <div id="products" class="row">
     <%= render @products %>
+    <br /><br />
+  </div>
+
+  <div class="num_entries">
+    <%= page_entries_info @products %>
+    </div>
+
+  <div class="paginate">
+    <%= paginate @products, remote: true %>
   </div>
 </center>
