@@ -24,7 +24,7 @@
   <br />
   
   <h3 class="panel-title-1">Tags</h3>
-  <%= render @reference.tags %>
+  <%= render @reference.tags.order(name: :asc) %>
 
   <p><br />
     <% if can? :update, @reference %>

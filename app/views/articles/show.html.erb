@@ -23,7 +23,7 @@
           <% end %>
 
         <h3 class="panel-title-1">Tags</h3>
-        <%= render @article.tags %>
+        <%= render @article.tags.order(name: :asc) %>
 
         <p><br />
         <% if can? :update, @article %>
