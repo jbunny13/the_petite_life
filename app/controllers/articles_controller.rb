@@ -3,12 +3,12 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
   responders :flash
 
   def index
     tag = params[:tag]
-    @articles = tag.present? ? Article.tagged_with(tag) : Article.all
+    @articles = tag.present? ? Article.tagged_with(tag).page(params[:page]).per(4) : Article.all.page(params[:page]).per(4)
     respond_with(@articles)
   end
 
