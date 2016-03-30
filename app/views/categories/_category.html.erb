@@ -1,26 +1,41 @@
 <div class="container-fluid">
   <h3>Articles</h3>
-  <% if category.articles.any? %>
-    <%= render partial: 'articles/article', collection: category.articles %>
-  <% else %>
-    <p>No articles found</p>
-  <% end %>
+  <div class="num_entries-articles">
+    <%= page_entries_info @articles, param_name: 'article', remote: true %>
+  </div>
+  <div class="paginate-articles">
+    <%= paginate @articles, param_name: 'article', remote: true %>
+    <br /><br />
+  </div>
+  <div id="articles">
+    <%= render @articles %>
+  </div>
 </div>
 
 <div class="container-fluid">
   <h3>Products</h3>
-  <% if category.products.any? %>
-    <%= render partial: 'products/product', collection: category.products %>
-  <% else %>
-    <p>No products found</p>
-  <% end %>
+  <div class="num_entries-products">
+    <%= page_entries_info @products, param_name: 'product', remote: true %>
+  </div>
+  <div class="paginate-products">
+    <%= paginate @products, param_name: 'product', remote: true %>
+    <br /><br />
+  </div>
+  <div id="products">
+    <%= render @products %>
+  </div>
 </div>
 
 <div class="container-fluid">
   <h3>Resources</h3>
-  <% if category.references.any? %>
-    <%= render partial: 'references/reference', collection: category.references %>
-  <% else %>
-    <p>No references found</p>
-  <% end %>
+  <div class="num_entries-references">
+    <%= page_entries_info @references, param_name: 'resource', entry_name: 'resource', remote: true %>
+  </div>
+  <div class="paginate-references">
+    <%= paginate @references, param_name: 'resource', remote: true %>
+    <br /><br />
+  </div>
+  <div id="references">
+    <%= render @references %>
+  </div>
 </div>
