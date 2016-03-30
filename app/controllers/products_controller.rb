@@ -13,7 +13,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @reviews = Review.where(product_id: @product.id).order("created_at DESC")
+    @reviews = @product.reviews.order(created_at: :desc).page(params[:page]).per(4)
+    respond_with(@product)
   end
 
   def new
