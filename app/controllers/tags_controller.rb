@@ -2,15 +2,17 @@ class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
+
+  respond_to :html, :json, :js
   
   def index
     @tags = ActsAsTaggableOn::Tag.all
   end
 
   def show
-    @articles = Article.tagged_with(@tag)
-    @products = Product.tagged_with(@tag)
-    @references = Reference.tagged_with(@tag)
+    @articles = Article.tagged_with(@tag).order(created_at: :desc).page(params[:page]).per(4)
+    @products = Product.tagged_with(@tag).order(created_at: :desc).page(params[:page]).per(4)
+    @references = Reference.tagged_with(@tag).order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def edit
