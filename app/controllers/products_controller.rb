@@ -8,12 +8,12 @@ class ProductsController < ApplicationController
 
   def index
     tag = params[:tag]
-    @products = tag.present? ? Product.tagged_with(tag).page(params[:page]).per(4) : Product.all.page(params[:page]).per(4)
+    @products = tag.present? ? Product.tagged_with(tag).page(params[:page]).per(8) : Product.all.page(params[:page]).per(8)
     respond_with(@products)
   end
 
   def show
-    @reviews = @product.reviews.order(created_at: :desc).page(params[:page]).per(4)
+    @reviews = @product.reviews.order(created_at: :desc).page(params[:page]).per(10)
     respond_with(@product)
   end
 

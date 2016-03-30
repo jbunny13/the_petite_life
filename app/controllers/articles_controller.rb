@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
 
   def index
     tag = params[:tag]
-    @articles = tag.present? ? Article.tagged_with(tag).page(params[:page]).per(4) : Article.all.page(params[:page]).per(4)
+    @articles = tag.present? ? Article.tagged_with(tag).page(params[:page]).per(8) : Article.all.page(params[:page]).per(8)
     respond_with(@articles)
   end
 
