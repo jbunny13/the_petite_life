@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @comments = Comment.where(article_id: @article.id).order(created_at: :desc)
+    @comments = @article.comments.order(created_at: :desc).page(params[:page]).per(10)
     respond_with(@article)
   end
 
