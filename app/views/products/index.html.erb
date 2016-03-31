@@ -14,8 +14,26 @@
       <%= link_to 'Average Rating', products_path(sort: 'average_rating') %>
     </div><br /><br />
 
-    <div class="row">
+    <div class="num_entries">
+      <%= page_entries_info @products, remote: true %>
+    </div>
+
+    <div class="paginate">
+      <%= paginate @products, remote: true %>
+      <br /><br />
+    </div>
+
+    <div id="products" class="row">
       <%= render @products %>
+      <br /><br />
+    </div>
+
+    <div class="num_entries">
+      <%= page_entries_info @products, remote: true %>
+      </div>
+
+    <div class="paginate">
+      <%= paginate @products, remote: true %>
     </div>
   </center>
 </div>

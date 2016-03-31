@@ -2,44 +2,34 @@
   <span class="fa fa-chevron-left">&nbsp;&nbsp;&nbsp;</span>Back to all articles
 <% end %><br /><br />
 
-<div class="row">
-  <div class="col-md-6">
-    <center><%= image_tag @article.image.url(:medium) %></center>
-  </div>
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h2 class="panel-title-1"><%= @article.name %></h2>
-        
-        <h4>Author</h4>
-        <p><%= @article.user.full_name %></p>
-        
-        <h4>Created</h4>
-        <p><%= local_time_ago(@article.created_at) %></p>
-        
-        <h3 class="panel-title-1">Categories</h3>
-          <% @article.categories.each do |category| %>
-            <%= render partial: 'categories/category_link', locals: { category: category } %>
-          <% end %>
+<div class="container-fluid">
+  <h2 class="panel-title-1"><%= @article.name %></h2>  
+  <div><%= image_tag @article.image.url(:medium) %></div>
+  <h4>Author</h4>
+  <p><%= @article.user.full_name %></p>
+  
+  <h4>Created</h4>
+  <p><%= local_time_ago(@article.created_at) %></p>
+  
+  <h3 class="panel-title-1">Categories</h3>
+    <% @article.categories.each do |category| %>
+      <%= render partial: 'categories/category_link', locals: { category: category } %>
+    <% end %>
 
-        <h3 class="panel-title-1">Tags</h3>
-        <%= render @article.tags %>
+  <h3 class="panel-title-1">Tags</h3>
+  <%= render @article.tags.order(name: :asc) %>
 
-        <p><br />
-        <% if can? :update, @article %>
-          <br /><%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-default' %>
-        <% end %>
+  <p><br />
+  <% if can? :update, @article %>
+    <br /><%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-default' %>
+  <% end %>
 
-        <% if can? :destroy, @article %>
-            <%= link_to 'Delete', @article, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </p>
-      </div>
-      <div class="panel-body">
-        <p><%= @article.content %></p>
-      </div>
-    </div>
-  </div>
+  <% if can? :destroy, @article %>
+      <%= link_to 'Delete', @article, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </p>
+
+  <p><%= @article.content %></p>
 </div>
 <br />
 <%= render template: 'comments/index' %>

@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource except: :index
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   def index
   end

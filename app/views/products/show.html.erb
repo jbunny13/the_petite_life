@@ -1,4 +1,4 @@
-<div class="row">
+<div>
   <%= link_to products_path, class: 'btn btn-default' do %>
     <span class="fa fa-chevron-left">&nbsp;&nbsp;&nbsp;</span>Back to all products
   <% end %><br /><br />
@@ -25,7 +25,7 @@
         <% end %>
             
         <h3 class="panel-title-1">Tags</h3>
-        <%= render @product.tags %>
+        <%= render @product.tags.order(name: :asc) %>
 
         <p><br />
           <% if can? :update, @product %>

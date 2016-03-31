@@ -1,0 +1,20 @@
+<ul class="nav navbar-nav navbar-links">
+  
+  <li><%= active_link_to 'Articles', articles_path, wrap_tag: 'li', active: [['articles'], []] %></li>
+  <li><%= active_link_to 'Products', products_path, wrap_tag: 'li', active: [['products'], []] %></li>
+  <li><%= active_link_to 'Resources', references_path, wrap_tag: 'li', active: [['references'], []] %></li>
+
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      Categories <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= active_link_to 'All', categories_path, wrap_tag: 'li', active: :exclusive %></li>
+      <% Category.all.each do |category| %>
+        <li><%= active_link_to category.name, category_path(category), wrap_tag: 'li', active: :exclusive %></li>
+      <% end %>
+    </ul>
+  </li>
+
+  <li><%= active_link_to 'Tags', tags_path, wrap_tag: 'li', active: [['tags'], []] %></li>
+</ul>

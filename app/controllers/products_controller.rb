@@ -3,28 +3,28 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
   responders :flash
 
   def index 
     @products = Product.includes(:reviews).where(nil)
-
     sort = params[:sort]
     case sort
       when 'most_recent'
-        @products = @products.most_recent
+        @products = @products.most_recent.page(params[:page]).per(8)
       when 'by_name'
-        @products = @products.by_name
+        @products = @products.by_name.page(params[:page]).per(8)
       when 'average_rating'
         @products = @products.average_rating
+        @products = Kaminari.paginate_array(@products).page(params[:page]).per(8)
       else
-        @products
+        @products = @products.page(params[:page]).per(8)
     end
-
     respond_with(@products)
   end
 
   def show
+    @reviews = @product.reviews.order(created_at: :desc).page(params[:page]).per(10)
     respond_with(@product)
   end
 

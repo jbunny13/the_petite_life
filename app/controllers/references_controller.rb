@@ -3,22 +3,20 @@ class ReferencesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
   responders :flash
 
   def index
     @references = Reference.where(nil)
-
     sort = params[:sort]
     case sort
       when 'by_name'
-        @references = @references.by_name
+        @references = @references.page(params[:pageish]).per(5)
       when 'most_recent'
-        @references = @references.most_recent
+        @references = @references.most_recent.page(params[:page]).per(5)
       else
-        @references
+        @references = @references.page(params[:page]).per(5)
     end
-
     respond_with(@references)
   end
 

@@ -13,10 +13,28 @@
       <%= link_to 'Name (A-Z)', articles_path(sort: 'by_name') %>
     </div><br /><br />
 
-    <div class="row">
-      <%= render @articles %>
+    <div class="num_entries">
+      <%= page_entries_info @articles, remote: true %>
     </div>
-  </div>
+
+    <div class="paginate">
+      <%= paginate @articles, remote: true %>
+      <br /><br />
+    </div>
+
+    <div id="articles" class="row">
+      <%= render @articles %>
+      <br /><br />
+    </div>
+
+    <div class="num_entries">
+      <%= page_entries_info @articles, remote: true %>
+    </div>
+
+    <div class="paginate">
+      <%= paginate @articles, remote: true %>
+      <br /><br />
+    </div>
   </center>
 </div>
 

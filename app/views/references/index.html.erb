@@ -14,13 +14,26 @@
     <%= link_to 'Name (A-Z)', references_path(sort: 'by_name') %>
   </div><br /><br />
 
-  <div class="row">
-    <ul class="list-group">
-      <% @references.each do |reference| %>
-        <li class="list-group-item">
-          <%= render reference %>
-        </li>
-      <% end %>
-    </ul>
+  <div class="num_entries">
+    <%= page_entries_info @references, entry_name: 'resource', remote: true %>
+  </div>
+
+  <div class="paginate">
+    <%= paginate @references, remote: true %>
+    <br /><br />
+  </div>
+
+  <div id="references" class="row">
+    <%= render @references %>
+    <br /><br />
+  </div>
+
+  <div class="num_entries">
+    <%= page_entries_info @references, entry_name: 'resource', remote: true %>
+  </div>
+
+  <div class="paginate">
+    <%= paginate @references, remote: true %>
+    <br /><br />
   </div>
 </div>

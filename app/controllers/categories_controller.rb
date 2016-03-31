@@ -3,15 +3,20 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
   responders :flash
 
   def index
-    @categories = Category.all.includes(:articles, {products: :reviews}, :references)
-    respond_with(@categories)
+    @categories = Category.order(name: :asc)
+    @articles = Article.order(created_at: :desc).page(params[:article]).per(4)
+    @products = Product.includes(:reviews).order(created_at: :desc).page(params[:product]).per(4)
+    @references = Reference.order(created_at: :desc).page(params[:resource]).per(4)
   end
 
   def show
+    @articles = @category.articles.order(created_at: :desc).page(params[:article]).per(4)
+    @products = @category.products.includes(:reviews).order(created_at: :desc).page(params[:product]).per(4)
+    @references = @category.references.order(created_at: :desc).page(params[:resource]).per(4)
   end
 
   def new

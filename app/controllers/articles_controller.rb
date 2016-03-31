@@ -3,26 +3,25 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
   responders :flash
 
   def index
     @articles = Article.where(nil)
-
     sort = params[:sort]
     case sort
       when 'by_name'
-        @articles = @articles.by_name
+        @articles = @articles.by_name.page(params[:page]).per(8)
       when 'most_recent'
-        @articles = @articles.most_recent
+        @articles = @articles.most_recent.page(params[:page]).per(8)
       else
-        @articles
+        @articles = @articles.page(params[:page]).per(8)
     end
-
     respond_with(@articles)
   end
 
   def show
+    @comments = @article.comments.order(created_at: :desc).page(params[:page]).per(10)
     respond_with(@article)
   end
 
