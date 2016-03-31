@@ -7,8 +7,18 @@ class ReferencesController < ApplicationController
   responders :flash
 
   def index
-    tag = params[:tag]
-    @references = tag.present? ? Reference.tagged_with(tag) : Reference.all
+    @references = Reference.where(nil)
+
+    sort = params[:sort]
+    case sort
+      when 'by_name'
+        @references = @references.by_name
+      when 'most_recent'
+        @references = @references.most_recent
+      else
+        @references
+    end
+
     respond_with(@references)
   end
 
