@@ -1,31 +1,39 @@
-<center>
-  <h1>Resources Index</h1>
-  <% if can? :create, Reference %>
-    <p>Looks like you can add a new resource!<br />
-    <%= link_to 'Add new resource', new_reference_path, class:'btn btn-default' %>
-    <br /></p>
-  <% end %>
-</center>
+<div class="container-fluid">
+  <center>
+    <h1>Resources Index</h1>
+    <% if can? :create, Reference %>
+      <p>Looks like you can add a new resource!<br />
+      <%= link_to 'Add new resource', new_reference_path, class:'btn btn-default' %>
+      <br /></p>
+    <% end %>
+  </center>
 
-<div class="num_entries">
-  <%= page_entries_info @references, entry_name: 'resource', remote: true %>
-</div>
+  <div class="text-right">
+    <b>Sort By: </b>
+    <%= link_to 'Most Recent', references_path(sort: 'most_recent') %> | 
+    <%= link_to 'Name (A-Z)', references_path(sort: 'by_name') %>
+  </div><br /><br />
 
-<div class="paginate">
-  <%= paginate @references, remote: true %>
-  <br /><br />
-</div>
+  <div class="num_entries">
+    <%= page_entries_info @references, entry_name: 'resource', remote: true %>
+  </div>
 
-<div id="references" class="row">
-  <%= render @references %>
-  <br /><br />
-</div>
+  <div class="paginate">
+    <%= paginate @references, remote: true %>
+    <br /><br />
+  </div>
 
-<div class="num_entries">
-  <%= page_entries_info @references, entry_name: 'resource', remote: true %>
-</div>
+  <div id="references" class="row">
+    <%= render @references %>
+    <br /><br />
+  </div>
 
-<div class="paginate">
-  <%= paginate @references, remote: true %>
-  <br /><br />
+  <div class="num_entries">
+    <%= page_entries_info @references, entry_name: 'resource', remote: true %>
+  </div>
+
+  <div class="paginate">
+    <%= paginate @references, remote: true %>
+    <br /><br />
+  </div>
 </div>

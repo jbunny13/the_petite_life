@@ -7,8 +7,16 @@ class ReferencesController < ApplicationController
   responders :flash
 
   def index
-    tag = params[:tag]
-    @references = tag.present? ? Reference.tagged_with(tag).order(created_at: :desc).page(params[:page]).per(10) : Reference.all.order(created_at: :desc).page(params[:page]).per(10)
+    @references = Reference.where(nil)
+    sort = params[:sort]
+    case sort
+      when 'by_name'
+        @references = @references.page(params[:pageish]).per(5)
+      when 'most_recent'
+        @references = @references.most_recent.page(params[:page]).per(5)
+      else
+        @references = @references.page(params[:page]).per(5)
+    end
     respond_with(@references)
   end
 

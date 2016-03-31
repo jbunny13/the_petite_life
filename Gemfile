@@ -40,6 +40,7 @@ group :development do
   gem 'rails_layout'
   gem 'awesome_print'
   gem 'rails-erd'
+  gem 'bullet'
 end
 
 group :production do

@@ -6,12 +6,12 @@ class TagsController < ApplicationController
   respond_to :html, :json, :js
   
   def index
-    @tags = ActsAsTaggableOn::Tag.all.order(name: :asc)
+    @tags = ActsAsTaggableOn::Tag.order(name: :asc)
   end
 
   def show
     @articles = Article.tagged_with(@tag).order(created_at: :desc).page(params[:article]).per(4)
-    @products = Product.tagged_with(@tag).order(created_at: :desc).page(params[:product]).per(4)
+    @products = Product.includes(:reviews).tagged_with(@tag).order(created_at: :desc).page(params[:product]).per(4)
     @references = Reference.tagged_with(@tag).order(created_at: :desc).page(params[:resource]).per(4)
   end
 

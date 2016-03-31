@@ -1,32 +1,49 @@
-<center>
-  <h1>Articles Index</h1>
-  <% if can? :create, Article %>
-    <p>Looks like you can add a new article!<br />
-    <%= link_to 'Add new article', new_article_path, class:'btn btn-default' %>
-    <br /></p>
-  <% end %>
+<div class="container-fluid">
+  <center>
+    <h1>Articles Index</h1>
+    <% if can? :create, Article %>
+      <p>Looks like you can add a new article!<br />
+      <%= link_to 'Add new article', new_article_path, class:'btn btn-default' %>
+      <br /></p>
+    <% end %>
 
-  <div class="num_entries">
-    <%= page_entries_info @articles, remote: true %>
-  </div>
+    <div class="text-right">
+      <b>Sort By: </b>
+      <%= link_to 'Most Recent', articles_path(sort: 'most_recent') %> | 
+      <%= link_to 'Name (A-Z)', articles_path(sort: 'by_name') %>
+    </div><br /><br />
 
-  <div class="paginate">
-    <%= paginate @articles, remote: true %>
-    <br /><br />
-  </div>
+    <div class="num_entries">
+      <%= page_entries_info @articles, remote: true %>
+    </div>
 
-  <div id="articles" class="row">
-    <%= render @articles %>
-    <br /><br />
-  </div>
+    <div class="paginate">
+      <%= paginate @articles, remote: true %>
+      <br /><br />
+    </div>
 
-  <div class="num_entries">
-    <%= page_entries_info @articles, remote: true %>
-  </div>
+    <div id="articles" class="row">
+      <%= render @articles %>
+      <br /><br />
+    </div>
 
-  <div class="paginate">
-    <%= paginate @articles, remote: true %>
-    <br /><br />
-  </div>
+    <div class="num_entries">
+      <%= page_entries_info @articles, remote: true %>
+    </div>
 
-</center>
+    <div class="paginate">
+      <%= paginate @articles, remote: true %>
+      <br /><br />
+    </div>
+  </center>
+</div>
+
+<script>
+$(document).ready(function() {
+  var maxHeight = 0;
+  $(".thumbnail").each(function(){
+    if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+  });
+  $(".thumbnail").height(maxHeight);
+});
+</script>

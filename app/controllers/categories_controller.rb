@@ -7,15 +7,15 @@ class CategoriesController < ApplicationController
   responders :flash
 
   def index
-    @categories = Category.all.order(name: :asc)
-    @articles = Article.all.order(created_at: :desc).page(params[:article]).per(4)
-    @products = Product.all.order(created_at: :desc).page(params[:product]).per(4)
-    @references = Reference.all.order(created_at: :desc).page(params[:resource]).per(4)
+    @categories = Category.order(name: :asc)
+    @articles = Article.order(created_at: :desc).page(params[:article]).per(4)
+    @products = Product.includes(:reviews).order(created_at: :desc).page(params[:product]).per(4)
+    @references = Reference.order(created_at: :desc).page(params[:resource]).per(4)
   end
 
   def show
     @articles = @category.articles.order(created_at: :desc).page(params[:article]).per(4)
-    @products = @category.products.order(created_at: :desc).page(params[:product]).per(4)
+    @products = @category.products.includes(:reviews).order(created_at: :desc).page(params[:product]).per(4)
     @references = @category.references.order(created_at: :desc).page(params[:resource]).per(4)
   end
 

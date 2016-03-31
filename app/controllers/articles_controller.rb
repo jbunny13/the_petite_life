@@ -7,8 +7,16 @@ class ArticlesController < ApplicationController
   responders :flash
 
   def index
-    tag = params[:tag]
-    @articles = tag.present? ? Article.tagged_with(tag).order(created_at: :desc).page(params[:page]).per(8) : Article.all.order(created_at: :desc).page(params[:page]).per(8)
+    @articles = Article.where(nil)
+    sort = params[:sort]
+    case sort
+      when 'by_name'
+        @articles = @articles.by_name.page(params[:page]).per(8)
+      when 'most_recent'
+        @articles = @articles.most_recent.page(params[:page]).per(8)
+      else
+        @articles = @articles.page(params[:page]).per(8)
+    end
     respond_with(@articles)
   end
 

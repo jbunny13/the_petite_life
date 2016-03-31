@@ -6,9 +6,20 @@ class ProductsController < ApplicationController
   respond_to :html, :json, :js
   responders :flash
 
-  def index
-    tag = params[:tag]
-    @products = tag.present? ? Product.tagged_with(tag).order(created_at: :desc).page(params[:page]).per(8) : Product.all.order(created_at: :desc).page(params[:page]).per(8)
+  def index 
+    @products = Product.includes(:reviews).where(nil)
+    sort = params[:sort]
+    case sort
+      when 'most_recent'
+        @products = @products.most_recent.page(params[:page]).per(8)
+      when 'by_name'
+        @products = @products.by_name.page(params[:page]).per(8)
+      when 'average_rating'
+        @products = @products.average_rating
+        @products = Kaminari.paginate_array(@products).page(params[:page]).per(8)
+      else
+        @products = @products.page(params[:page]).per(8)
+    end
     respond_with(@products)
   end
 
@@ -53,6 +64,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:user_id, :name, :description, :image, :slug, tag_list: [], category_ids: [])
+      params.require(:product).permit(:user_id, :name, :description, :image, :slug, :sort, tag_list: [], category_ids: [])
     end
 end
