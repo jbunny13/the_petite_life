@@ -1,16 +1,24 @@
-<center>
-  <h1>Articles Index</h1>
-  <% if can? :create, Article %>
-    <p>Looks like you can add a new article!<br />
-    <%= link_to 'Add new article', new_article_path, class:'btn btn-default' %>
-    <br /></p>
-  <% end %>
 <div class="container-fluid">
-  <div class="row">
-    <%= render @articles %>
+  <center>
+    <h1>Articles Index</h1>
+    <% if can? :create, Article %>
+      <p>Looks like you can add a new article!<br />
+      <%= link_to 'Add new article', new_article_path, class:'btn btn-default' %>
+      <br /></p>
+    <% end %>
+
+    <div class="text-right">
+      <b>Sort By: </b>
+      <%= link_to 'Most Recent', articles_path(sort: 'most_recent') %> | 
+      <%= link_to 'Name (A-Z)', articles_path(sort: 'by_name') %>
+    </div><br /><br />
+
+    <div class="row">
+      <%= render @articles %>
+    </div>
   </div>
+  </center>
 </div>
-</center>
 
 <script>
 $(document).ready(function() {

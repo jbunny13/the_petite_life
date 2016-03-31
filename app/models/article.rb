@@ -5,6 +5,9 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :categories
   acts_as_taggable
 
+  scope :most_recent, -> { order(created_at: :desc) }
+  scope :by_name, -> { order(name: :asc) }
+
   validates :name, presence: true, length: { minimum: 5 }
   validates :content, presence: true, length: { minimum: 5 }
 

@@ -8,6 +8,17 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.where(nil)
+
+    sort = params[:sort]
+    case sort
+      when 'by_name'
+        @articles = @articles.by_name
+      when 'most_recent'
+        @articles = @articles.most_recent
+      else
+        @articles
+    end
+
     respond_with(@articles)
   end
 
