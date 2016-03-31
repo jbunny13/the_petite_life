@@ -3,12 +3,12 @@ class ReferencesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
   responders :flash
 
   def index
     tag = params[:tag]
-    @references = tag.present? ? Reference.tagged_with(tag) : Reference.all
+    @references = tag.present? ? Reference.tagged_with(tag).order(created_at: :desc).page(params[:page]).per(10) : Reference.all.order(created_at: :desc).page(params[:page]).per(10)
     respond_with(@references)
   end
 

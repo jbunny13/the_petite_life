@@ -1,7 +1,8 @@
-<div class="row">
+<div>
   <%= link_to categories_path, class: 'btn btn-default' do %>
     <span class="fa fa-chevron-left">&nbsp;&nbsp;&nbsp;</span>Back to all categories
   <% end %>
 </div>
 
+<%= render partial: 'category_name', locals: { category: @category } %>
 <%= render partial: 'category', locals: { category: @category } %>

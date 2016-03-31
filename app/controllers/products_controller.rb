@@ -3,17 +3,18 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
   responders :flash
 
   def index
     tag = params[:tag]
-    @products = tag.present? ? Product.tagged_with(tag) : Product.all
+    @products = tag.present? ? Product.tagged_with(tag).order(created_at: :desc).page(params[:page]).per(8) : Product.all.order(created_at: :desc).page(params[:page]).per(8)
     respond_with(@products)
   end
 
   def show
-    @reviews = Review.where(product_id: @product.id).order("created_at DESC")
+    @reviews = @product.reviews.order(created_at: :desc).page(params[:page]).per(10)
+    respond_with(@product)
   end
 
   def new

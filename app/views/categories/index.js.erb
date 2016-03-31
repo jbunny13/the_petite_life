@@ -1,0 +1,11 @@
+$('#articles').html('<%= escape_javascript render @articles %>');
+$('.paginate-articles').html('<%= escape_javascript(paginate(@articles, param_name: 'article', remote: true).to_s) %>');
+$('.num_entries-articles').html('<%= escape_javascript(page_entries_info(@articles, param_name: 'article', remote: true).to_s) %>');
+
+$('#products').html('<%= escape_javascript render @products %>');
+$('.paginate-products').html('<%= escape_javascript(paginate(@products, param_name: 'product', remote: true).to_s) %>');
+$('.num_entries-products').html('<%= escape_javascript(page_entries_info(@products, param_name: 'product', remote: true).to_s) %>');
+
+$('#references').html('<%= escape_javascript render @references %>');
+$('.paginate-references').html('<%= escape_javascript(paginate(@references, param_name: 'resource', remote: true).to_s) %>');
+$('.num_entries-references').html('<%= escape_javascript(page_entries_info(@references, param_name: 'resource', remote: true).to_s) %>');

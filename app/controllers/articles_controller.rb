@@ -3,17 +3,17 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:index, :show]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
   responders :flash
 
   def index
     tag = params[:tag]
-    @articles = tag.present? ? Article.tagged_with(tag) : Article.all
+    @articles = tag.present? ? Article.tagged_with(tag).order(created_at: :desc).page(params[:page]).per(8) : Article.all.order(created_at: :desc).page(params[:page]).per(8)
     respond_with(@articles)
   end
 
   def show
-    @comments = Comment.where(article_id: @article.id).order(created_at: :desc)
+    @comments = @article.comments.order(created_at: :desc).page(params[:page]).per(10)
     respond_with(@article)
   end
 

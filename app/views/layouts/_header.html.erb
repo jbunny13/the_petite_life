@@ -17,44 +17,10 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-links">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Categories <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= active_link_to 'All Categories', categories_path, wrap_tag: 'li', active: :exclusive %></li>
-            <% Category.all.each do |category| %>
-              <li><%= active_link_to category.name, category_path(category), wrap_tag: 'li', active: :exclusive %></li>
-            <% end %>
-          </ul>
-        </li>
-        
-        <li><%= active_link_to 'Articles', articles_path, wrap_tag: 'li', active: [['articles'], []] %></li>
-        <li><%= active_link_to 'Products', products_path, wrap_tag: 'li', active: [['products'], []] %></li>
-        <li><%= active_link_to 'Resources', references_path, wrap_tag: 'li', active: [['references'], []] %></li>
-      </ul>
-      
-      <div class="pull-right">
-        <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-            <li><%= active_link_to current_user.full_name, edit_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
-            <li><%= active_link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= active_link_to "Sign Up", new_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
-            <li><%= active_link_to "Log In", new_user_session_path, wrap_tag: 'li', active: :exclusive  %></li>
-          <% end %>
-        </ul>
-      </div><!-- /.signup-login -->
+      <%= render 'layouts/nav_links' %>
+      <%= render 'layouts/signup_login' %>
     </div><!-- /.navbar-collapse -->
     
-    <div class="navbar search pull-right">
-      <%= form_tag searches_path, method: :get, class: 'form-inline', html: { role: 'search' } do %>
-        <%= text_field_tag :query, params[:query], class: 'form-control', size: 30, maxlength: 30 %>
-        <button type="submit" class="btn btn-default">
-          <span class="fa fa-search"></span>
-        </button>
-      <% end %>
-    </div><!-- /.search -->
+    <%= render 'layouts/search' %>
   </div><!-- /.container-fluid -->
 </nav>
