@@ -4,54 +4,42 @@
   
 <div class="row">
   <h2>Articles</h2>
-  <% if @articles.any? %>
-    <div class="num_entries-articles">
-      <%= page_entries_info @articles, remote: true %>
-    </div>
-    <div class="paginate-articles">
-      <%= paginate @articles, remote: true %>
-      <br /><br />
-    </div>
-    <div id="articles">
-      <%= render @articles %>
-    </div>
-  <% else %>
-    <p>No articles found</p>
-  <% end %>
+  <div class="num_entries-articles">
+    <%= page_entries_info @articles, param_name: 'article', remote: true %>
+  </div>
+  <div class="paginate-articles">
+    <%= paginate @articles, param_name: 'article', remote: true %>
+    <br /><br />
+  </div>
+  <div id="articles">
+    <%= render @articles %>
+  </div>
 </div>
 
 <div class="row">
   <h2>Products</h2>
-  <% if @products.any? %>
-    <div class="num_entries-products">
-      <%= page_entries_info @products, remote: true %>
-    </div>
-    <div class="paginate-products">
-      <%= paginate @products, remote: true %>
-      <br /><br />
-    </div>
-    <div id="products">
-      <%= render @products %>
-    </div>
-  <% else %>
-    <p>No products found</p>
-  <% end %>
+  <div class="num_entries-products">
+    <%= page_entries_info @products, param_name: 'product', remote: true %>
+  </div>
+  <div class="paginate-products">
+    <%= paginate @products, param_name: 'product', remote: true %>
+    <br /><br />
+  </div>
+  <div id="products">
+    <%= render @products %>
+  </div>
 </div>
 
 <div class="row">
   <h2>Resources</h2>
-  <% if @references.any? %>
-    <div class="num_entries-references">
-      <%= page_entries_info @references, remote: true %>
-    </div>
-    <div class="paginate-references">
-      <%= paginate @references, remote: true %>
-      <br /><br />
-    </div>
-    <div id="references">
-      <%= render @references %>
-    </div>
-  <% else %>
-    <p>No resources found</p>
-  <% end %>
+  <div class="num_entries-references">
+    <%= page_entries_info @references, param_name: 'resource', entry_name: 'resource', remote: true %>
+  </div>
+  <div class="paginate-references">
+    <%= paginate @references, param_name: 'resource', remote: true %>
+    <br /><br />
+  </div>
+  <div id="references">
+    <%= render @references %>
+  </div>
 </div>

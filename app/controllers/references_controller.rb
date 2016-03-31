@@ -8,7 +8,7 @@ class ReferencesController < ApplicationController
 
   def index
     tag = params[:tag]
-    @references = tag.present? ? Reference.tagged_with(tag).page(params[:page]).per(10) : Reference.all.page(params[:page]).per(10)
+    @references = tag.present? ? Reference.tagged_with(tag).order(created_at: :desc).page(params[:page]).per(10) : Reference.all.order(created_at: :desc).page(params[:page]).per(10)
     respond_with(@references)
   end
 

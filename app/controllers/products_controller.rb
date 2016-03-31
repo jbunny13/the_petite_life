@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   def index
     tag = params[:tag]
-    @products = tag.present? ? Product.tagged_with(tag).page(params[:page]).per(8) : Product.all.page(params[:page]).per(8)
+    @products = tag.present? ? Product.tagged_with(tag).order(created_at: :desc).page(params[:page]).per(8) : Product.all.order(created_at: :desc).page(params[:page]).per(8)
     respond_with(@products)
   end
 
