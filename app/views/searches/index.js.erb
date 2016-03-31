@@ -1,0 +1,15 @@
+$('#products').html('<%= escape_javascript render partial: 'products/product', collection: @product_results %>');
+$('#paginate-products').html('<%= escape_javascript(paginate(@product_results, remote: true).to_s) %>');
+$('#num_entries-products').html('<%= escape_javascript(page_entries_info(@product_results, entry_name: 'product', remote: true).to_s) %>');
+
+$('#articles').html('<%= escape_javascript render partial: 'articles/article', collection: @article_results %>');
+$('#paginate-articles').html('<%= escape_javascript(paginate(@article_results, remote: true).to_s) %>');
+$('#num_entries-articles').html('<%= escape_javascript(page_entries_info(@article_results, entry_name: 'article', remote: true).to_s) %>');
+
+$('#references').html('<%= escape_javascript render partial: 'references/reference', collection: @reference_results %>');
+$('#paginate-references').html('<%= escape_javascript(paginate(@reference_results, remote: true).to_s) %>');
+$('#num_entries-references').html('<%= escape_javascript(page_entries_info(@reference_results, entry_name: 'resource', remote: true).to_s) %>');
+
+$('#tags').html('<%= escape_javascript render partial: 'acts_as_taggable_on/tags/tag', collection: @tag_results %>');
+$('#paginate-tags').html('<%= escape_javascript(paginate(@tag_results, remote: true).to_s) %>');
+$('#num_entries-tags').html('<%= escape_javascript(page_entries_info(@tag_results, entry_name: 'tag', remote: true).to_s) %>');

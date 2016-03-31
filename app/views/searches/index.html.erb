@@ -1,27 +1,56 @@
-<h2>Petite Results</h2>
-<p><%= Forgery('lorem_ipsum').paragraphs(2) %></p>
-<h3>  &nbsp; </h3>
-<% @pg_search_documents.each do |pgsd| %>
-  <% if pgsd.searchable.class == Product %>
-    <h3>Products</h3>
-    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
-  <% elsif pgsd.searchable.class == Review %>
-    <h3>Product Reviews</h3>
-    <p><%= link_to pgsd.searchable.product.name %>: <%= pgsd.searchable.content %></p><hr>
-  <% elsif pgsd.searchable.class == Article %>
-    <h3>Articles</h3>
-    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
-  <% elsif pgsd.searchable.class == Comment %>
-    <h3>Article Comments</h3>
-    <p><%= link_to pgsd.searchable.article.name %>: <%= pgsd.searchable.content %></p><hr>
-  <% elsif pgsd.searchable.class == Reference %>
-    <h3>Resources</h3>
-    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
-  <% elsif pgsd.searchable.class == Category %>
-    <h3>Categories</h3>
-    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
-  <% elsif pgsd.searchable.class == Tag %>
-    <h3>Tags</h3>
-    <p><%= link_to pgsd.searchable.name, pgsd.searchable %></p><hr>
-  <% end %>
-<% end %>
+<div class="row">
+  <h2>Search Results</h2>
+  <h3>Products</h3>
+  <div id="num_entries-products">
+    <%= page_entries_info @product_results, entry_name: 'product', remote: true %>
+  </div>
+  <div id="paginate-products">
+    <%= paginate @product_results, remote: true %>
+    <br /><br />
+  </div>
+  <div id="products">
+    <%= render partial: 'products/product', collection: @product_results %>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Articles</h3>
+  <div id="num_entries-articles">
+    <%= page_entries_info @article_results, entry_name: 'article', remote: true %>
+  </div>
+  <div id="paginate-articles">
+    <%= paginate @article_results, remote: true %>
+    <br /><br />
+  </div>
+  <div id="articles">
+    <%= render partial: 'articles/article', collection: @article_results %>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Resources</h3>
+  <div id="num_entries-references">
+    <%= page_entries_info @reference_results, entry_name: 'resource', remote: true %>
+  </div>
+  <div id="paginate-references">
+    <%= paginate @reference_results, remote: true %>
+    <br /><br />
+  </div>
+  <div id="references">
+    <%= render partial: 'references/reference', collection: @reference_results %>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Tags</h3>
+  <div id="num_entries-tags">
+    <%= page_entries_info @tag_results, entry_name: 'tag', remote: true %>
+  </div>
+  <div id="paginate-tags">
+    <%= paginate @tag_results, remote: true %>
+    <br /><br />
+  </div>
+  <div id="tags">
+    <%= render partial: 'acts_as_taggable_on/tags/tag', collection: @tag_results %>
+  </div>
+</div>
