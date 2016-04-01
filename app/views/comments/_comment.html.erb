@@ -4,7 +4,7 @@
   <%= local_time_ago(comment.created_at) %>
 </p>
 
-<p><%= comment.content %></p>
+<p><%= simple_format(comment.content) %></p>
 
 <p>
   <% if can? :update, comment %>
