@@ -4,7 +4,7 @@
   <%= review.user.full_name %> | 
   <%= local_time_ago(review.created_at) %>
 </p>
-<p><%= review.content %></p>
+<p><%= simple_format(review.content) %></p>
 <p>
   <% if can? :update, review %>
     <%= link_to 'Edit review', edit_product_review_path(@product, review), class: 'btn btn-default' %>

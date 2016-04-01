@@ -1,3 +1,40 @@
-<h1>Home</h1>
-
-<p><%= Forgery('lorem_ipsum').paragraph %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <h2>What is The Petite Life?</h2>
+      <p>
+        We are an online community for petites, by petites! It's a place where we can help each other find things that fit, that make our lives a little easier.
+      </p>
+      <p>
+      If you can relate to any of the following, you're in the right place!
+        <ul>
+          <li>
+            Pants that are way too long. Capris look like high waters on you. Sleeves that go halfway down your hands.
+          </li>
+          <li>
+            Not being able to see around other people, especially at shows or festivals.
+          </li>
+          <li>
+            Your feet not touching the ground when you sit down. Whether that's at a restaurant, at work, on an airplane.
+          </li>
+          <li>
+            At a loss when you're on a step stool and still can't reach something. Then climbing the counter and still not being able to reach.
+          </li>
+          <li>
+            Trying to drive into the sun. Why does the sun visor extend horizontally, but not vertically?
+          </li>
+        </ul>
+      </p>
+      <p>
+        The community needs your help to grow. To start contributing, please <%= link_to 'sign up', new_user_registration_path %>.
+      </p>
+      <br />
+      <h4>Check out these products that we recommend!</h4>
+        <div><%= render @products %></div>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div><br /><br /> 
+</div>

@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -16,11 +16,16 @@
     </div><!-- /navbar-header -->
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse">
-      <%= render 'layouts/nav_links' %>
-      <%= render 'layouts/signup_login' %>
+    <div class="collapse navbar-collapse row">
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <%= render 'layouts/nav_links' %>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-3">
+        <%= render 'layouts/search' %>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2">
+        <%= render 'layouts/signup_login' %>
+      </div>
     </div><!-- /.navbar-collapse -->
-    
-    <%= render 'layouts/search' %>
   </div><!-- /.container-fluid -->
 </nav>

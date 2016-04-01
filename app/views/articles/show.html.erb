@@ -28,8 +28,7 @@
       <%= link_to 'Delete', @article, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
   </p>
-
-  <p><%= @article.content %></p>
+  <p><%= simple_format(@article.content) %></p>
 </div>
 <br />
 <%= render template: 'comments/index' %>
