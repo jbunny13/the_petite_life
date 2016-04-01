@@ -1,6 +1,6 @@
-<div class="navbar search pull-right">
+<div class="search">
   <%= form_tag searches_path, method: :get, class: 'form-inline', html: { role: 'search' } do %>
-    <%= text_field_tag :query, params[:query], class: 'form-control', size: 30, maxlength: 30 %>
+    <%= text_field_tag :query, params[:query], class: 'form-control', maxlength: 30 %>
     <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
   <% end %>
 </div><!-- /.search -->
