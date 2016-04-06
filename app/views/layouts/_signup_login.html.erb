@@ -1,4 +1,5 @@
-<ul class="nav navbar-nav">
+<!-- User sign up / login -->
+<ul class="nav navbar-nav navbar-right">
   <% if user_signed_in? %>
     <li><%= active_link_to current_user.full_name, edit_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
     <li><%= active_link_to "Log Out", destroy_user_session_path, method: :delete %></li>
@@ -6,4 +7,5 @@
     <li><%= active_link_to "Sign Up", new_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
     <li><%= active_link_to "Log In", new_user_session_path, wrap_tag: 'li', active: :exclusive  %></li>
   <% end %>
-</ul><!-- /.signup-login -->
+</ul>
+<!-- /.signup-login -->
