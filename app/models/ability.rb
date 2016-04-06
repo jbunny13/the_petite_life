@@ -5,18 +5,18 @@ class Ability
     user ||= User.new
 
     if user.role? :user
-      can :read, [Product, Article, Category, ActsAsTaggableOn::Tag]
-      can [:read, :create], [Review, Comment, Reference]
-      can [:update, :destroy], [Review, Comment, Reference], user_id: user.id
+      can :read, [Product, Review, Article, Comment, Reference, Category, ActsAsTaggableOn::Tag]
+      can :create, [Product, Review, Article, Comment, Reference, Category, ActsAsTaggableOn::Tag]
+      can :update, [Product, Review, Article, Comment, Reference], user_id: user.id
+      can :update, [Category, ActsAsTaggableOn::Tag]
+      can :destroy, [Review, Comment, Reference], user_id: user.id
     end
 
     if user.role? :contributor
-      can :create, [Product, Article, ActsAsTaggableOn::Tag]
-      can [:update, :destroy], [Product, Article], user_id: user.id
     end
 
     if user.role? :moderator
-      can :update, [Product, Article, Reference]
+      can [:update, :destroy], [Product, Article, Reference, Category, ActsAsTaggableOn::Tag]
     end
     
     if user.role? :internal_admin
