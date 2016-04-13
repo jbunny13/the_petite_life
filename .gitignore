@@ -19,4 +19,7 @@
 erd.pdf
 
 # Ignore images uploaded via Paperclip
-public/system/products/images/*
+/public/system/products/images/*
+
+# Ignore SimpleCov results
+/coverage
