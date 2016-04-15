@@ -8,3 +8,5 @@
 //= require local_time
 //= require select2-full
 //= require turbolinks
+//= require redactor-rails
+//= require table

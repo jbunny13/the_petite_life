@@ -9,6 +9,6 @@ if Rails.env.production?
   Paperclip::Attachment.default_options[:url]  = ":s3_alias_url"
   Paperclip::Attachment.default_options[:s3_host_alias] = ENV["CLOUDFRONT_URL"]
   Paperclip::Attachment.default_options[:path] = "/:class/:attachment/:id_partition/:updated_at/:style/:filename"
-  Paperclip::Attachment.default_options[:s3_region] = "us-west-2"
+  Paperclip::Attachment.default_options[:s3_region] = ENV["S3_REGION"]
   Paperclip::Attachment.default_options[:s3_permissions] = "public-read"
 end
