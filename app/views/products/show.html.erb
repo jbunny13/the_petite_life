@@ -11,7 +11,16 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 class="panel-title-1"><%= @product.name %></h2>
+        <h2 class="panel-title-1">
+          <%= @product.name %>
+          <% if can? :update, @product %>
+            <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-default' %>
+          <% end %>
+
+          <% if can? :destroy, @product %>
+            <%= link_to 'Delete', @product, class: 'btn btn-default', method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </h2>
 
         <h4>Added By</h4>
         <p><%= @product.user.full_name %></p>
@@ -26,19 +35,10 @@
             
         <h3 class="panel-title-1">Tags</h3>
         <%= render @product.tags.order(name: :asc) %>
-
-        <p><br />
-          <% if can? :update, @product %>
-            <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-default' %>
-          <% end %>
-
-          <% if can? :destroy, @product %>
-            <%= link_to 'Delete', @product, class: 'btn btn-default', method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </p>
+        
       </div>
       <div class="panel-body">
-        <p><%= simple_format(@product.description) %></p>
+        <p><%= sanitize(@product.description, tags: %w(code pre div p ul ol table dl blockquote pre a object embed video audio img figure iframe hr dd dl dt h1 h2 h3 h4 h5 h6 span label br i b del strike u param mark cite small li sup sub big figcaption strong em tr td th tbody thead), attributes: %w(href src style)) %></p>
       </div>
     </div>
   </div>

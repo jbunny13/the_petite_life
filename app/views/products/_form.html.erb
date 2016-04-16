@@ -42,12 +42,17 @@
       </div>
     </div>
 
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, class: 'redactor form-control' %><br /><br />
+    </div>
+
     <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
   </div>
 <% end %>
 
 <script>
-  $(document).ready(function() {
+  $(document).on('page:update', function() {
 
     $('select.taggable').select2({
       theme: "bootstrap",
@@ -58,3 +63,9 @@
 
   });
 </script>
+
+<style>
+.re-icon.re-image, .re-icon.re-file {
+  display:none;
+}
+</style>
