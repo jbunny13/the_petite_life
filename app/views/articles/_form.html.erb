@@ -49,7 +49,7 @@
 
     <div class="field">
       <%= f.label :content %><br>
-      <%= f.text_area :content, autofocus: true, class: 'form-control input-lg', rows: 10 %>
+      <%= f.text_area :content, autofocus: true, class: 'redactor form-control input-lg' %>
     </div>
   </div>
 
@@ -57,7 +57,7 @@
 <% end %>
 
 <script>
-  $(document).ready(function() {
+  $(document).on('page:update', function() {
 
     $('select.taggable').select2({
       theme: "bootstrap",
