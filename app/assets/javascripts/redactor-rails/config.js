@@ -19,7 +19,7 @@ window.init_redactor = function(){
         "css":"style.css",
         minHeight: 400,
         maxHeight: 600,
-        "plugins": ['table']
+        // "plugins": ['table']
       });
 }
 
