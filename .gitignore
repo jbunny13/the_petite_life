@@ -18,8 +18,8 @@
 # Ignore ERD
 erd.pdf
 
-# Ignore images uploaded via Paperclip
-/public/system/products/images/*
+# Ignore dev env assets
+/public/system/*
 
 # Ignore SimpleCov results
 /coverage
