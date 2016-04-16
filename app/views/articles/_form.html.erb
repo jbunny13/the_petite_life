@@ -30,12 +30,7 @@
       <% end %><br />
     </div>
 
-    <div class="field">
-      <%= f.label :tag_list, 'Tags: allowed characters include [ a-z, 0-9, - ]' %>
-      <%= f.select :tag_list, options_for_select(ActsAsTaggableOn::Tag.all.order(name: :asc).pluck(:name), @article.tag_list), {}, { multiple: true, class: "taggable", style: "width: 100%;" } %>
-      <br />
-      <br />
-    </div>
+    <%= render 'shared/form_tags', f: f, resource: @article %>
 
     <div class="field">
       <%= f.label :image %><br />
