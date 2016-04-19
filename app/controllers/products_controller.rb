@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @reviews = @product.reviews.order(created_at: :desc).page(params[:page]).per(10)
+    @reviews = @product.reviews.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
     respond_with(@product)
   end
 
