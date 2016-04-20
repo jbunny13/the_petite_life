@@ -28,6 +28,10 @@ gem 'factory_girl_rails', '~> 4.0'
 gem 'friendly_id', '~> 5.1.0'
 gem 'aws-sdk', '>= 2.0.0'
 gem 'kaminari'
+gem 'redactor-rails'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'byebug'

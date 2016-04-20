@@ -30,18 +30,8 @@
       <% end %><br />
     </div>
 
-    <div class="field">
-      <%= f.label :tag_list, 'Tags: allowed characters include [ a-z, 0-9, - ]' %>
-      <%= f.select :tag_list, options_for_select(ActsAsTaggableOn::Tag.all.order(name: :asc).pluck(:name), @product.tag_list), {}, { multiple: true, class: "taggable", style: "width: 100%;" } %>
-      <br />
-      <br />
-    </div>
+    <%= render 'shared/form_tags', f: f, resource: @product %>
 
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_area :description, class: 'form-control' %><br /><br />
-    </div>
-    
     <div class="field">
       <%= f.label :image %><br />
       <% if @product.image.exists? %>
@@ -52,12 +42,17 @@
       </div>
     </div>
 
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, class: 'redactor form-control' %><br /><br />
+    </div>
+
     <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
   </div>
 <% end %>
 
 <script>
-  $(document).ready(function() {
+  $(document).on('page:update', function() {
 
     $('select.taggable').select2({
       theme: "bootstrap",
@@ -68,3 +63,9 @@
 
   });
 </script>
+
+<style>
+.re-icon.re-image, .re-icon.re-file {
+  display:none;
+}
+</style>
