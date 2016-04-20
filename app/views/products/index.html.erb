@@ -39,11 +39,9 @@
 </div>
 
 <script>
-$(document).on('page:update', function() {
-  var maxHeight = 0;
-  $(".thumbnail").each(function(){
-    if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+  $('.star-rating').raty({
+    path: '',
+    readOnly: true,
+    score: function() { return $(this).attr('data-score') }
   });
-  $(".thumbnail").height(maxHeight);
-});
 </script>
