@@ -33,7 +33,7 @@
     <%= render 'shared/form_tags', f: f, resource: @article %>
 
     <div class="field">
-      <%= f.label :image %><br />
+      <%= f.label :image, 'Featured Image' %><br />
       <% if @article.image.exists? %>
         <%= image_tag @article.image.url(:thumb) %><br /><br />
       <% end %>
@@ -63,3 +63,9 @@
 
   });
 </script>
+
+<style>
+.re-icon.re-file {
+  display:none;
+}
+</style>

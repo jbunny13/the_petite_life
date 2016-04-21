@@ -1,17 +1,141 @@
-.panel-title-1 {
+footer {
+  margin-top: 80px;
+  color: $black;
+  text-shadow: 0 0.5px 0.5px $pink;
+
+  a { 
+    color: $gray; 
+    text-shadow: none;
+  }
+}
+
+.panel-title-no-margins {
   margin-top: 0;
   margin-bottom: 0;
  }
-.container-fluid-1 {
-  padding-right: 15%;
-  padding-left: 15%;
+
+.behave-your-width-img {
+  max-width: 100%;
 }
+
+.header {
+  margin: 20px 0 80px;
+}
+
+.add-btn {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card {
+  position: relative;
+  height: 350px;
+  width: 100%;
+  display: block;
+  margin-bottom: 30px;
+  line-height: 1.42857143;
+  background-color: $white;
+  padding: 0 10px;
+
+  &-image-container {
+    padding: 10px 0;
+    height: 200px;
+    width: 100%;
+  }
+
+  &-image {
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  &-title {
+    position: absolute;
+    top: 210px;
+    color: $black;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 90%
+  }
+
+  &-rating-container {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  &-action-icons {
+    -webkit-transition: opacity 0.5s ease;
+    -moz-transition: opacity 0.5s ease;
+    -ms-transition: opacity 0.5s ease;      
+    -o-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;      
+    opacity: 0;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 80%;
+  }
+
+  &:hover {
+    .card-action-icons {
+      opacity: 1;
+    }
+    -webkit-box-shadow: 0 0 5px $cyan;
+    -moz-box-shadow: 0 0 5px $cyan;
+    -ms-box-shadow: 0 0 5px $cyan;
+    -o-box-shadow: 0 0 5px $cyan;
+    box-shadow: 0 0 5px $cyan;
+    border: 1px solid $cyan;
+  }  
+}
+
+#redactor-modal-box {
+  text-align: center;
+}
+
+#redactor-modal {
+  width: 30% !important;
+  color: $white;
+  background: $black;
+
+  section {
+    padding: 5%;
+  }
+
+  header {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
+
+#redactor-droparea {
+  -webkit-box-shadow: 0 0 3px $pink;
+  -moz-box-shadow: 0 0 3px $pink;
+  -ms-box-shadow: 0 0 3px $pink;
+  -o-box-shadow: 0 0 3px $pink;
+  box-shadow: 0 0 3px $pink;
+  border: 1px solid $pink;
+  padding: 5%;
+}
+
 #redactor-droparea-placeholder {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  &:before {
+    font-family: FontAwesome;
+    font-size: 300%;
+    content: "\f0ee";
+  }
+  
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  font-weight: 700;
-  color: #000;
+  font-weight: normal;
+  color: $white;
+  background: $black;
 }
+
 .inputfile {
   width: 0.1px;
   height: 0.1px;
@@ -19,20 +143,99 @@
   overflow: hidden;
   position: absolute;
   z-index: -1;
+
+  + label {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+  }
 }
+
+// .inputfile + label {
+//   font-size: 16px;
+//   font-weight: 700;
+//   color: white;
+//   background-color: black;
+//   display: inline-block;
+//   cursor: pointer;
+// }
+
+// .inputfile:focus + label,
+// .inputfile + label:hover {
+//   background-color: #00e5e6;
+// }
+
+// .inputfile:focus + label {
+//   outline: 1px dotted #000;
+//   outline: -webkit-focus-ring-color auto 5px;
+// }
+
+#search-field,
+#search-btn {
+  color: $white;
+  background-color: $black;
+}
+ 
+#search-field:focus,
+#search-field:hover,
+#search-btn:focus,
+#search-btn:hover {
+  color: $white;
+  background-color: $black;
+  -webkit-box-shadow: 0 0 5px $cyan;
+  -moz-box-shadow: 0 0 5px $cyan;
+  -ms-box-shadow: 0 0 5px $cyan;
+  -o-box-shadow: 0 0 5px $cyan;
+  box-shadow: 0 0 5px $cyan;
+  border: 1px solid $cyan;
+}
+
+input,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+.redactor-box,
 .inputfile + label {
-  font-size: 16px;
-  font-weight: 700;
-  color: white;
-  background-color: black;
-  display: inline-block;
-  cursor: pointer;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  transition: all 0.30s ease-in-out;
+  outline: none;
+  border: 1px solid $cyan;
 }
-.inputfile:focus + label,
+
+input:hover,
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,,
+input[type="submit"]:hover,
+textarea:hover,
+.redactor-box:hover,
+.inputfile:hover + label,
 .inputfile + label:hover {
-  background-color: #00e5e6;
+  -webkit-box-shadow: 0 0 5px $pink;
+  -moz-box-shadow: 0 0 5px $pink;
+  -ms-box-shadow: 0 0 5px $pink;
+  -o-box-shadow: 0 0 5px $pink;
+  box-shadow: 0 0 5px $pink;
+  border: 1px solid $pink;
 }
-.inputfile:focus + label {
-  outline: 1px dotted #000;
-  outline: -webkit-focus-ring-color auto 5px;
+
+input:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="submit"]:focus,
+textarea:focus,
+.redactor-box:focus,
+.inputfile:focus + label,
+.inputfile + label:focus {
+  -webkit-box-shadow: 0 0 5px $cyan;
+  -moz-box-shadow: 0 0 5px $cyan;
+  -ms-box-shadow: 0 0 5px $cyan;
+  -o-box-shadow: 0 0 5px $cyan;
+  box-shadow: 0 0 5px $cyan;
+  border: 1px solid $cyan;
 }

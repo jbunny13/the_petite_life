@@ -5,25 +5,25 @@
 </div>
 
 <div class="row">
-  <h3 class="panel-title-1">Resource Name</h3>
+  <h3 class="panel-title-no-margins">Resource Name</h3>
   <p><%= @reference.name %></p>
 
-  <h3 class="panel-title-1">URL</h3>
+  <h3 class="panel-title-no-margins">URL</h3>
   <p><%= link_to @reference.uri, @reference.uri %></p>
 
-  <h3 class="panel-title-1">Added By</h3>
+  <h3 class="panel-title-no-margins">Added By</h3>
   <p><%= @reference.user.full_name %></p>
 
-  <h3 class="panel-title-1">Added On</h3>
+  <h3 class="panel-title-no-margins">Added On</h3>
   <p><%= local_time_ago(@reference.created_at) %></p>
 
-  <h3 class="panel-title-1">Categories</h3>
+  <h3 class="panel-title-no-margins">Categories</h3>
   <% @reference.categories.each do |category| %>
     <%= render partial: 'categories/category_link', locals: { category: category } %>
   <% end %>
   <br />
   
-  <h3 class="panel-title-1">Tags</h3>
+  <h3 class="panel-title-no-margins">Tags</h3>
   <%= render @reference.tags.order(name: :asc) %>
 
   <p><br />
