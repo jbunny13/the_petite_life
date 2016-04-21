@@ -15,7 +15,7 @@
 <div class="container-fluid">
   <h3>Articles</h3>
   <div class="num_entries-articles">
-    <%= page_entries_info @articles, param_name: 'article', remote: true %>
+    <%= page_entries_info @articles, remote: true %>
   </div>
   <div class="paginate-articles">
     <%= paginate @articles, param_name: 'article', remote: true %>
@@ -29,7 +29,7 @@
 <div class="container-fluid">
   <h3>Products</h3>
   <div class="num_entries-products">
-    <%= page_entries_info @products, param_name: 'product', remote: true %>
+    <%= page_entries_info @products, remote: true %>
   </div>
   <div class="paginate-products">
     <%= paginate @products, param_name: 'product', remote: true %>
@@ -43,13 +43,13 @@
 <div class="container-fluid">
   <h3>Resources</h3>
   <div class="num_entries-references">
-    <%= page_entries_info @references, param_name: 'resource', remote: true %>
+    <%= page_entries_info @references, entry_name: 'resource', remote: true %>
   </div>
   <div class="paginate-references">
     <%= paginate @references, param_name: 'resource', remote: true %>
     <br /><br />
   </div>
   <div id="references">
-    <%= render  @references %>
+    <%= render @references %>
   </div>
 </div>
