@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :reviews, except: [:show]
   end
   resources :references, path: 'resources'
-  resources :searches, path: :search, only: [:index]
+  resources :search, only: [:index]
+  get '/search' => 'search#index'
   resources :tags
 end

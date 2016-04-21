@@ -1,10 +1,11 @@
-class SearchesController < ApplicationController
+class SearchController < ApplicationController
   skip_authorization_check
   
   respond_to :html, :json, :js
 
   def index
-    @product_results = PgSearch.multisearch(params[:query]).includes(:searchable).where(searchable_type: 'Product').map(&:searchable)
+    @tagged_products = Product.includes(:reviews).tagged_with(params[:query])
+    @product_results = @tagged_products + PgSearch.multisearch(params[:query]).includes(:searchable).where(searchable_type: 'Product').map(&:searchable)
     @product_results = Kaminari.paginate_array(@product_results).page(params[:product]).per(4)
 
     @article_results = PgSearch.multisearch(params[:query]).includes(:searchable).where(searchable_type: 'Article').map(&:searchable)
@@ -19,7 +20,7 @@ class SearchesController < ApplicationController
     @pg_search_documents = @product_results + @article_results + @reference_results + @tag_results
 
     if @pg_search_documents.empty? 
-      flash.now[:notice] = "Your search returned no results!"  
+      flash.now[:notice] = "Your search for #{params[:query]} returned no results!"  
     else
       respond_with(@pg_search_documents)
     end
