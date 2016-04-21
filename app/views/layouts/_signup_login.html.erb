@@ -1,11 +1,27 @@
 <!-- User sign up / login -->
-<ul class="nav navbar-nav navbar-right">
-  <% if user_signed_in? %>
-    <li><%= active_link_to current_user.full_name, edit_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
-    <li><%= active_link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+<div class="navbar-btn pull-right">
+  <div class="dropdown btn-group">
+    <% if user_signed_in? %>
+      <%= link_to edit_user_registration_path, class: 'btn btn-default' do %>
+        <i class="fa fa-user fw"></i>&nbsp;&nbsp;<span><%= current_user.full_name %></span>
+      <% end %>
+      <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+        <span class="fa fa-caret-down"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to 'Account', edit_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+        </li>
+        </ul>
+    </div>
   <% else %>
-    <li><%= active_link_to "Sign Up", new_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
-    <li><%= active_link_to "Log In", new_user_session_path, wrap_tag: 'li', active: :exclusive  %></li>
+    <div class="btn-group open">
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-default' %>
+      <%= link_to "Log In", new_user_session_path, class: 'btn btn-default' %>
+    </div>
   <% end %>
-</ul>
+</div>
 <!-- /.signup-login -->

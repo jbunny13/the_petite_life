@@ -1,21 +1,55 @@
 .form-container {
-    max-width: 70%;
-    padding: 15px;
-    margin: 0 auto;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 3%;
+  background: rgba(255,255,255,0.2)
 }
+
 .select2-dropdown .select2-dropdown--below {
-    top: 50px;   
+  top: 52px;   
 }
+
 .select2-container--open .select2-dropdown {
-    left: 130px;
+  margin: auto;
 }
-.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
-    background-color: $cyan;
-    color: #fff;
-}
-.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice {
-    color: #fff;
-    background: $cyan;
+
+.select2-container--bootstrap .select2-selection {
+  border-radius: 0;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  transition: all 0.30s ease-in-out;
+  outline: none;
+  border: 1px solid $cyan;
+
+  &:hover {
+    -webkit-box-shadow: 0 0 5px $pink;
+    -moz-box-shadow: 0 0 5px $pink;
+    -ms-box-shadow: 0 0 5px $pink;
+    -o-box-shadow: 0 0 5px $pink;
+    box-shadow: 0 0 5px $pink;
+    border: 1px solid $pink;
+  }
+
+  &:focus {
+    -webkit-box-shadow: 0 0 5px $cyan;
+    -moz-box-shadow: 0 0 5px $cyan;
+    -ms-box-shadow: 0 0 5px $cyan;
+    -o-box-shadow: 0 0 5px $cyan;
+    box-shadow: 0 0 5px $cyan;
     border: 1px solid $cyan;
-    border-radius: 5px;
+  }
+}
+
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+  background-color: $cyan;
+  color: #fff;
+}
+
+.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice {
+  color: #fff;
+  background: $cyan;
+  border: 1px solid $cyan;
+  border-radius: 0.15em;
 }

@@ -1,42 +1,41 @@
-<div class="container-fluid">
-  <center>
-    <h1>Products</h1>
-    <% if can? :create, Product %>
-      <p>Looks like you can add a new product!<br />
-      <%= link_to 'Add new product', new_product_path, class:'btn btn-default' %>
-      <br /></p>
-    <% end %>
-
-    <div class="text-right">
-      <b>Sort By: </b>
-      <%= link_to 'Most Recent', products_path(sort: 'most_recent') %> | 
-      <%= link_to 'Name (A-Z)', products_path(sort: 'by_name') %> | 
-      <%= link_to 'Average Rating', products_path(sort: 'average_rating') %>
-    </div><br /><br />
-
-    <div class="num_entries">
-      <%= page_entries_info @products, remote: true %>
+<center>
+  <div class="header row">
+    <div class="col-sm-12 col-md-6 col-md-offset-3">
+      <%= render 'search/search' %>
     </div>
+  </div>
 
-    <div class="paginate">
-      <%= paginate @products, remote: true %>
-      <br /><br />
-    </div>
-
-    <div id="products" class="row">
-      <%= render @products %>
-      <br /><br />
-    </div>
-
-    <div class="num_entries">
-      <%= page_entries_info @products, remote: true %>
+  <div class="row">
+    <div class="col-sm-6 col-md-3">
+      <div class="pull-left">
+        <b>Sort By:</b>
+        <%= link_to 'Recent', products_path(sort: 'most_recent'), remote: true %> | 
+        <%= link_to 'Name (A-Z)', products_path(sort: 'by_name'), remote: true %> | 
+        <%= link_to 'Rating', products_path(sort: 'average_rating'), remote: true %>
       </div>
+    </div>    
 
-    <div class="paginate">
-      <%= paginate @products, remote: true %>
-    </div>
-  </center>
-</div>
+    <% if can? :create, Product %>
+      <div class="col-sm-6 col-md-3 col-md-offset-6">
+        <%= link_to '+ Product', new_product_path, class:'btn btn-default add-btn pull-right' %>
+        <br>
+      </div>
+    <% end %>      
+  </div>
+
+  <div id="products" class="row">
+    <%= render @products %>
+    <br /><br />
+  </div>
+
+  <div class="num_entries">
+    <%= page_entries_info @products, remote: true %>
+  </div>
+
+  <div class="paginate">
+    <%= paginate @products, remote: true %>
+  </div>
+</center>
 
 <script>
   $('.star-rating').raty({

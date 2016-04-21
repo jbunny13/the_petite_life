@@ -22,15 +22,14 @@ $light-forest-green:  #496e2b;
 $white:               #ffffff;
 $almost-white:        #f5f5f5;
 
-// $gray-base:              #000 !default;
-// $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-// $gray-dark:              lighten($gray-base, 20%) !default;   // #333
-// $gray:                   lighten($gray-base, 33.5%) !default; // #555
-// $gray-light:             lighten($gray-base, 46.7%) !default; // #777
-// $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+$gray-base:              #000 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              lighten($gray-base, 20%) !default;   // #333
+$gray:                   lighten($gray-base, 33.5%) !default; // #555
+$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
 // $brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
-$brand-primary:         $pink !default; // #337ab7
 // $brand-success:         #5cb85c !default;
 // $brand-info:            #5bc0de !default;
 // $brand-warning:         #f0ad4e !default;
@@ -44,14 +43,16 @@ $brand-primary:         $pink !default; // #337ab7
 // //** Background color for `<body>`.
 // $body-bg:               #fff !default;
 // //** Global text color on `<body>`.
-// $text-color:            $gray-dark !default;
+// $text-color:            $gray-dark !default; #e6e6e6
+$text-color:            $black !default;
 
 // //** Global textual link color.
 // $link-color:            $brand-primary !default;
+$link-color:            $pink !default;
 // $link-color:            $pink !default;
 // //** Link hover color set via `darken()` function.
 // $link-hover-color:      darken($link-color, 15%) !default;
-$link-hover-color:      $gray !default;
+$link-hover-color:      $cyan !default;
 // //** Link hover decoration.
 // $link-hover-decoration: underline !default;
 $link-hover-decoration: none !default;
@@ -62,6 +63,7 @@ $link-hover-decoration: none !default;
 // //## Font, line-height, and color for body text, headings, and more.
 
 // $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif:  "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 // $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 // //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 // $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -126,11 +128,15 @@ $link-hover-decoration: none !default;
 // $line-height-small:         1.5 !default;
 
 // $border-radius-base:        4px !default;
+$border-radius-base:        0px !default;
 // $border-radius-large:       6px !default;
+$border-radius-large:       0px !default;
 // $border-radius-small:       3px !default;
+$border-radius-small:       0px !default;
 
 // //** Global color for active items (e.g., navs or dropdowns).
 // $component-active-color:    #fff !default;
+$component-active-color:    $black !default;
 // //** Global background color for active items (e.g., navs or dropdowns).
 // $component-active-bg:       $brand-primary !default;
 $component-active-bg:       $cyan !default;
@@ -169,8 +175,11 @@ $component-active-bg:       $cyan !default;
 // $btn-font-weight:                normal !default;
 
 // $btn-default-color:              #333 !default;
+$btn-default-color:              $white !default;
 // $btn-default-bg:                 #fff !default;
+$btn-default-bg:                 $black !default;
 // $btn-default-border:             #ccc !default;
+$btn-default-border:             $cyan !default;
 
 // $btn-primary-color:              #fff !default;
 // $btn-primary-bg:                 $brand-primary !default;
@@ -258,6 +267,7 @@ $input-color:                    $black !default;
 
 // //** Background for the dropdown menu.
 // $dropdown-bg:                    #fff !default;
+$dropdown-bg:                    $black !default;
 // //** Dropdown menu `border-color`.
 // $dropdown-border:                rgba(0,0,0,.15) !default;
 // //** Dropdown menu `border-color` **for IE8**.
@@ -267,10 +277,13 @@ $input-color:                    $black !default;
 
 // //** Dropdown link text color.
 // $dropdown-link-color:            $gray-dark !default;
+$dropdown-link-color:            $pink !default;
 // //** Hover color for dropdown links.
 // $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
+$dropdown-link-hover-color:      $black !default;
 // //** Hover background for dropdown links.
 // $dropdown-link-hover-bg:         #f5f5f5 !default;
+$dropdown-link-hover-bg:         $cyan !default;
 
 // //** Active dropdown menu item text color.
 // $dropdown-link-active-color:     $component-active-color !default;
@@ -395,18 +408,20 @@ $grid-float-breakpoint-max: $screen-sm-min !default;
 
 // $navbar-default-color:             #777 !default;
 // $navbar-default-bg:                #f8f8f8 !default;
+// $navbar-default-bg:                 transparent !default;
 // $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
+// $navbar-default-border:            none !default;
 
 // // Navbar links
 // $navbar-default-link-color:                #777 !default;
-$navbar-default-link-color:                $black !default;
+// $navbar-default-link-color:                $black !default;
 // $navbar-default-link-hover-color:          #333 !default;
-$navbar-default-link-hover-color:          $brand-primary !default;
+// $navbar-default-link-hover-color:          $pink !default;
 // $navbar-default-link-hover-bg:             transparent !default;
 // $navbar-default-link-active-color:         #555 !default;
-$navbar-default-link-active-color:         $black !default;
+// $navbar-default-link-active-color:         $dark-pink !default;
 // $navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
-$navbar-default-link-active-bg:            inherit !default;
+// $navbar-default-link-active-bg:            inherit !default;
 // $navbar-default-link-disabled-color:       #ccc !default;
 // $navbar-default-link-disabled-bg:          transparent !default;
 
@@ -425,14 +440,20 @@ $navbar-default-link-active-bg:            inherit !default;
 // // Reset inverted navbar basics
 // $navbar-inverse-color:                      lighten($gray-light, 15%) !default;
 // $navbar-inverse-bg:                         #222 !default;
+$navbar-inverse-bg:                 transparent !default;
 // $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
+$navbar-inverse-border:            none !default;
 
 // // Inverted navbar links
 // $navbar-inverse-link-color:                 lighten($gray-light, 15%) !default;
+$navbar-inverse-link-color:                $black !default;
 // $navbar-inverse-link-hover-color:           #fff !default;
+$navbar-inverse-link-hover-color:          $pink !default;
 // $navbar-inverse-link-hover-bg:              transparent !default;
 // $navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color !default;
+$navbar-inverse-link-active-color:         $cyan !default;
 // $navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 10%) !default;
+$navbar-inverse-link-active-bg:            inherit !default;
 // $navbar-inverse-link-disabled-color:        #444 !default;
 // $navbar-inverse-link-disabled-bg:           transparent !default;
 
@@ -482,22 +503,26 @@ $nav-link-padding:                          7px 7px !default;
 // //##
 
 // $pagination-color:                     $link-color !default;
-$pagination-color:                     $brand-primary !default;
+// $pagination-color:                     $brand-primary !default;
 // $pagination-bg:                        #fff !default;
+$pagination-bg:                        $black !default;
 // $pagination-border:                    #ddd !default;
+$pagination-border:                    $cyan !default;
 
 // $pagination-hover-color:               $link-hover-color !default;
 $pagination-hover-color:               $black !default;
 // $pagination-hover-bg:                  $gray-lighter !default;
-$pagination-hover-bg:                  $cyan !default;
+$pagination-hover-bg:                  $pink !default;
 // $pagination-hover-border:              #ddd !default;
+$pagination-hover-border:              $cyan !default;
 
 // $pagination-active-color:              #fff !default;
-$pagination-active-color:              $gray !default;
+$pagination-active-color:              lighten($black, 25%) !default;
 // $pagination-active-bg:                 $brand-primary !default;
-$pagination-active-bg:                 $white !default;
+$pagination-active-bg:                 $pink !default;
 // $pagination-active-border:             $brand-primary !default;
-$pagination-active-border:             #ddd !default;
+$pagination-active-border:             $cyan !default;
+
 // $pagination-disabled-color:            $gray-light !default;
 // $pagination-disabled-bg:               #fff !default;
 // $pagination-disabled-border:           #ddd !default;
@@ -784,8 +809,10 @@ $pagination-active-border:             #ddd !default;
 // $thumbnail-padding:           4px !default;
 // //** Thumbnail background color
 // $thumbnail-bg:                $body-bg !default;
+// $thumbnail-bg:                $almost-white !default;
 // //** Thumbnail border color
 // $thumbnail-border:            #ddd !default;
+// $thumbnail-border:            $almost-white !default;
 // //** Thumbnail border radius
 // $thumbnail-border-radius:     $border-radius-base !default;
 

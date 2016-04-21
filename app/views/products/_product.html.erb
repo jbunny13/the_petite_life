@@ -1,30 +1,32 @@
 <div class="col-sm-6 col-md-3">
-  <center>
-    <div class="thumbnail">
-      <%= link_to (image_tag product.image.url(:thumb), class: 'image'), product %>
-    
-      <div class="caption">
-        <h3><%= product.name %></h3>
-
-        <div class="star-rating" data-score= <%= product.average_rating %> ></div>
-        <p><em>(<%= pluralize(product.reviews.length, "Review") %>)</em></p>
-
-        <% if can? :update, product %>
-          <%= link_to 'Edit', edit_product_path(product) %>
+  <div class="text-center">
+      <div class="card">
+        <%= link_to product do %>
+          <div class="card-image-container">
+            <%= image_tag product.image.url(:thumb), class: 'card-image' %>
+          </div>
+      
+          <h4 class="card-title"><%= product.name %></h4>
         <% end %>
-        
-        <% if can? :destroy, product %>
-           | <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
+
+        <div class="card-rating-container">
+          <div class="star-rating" data-score= <%= product.average_rating %> ></div>
+          <p>(<%= pluralize(product.reviews.length, "Review") %>)</p>
+        </div>
+
+        <div class="card-action-icons">
+          <% if can? :update, product %>
+            <%= link_to edit_product_path(product) do %>
+              <span class="fa fa-pencil fa-lg"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <% end %>
+          <% end %>
+          
+          <% if can? :destroy, product %>
+             <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="fa fa-trash-o fa-lg"></span>
+            <% end %>
+          <% end %>          
+        </div>
       </div>
-    </div>
-  </center>
+  </div>
 </div>
-
-<script>
-$('.star-rating').raty({
-  path: '',
-  readOnly: true,
-  score: function() { return $(this).attr('data-score') }
-});
-</script>

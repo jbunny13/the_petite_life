@@ -3,9 +3,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 @import "bootstrap_variables";
 @import "bootstrap";
-@import "bootstrap_overrides";
 @import "select2";
 @import "select2-bootstrap";
-@import "forms";
 @import "redactor-rails/css/redactor";
+@import "bootstrap_overrides";
 @import "globals";
+@import "forms";

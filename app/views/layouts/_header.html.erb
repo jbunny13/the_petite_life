@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -9,17 +9,30 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">
-        <span class="cyan-text">The</span> 
-        <span class="black-text">Petite </span>
-        <span class="pink-text">Life</span>
+        <span id="tpl-the" class="cyan-text">The</span> 
+        <span id="tpl-petite" class="black-text">Petite </span>
+        <span id="tpl-life" class="pink-text">Life</span>
       </a>
     </div><!-- /navbar-header -->
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
-        <%= render 'layouts/nav_links' %>
-        <%= render 'layouts/search' %>
-        <%= render 'layouts/signup_login' %>
+      <%= render 'layouts/nav_links' %>
+      <%= render 'layouts/signup_login' %>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<script>
+function checkScroll(){
+    var startY = $('.navbar').height() * 1.5; //The point where the navbar changes in px
+    var isScrolled = $(window).scrollTop() > startY;
+    $('.navbar').toggleClass("scrolled", isScrolled);
+}
+
+if($('.navbar').length > 0){
+    $(window).on("scroll load resize", function(){
+        checkScroll();
+    });
+}
+</script>
