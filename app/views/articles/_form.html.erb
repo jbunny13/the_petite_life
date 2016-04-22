@@ -37,9 +37,8 @@
       <% if @article.image.exists? %>
         <%= image_tag @article.image.url(:thumb) %><br /><br />
       <% end %>
-      <div class="file-input-button">
-        <%= f.file_field :image, class: 'btn btn-default form-control' %><br />
-      </div>
+      <%= f.file_field :image, class: 'inputfile' %>
+      <%= f.label :image, 'Choose a file' %><br />
     </div>
 
     <div class="field">

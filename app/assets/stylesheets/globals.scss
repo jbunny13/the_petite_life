@@ -2,6 +2,9 @@ footer {
   margin-top: 80px;
   color: $black;
   text-shadow: 0 0.5px 0.5px $pink;
+  h4 {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
 
   a { 
     color: $gray; 
@@ -149,26 +152,23 @@ footer {
     font-size: 16px;
     font-weight: normal;
   }
+
+  + label[for="article_image"],
+  + label[for="product_image"] {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: $white;
+    background: $black;
+    text-align: center;
+    width: 15%;
+    padding: 0.5%;
+
+    &:hover {
+      color: $pink;
+    }
+  }
 }
-
-// .inputfile + label {
-//   font-size: 16px;
-//   font-weight: 700;
-//   color: white;
-//   background-color: black;
-//   display: inline-block;
-//   cursor: pointer;
-// }
-
-// .inputfile:focus + label,
-// .inputfile + label:hover {
-//   background-color: #00e5e6;
-// }
-
-// .inputfile:focus + label {
-//   outline: 1px dotted #000;
-//   outline: -webkit-focus-ring-color auto 5px;
-// }
 
 #search-field,
 #search-btn {
@@ -209,7 +209,7 @@ textarea,
 input:hover,
 input[type="text"]:hover,
 input[type="email"]:hover,
-input[type="password"]:hover,,
+input[type="password"]:hover,
 input[type="submit"]:hover,
 textarea:hover,
 .redactor-box:hover,
@@ -223,6 +223,18 @@ textarea:hover,
   border: 1px solid $pink;
 }
 
+input[type="submit"]:hover,
+.inputfile:hover + label,
+.inputfile + label:hover,
+.btn-default:hover {
+  color: $white;
+  background: $cyan;
+
+  i,
+  span,
+  a { color: $white }
+}
+
 input:focus,
 input[type="text"]:focus,
 input[type="email"]:focus,
@@ -231,7 +243,8 @@ input[type="submit"]:focus,
 textarea:focus,
 .redactor-box:focus,
 .inputfile:focus + label,
-.inputfile + label:focus {
+.inputfile + label:focus,
+.btn-default:hover {
   -webkit-box-shadow: 0 0 5px $cyan;
   -moz-box-shadow: 0 0 5px $cyan;
   -ms-box-shadow: 0 0 5px $cyan;

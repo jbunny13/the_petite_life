@@ -33,13 +33,14 @@
     </div>
 
     <%= render 'shared/form_tags', f: f, resource: @product %>
-    
+
     <div class="field">
-      <%= f.label :image %><br />
+      <%= f.label :image, 'Featured Image' %><br />
       <% if @product.image.exists? %>
         <%= image_tag @product.image.url(:thumb) %><br /><br />
       <% end %>
-      <%= f.file_field :image, class: '' %><br />
+      <%= f.file_field :image, class: 'inputfile' %>
+      <%= f.label :image, 'Choose a file' %><br />
     </div>
 
     <div class="field">
@@ -47,7 +48,7 @@
       <%= f.text_area :description, class: 'redactor form-control' %><br /><br />
     </div>
 
-    <%= f.submit 'Save', data: { disable_with: '' }, class: 'btn btn-default btn-lg' %>
+    <%= f.submit 'Save', data: { disable_with: '' }, class: 'btn btn-default' %>
   </div>
 <% end %>
 
