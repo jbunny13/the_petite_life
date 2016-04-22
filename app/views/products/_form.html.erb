@@ -48,15 +48,15 @@
       <%= f.text_area :description, class: 'redactor form-control' %><br /><br />
     </div>
 
-    <%= f.submit 'Save', data: { disable_with: '' }, class: 'btn btn-default' %>
+    <%= f.submit 'Save', data: { disable_with: 'Please wait' }, class: 'btn btn-default' %>
   </div>
 <% end %>
 
 <script>
-  $(document).on('page:update', function() {
+  $(document).ready(function() {
 
     $('select.taggable').select2({
-      theme: "bootstrap",
+      theme: 'bootstrap',
       tags: true,
       multiple: true,
       placeholder: 'Start typing to select or add a tag'

@@ -45,16 +45,16 @@
       <%= f.label :content %><br>
       <%= f.text_area :content, autofocus: true, class: 'redactor form-control input-lg' %>
     </div>
-  </div>
 
-  <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
+    <%= f.submit 'Save', data: { disable_with: 'Please wait' }, class: 'btn btn-default' %>
+  </div>
 <% end %>
 
 <script>
-  $(document).on('page:update', function() {
+  $(document).ready(function() {
 
     $('select.taggable').select2({
-      theme: "bootstrap",
+      theme: 'bootstrap',
       tags: true,
       multiple: true,
       placeholder: 'Start typing to select or add a tag'
