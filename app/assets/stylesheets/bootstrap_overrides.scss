@@ -96,17 +96,7 @@ a {
 }
 
 @media (min-width: 800px) {
-  // .navbar-nav {
-  //   position: fixed;
-  //   left: 50%;
-  //   transform: translate(-50%, 0); 
-  //   // li > a:hover {
-  //   //       transform: translateY(3px);
-  //   // }
-  // }
   .dropdown .dropdown-menu {
-    // display: block;
-    // opacity: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -116,9 +106,9 @@ a {
     margin: -1px 0 0;
     border: 1px solid rgba(0, 229, 230, 0.7);
   }
+  
   .dropdown:hover .dropdown-menu {
-  display: block;
-  // opacity: 1;
+    display: block;
   }
 }
 
