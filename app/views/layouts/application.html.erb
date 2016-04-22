@@ -7,13 +7,12 @@
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, inital-scale=1">
   </head>
   <body>
-    
       <%= render 'layouts/header' %>
       <%= render 'layouts/messages' %>
       <%= yield %>
       <%= render 'layouts/footer' %>
-    
   </body>
 </html>
