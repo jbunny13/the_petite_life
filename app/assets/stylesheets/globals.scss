@@ -20,6 +20,26 @@
   height: 30px;
 }
 
+@mixin animation($animation-duration, $animation-delay, $animation-iteration-count) {
+  -webkit-animation-duration: $animation-duration;
+  -moz-animation-duration: $animation-duration;
+  -ms-animation-duration: $animation-duration;
+  -o-animation-duration: $animation-duration;
+  animation-duration: $animation-duration;
+
+  -webkit-animation-delay: $animation-delay;
+  -moz-animation-delay: $animation-delay;
+  -ms-animation-delay: $animation-delay;
+  -o-animation-delay: $animation-delay;
+  animation-delay: $animation-delay;
+
+  -webkit-animation-iteration-count: $animation-iteration-count;
+  -moz-animation-iteration-count: $animation-iteration-count;
+  -ms-animation-iteration-count: $animation-iteration-count;
+  -o-animation-iteration-count: $animation-iteration-count;
+  animation-iteration-count: $animation-iteration-count;
+}
+
 body {
   padding-top: 4%;
   color: $black;
@@ -44,6 +64,38 @@ body {
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
 }
+
+.banner {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 1000px;
+  z-index: 1200;
+  max-width: 100%;
+  background: url('unsplash-greg-rakozy-bw.jpg') no-repeat center center;
+  -ms-background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  &.animated {
+    @include animation(2s, 0.3s, 1);
+  }
+
+  &-logo {
+  display: block;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+    &.animated {
+      @include animation(2s, 0.8s, 1);
+    }
+  }
+}
+
 .horizontal-bar-black {
   @include horizontal-bar-dimensions();
   background: $charcoal-black;
@@ -61,6 +113,17 @@ body {
 .horizontal-bar-pink {
   @include horizontal-bar-dimensions();
   background: $pink;
+}
+
+.push-content-down {
+  height: 950px;
+}
+
+.content {
+  padding-top: 50px;
+  left: 0;
+  right: 0;
+  max-width: 100%;
 }
 
 footer {
