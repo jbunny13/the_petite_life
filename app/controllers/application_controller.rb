@@ -18,4 +18,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :email
     devise_parameter_sanitizer.for(:account_update) << :email
   end
+
+  def after_sign_up_path_for(resource)
+    products_path
+  end
+
+  def after_sign_in_path_for(resource)
+    products_path
+  end
+
+  def after_sign_out_path_for(resource)
+    products_path
+  end
 end
