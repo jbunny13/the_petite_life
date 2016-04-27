@@ -15,7 +15,7 @@
 
 .select2-container--bootstrap .select2-selection {
   border-radius: 0;
-  @include transition(all 0.5s ease);
+  @include transition(all 0.5s ease-in-out);
   outline: none;
   border: 1px solid $cyan;
 

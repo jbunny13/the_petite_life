@@ -238,7 +238,7 @@ footer {
   }
 
   &-action-icons {
-    @include transition(opacity 0.5s ease);
+    @include transition(opacity 0.5s ease-in-out);
     opacity: 0;
     position: absolute;
     bottom: 10px;
