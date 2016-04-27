@@ -68,10 +68,6 @@ a {
   }
 }
 
-.navbar-brand {
-  font-size: 40px;
-}
-
 .navbar,
 h1,
 h2,
@@ -80,6 +76,24 @@ h4,
 h5,
 h6 {
   font-family: "Montserrat";
+}
+
+.navbar-fixed-top {
+  padding: 3px 5px 3px 10px; 
+}
+
+.navbar-brand {
+  font-size: 40px;
+}
+
+.navbar-brand-logo {
+  background: url('tpl-logo-black-small-lotus-365x70.png') no-repeat;
+  width: 365px;
+  height: 70px;
+}
+
+.preload-hover-navbar-brand-logo {
+  background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat -9999px -9999px;
 }
 
 .navbar,
@@ -92,9 +106,8 @@ h6 {
   background: $black;
   @include box-shadow(0px 1px 4px 0px $cyan);
   
-  #tpl-petite,
-  #tpl-petite:hover {
-    color: $white;
+  .navbar-brand-logo {
+    background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
   }
 
   &.navbar-inverse .navbar-nav > li > a {
@@ -111,6 +124,7 @@ h6 {
 
 .navbar-toggle {
   z-index: 3;
+  background-color: $black;
 }
 
 .btn-default {

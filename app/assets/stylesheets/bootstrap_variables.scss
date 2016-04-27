@@ -393,6 +393,7 @@ $grid-float-breakpoint-max: $screen-sm-min !default;
 
 // // Basics of a navbar
 // $navbar-height:                    50px !default;
+$navbar-height:                    70px !default;
 // $navbar-margin-bottom:             $line-height-computed !default;
 // $navbar-border-radius:             $border-radius-base !default;
 // $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
@@ -407,14 +408,10 @@ $grid-float-breakpoint-max: $screen-sm-min !default;
 
 // // Navbar links
 // $navbar-default-link-color:                #777 !default;
-// $navbar-default-link-color:                $black !default;
 // $navbar-default-link-hover-color:          #333 !default;
-// $navbar-default-link-hover-color:          $pink !default;
 // $navbar-default-link-hover-bg:             transparent !default;
 // $navbar-default-link-active-color:         #555 !default;
-// $navbar-default-link-active-color:         $dark-pink !default;
 // $navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
-// $navbar-default-link-active-bg:            inherit !default;
 // $navbar-default-link-disabled-color:       #ccc !default;
 // $navbar-default-link-disabled-bg:          transparent !default;
 
@@ -433,7 +430,7 @@ $grid-float-breakpoint-max: $screen-sm-min !default;
 // // Reset inverted navbar basics
 // $navbar-inverse-color:                      lighten($gray-light, 15%) !default;
 // $navbar-inverse-bg:                         #222 !default;
-$navbar-inverse-bg:                 transparent !default;
+$navbar-inverse-bg:                 $white !default;
 // $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
 $navbar-inverse-border:            none !default;
 
@@ -457,8 +454,11 @@ $navbar-inverse-link-active-bg:            inherit !default;
 
 // // Inverted navbar toggle
 // $navbar-inverse-toggle-hover-bg:            #333 !default;
+$navbar-inverse-toggle-hover-bg:            $black !default;
 // $navbar-inverse-toggle-icon-bar-bg:         #fff !default;
+$navbar-inverse-toggle-icon-bar-bg:         $pink !default;
 // $navbar-inverse-toggle-border-color:        #333 !default;
+$navbar-inverse-toggle-border-color:        $cyan !default;
 
 
 // //== Navs
