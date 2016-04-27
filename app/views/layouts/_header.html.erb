@@ -1,20 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">
-        <span id="tpl-the" class="cyan-text">The</span> 
-        <span id="tpl-petite" class="black-text">Petite </span>
-        <span id="tpl-life" class="pink-text">Life</span>
-      </a>
-    </div><!-- /navbar-header -->
-
+    <%= render 'layouts/nav_header' %>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
       <%= render 'layouts/nav_links' %>
