@@ -12,58 +12,30 @@ $almost-white: #f5f5f5;
 .pink-text { color: $pink }
 .white-text { color: $white }
 
-body {
-  background: url('unsplash-greg-rakozy-70-opacity.jpeg') no-repeat center center fixed;
-  -ms-background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  padding: 7% 10% 15px 10%;
-  font-size: 16px;
+.alert {
+  margin-bottom: 0;
+  margin-top: 30px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .alert-error,
-.alert-alert {
-  background-color: $lightest-pink;
-  border-color: $light-pink;
-  color: $light-red;
-  text-align: left;
-}
-
+.alert-alert,
+.alert-info,
 .alert-success,
-.alert-notice {
-  background-color: $lightest-green;
-  border-color: $light-green;
-  color: $light-forest-green;
+.alert-notice,
+.alert-warning,
+.alert-danger {
+  background-color: $white;
+  border-color: $cyan;
+  color: $black;
   text-align: left;
-}
-
-.fw-normal {
-  font-weight: normal;
-}
-
-.label-tag {
-  line-height: 1.1;
-  background-color: $cyan;
-  display: inline-block;
-  max-width: 100%;
-  margin: 4px 4px 0px 0px;
-  font-size: 83%;
   font-weight: bold;
-  color: $white;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0.15em;
-  padding: 5px;
 }
 
-a.label-tag:hover,
-a.label-tag:focus {
-  color: $white;
-  text-decoration: none;
-  cursor: pointer;
+.close {
+  font-size: 1.4em;
 }
 
 .well {
@@ -76,12 +48,9 @@ a.label-tag:focus {
 a {
   @include transition(all 0.5s ease);
 
-@media only screen and (max-width: 799px) {
-  .navbar {
-    background: $black;
-  }
-  .navbar .navbar-nav > li > a {
-    color: $white;
+  &:focus {
+    color: $cyan;
+    text-decoration: none;
   }
 }
 
@@ -90,11 +59,12 @@ a {
     @include transition(all 0.5s ease);
     min-width: 100%;
     margin: -1px 0 0;
-    border: 1px solid rgba(0, 229, 230, 0.7);
+    border: 1px solid $cyan;
   }
   
   .dropdown:hover .dropdown-menu {
     display: block;
+    @include box-shadow(0 0 5px $cyan);
   }
 }
 
@@ -144,5 +114,5 @@ h6 {
 }
 
 .btn-default {
-  font-size: 16px;
+  font-size: .95em;
 }

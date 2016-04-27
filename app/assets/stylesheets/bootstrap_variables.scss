@@ -129,10 +129,10 @@ $border-radius-small:       0px !default;
 
 // //** Global color for active items (e.g., navs or dropdowns).
 // $component-active-color:    #fff !default;
-$component-active-color:    $black !default;
+$component-active-color:    $cyan !default;
 // //** Global background color for active items (e.g., navs or dropdowns).
 // $component-active-bg:       $brand-primary !default;
-$component-active-bg:       $cyan !default;
+$component-active-bg:       $black !default;
 
 // //** Width of the `border` for generating carets that indicator dropdowns.
 // $caret-width-base:          4px !default;
@@ -270,13 +270,13 @@ $dropdown-bg:                    $black !default;
 
 // //** Dropdown link text color.
 // $dropdown-link-color:            $gray-dark !default;
-$dropdown-link-color:            $pink !default;
+$dropdown-link-color:            $white !default;
 // //** Hover color for dropdown links.
 // $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
-$dropdown-link-hover-color:      $black !default;
+$dropdown-link-hover-color:      $pink !default;
 // //** Hover background for dropdown links.
 // $dropdown-link-hover-bg:         #f5f5f5 !default;
-$dropdown-link-hover-bg:         $cyan !default;
+$dropdown-link-hover-bg:         $black !default;
 
 // //** Active dropdown menu item text color.
 // $dropdown-link-active-color:     $component-active-color !default;
@@ -496,23 +496,23 @@ $nav-link-padding:                          7px 7px !default;
 // //##
 
 // $pagination-color:                     $link-color !default;
-// $pagination-color:                     $brand-primary !default;
+$pagination-color:                     $white !default;
 // $pagination-bg:                        #fff !default;
 $pagination-bg:                        $black !default;
 // $pagination-border:                    #ddd !default;
 $pagination-border:                    $cyan !default;
 
 // $pagination-hover-color:               $link-hover-color !default;
-$pagination-hover-color:               $black !default;
+$pagination-hover-color:               $pink !default;
 // $pagination-hover-bg:                  $gray-lighter !default;
-$pagination-hover-bg:                  $pink !default;
+$pagination-hover-bg:                  $black !default;
 // $pagination-hover-border:              #ddd !default;
 $pagination-hover-border:              $cyan !default;
 
 // $pagination-active-color:              #fff !default;
 $pagination-active-color:              lighten($black, 25%) !default;
 // $pagination-active-bg:                 $brand-primary !default;
-$pagination-active-bg:                 $pink !default;
+$pagination-active-bg:                 $black !default;
 // $pagination-active-border:             $brand-primary !default;
 $pagination-active-border:             $cyan !default;
 

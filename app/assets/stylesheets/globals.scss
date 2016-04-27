@@ -20,6 +20,12 @@
   height: 30px;
 }
 
+.so-centered {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
 .horizontal-bar-black {
   @include horizontal-bar-dimensions();
   background: $charcoal-black;
@@ -63,7 +69,7 @@ footer {
 }
 
 .header {
-  margin: 20px 0 80px;
+  margin: 70px 0 70px 0;
 }
 
 .add-btn {
@@ -97,10 +103,10 @@ footer {
   &-title {
     position: absolute;
     top: 210px;
-    color: $black;
     left: 0;
     right: 0;
     margin: 0 auto;
+    color: $black;
     max-width: 90%
   }
 
@@ -228,6 +234,13 @@ a.label-tag:focus {
   }
 }
 
+.search {
+  width: 600px;
+  // display: block;
+  // margin-left: auto;
+  // margin-right: auto;
+}
+
 #search-field,
 #search-btn {
   color: $white;
@@ -271,8 +284,7 @@ textarea:hover,
 
 input[type="submit"]:hover,
 .inputfile:hover + label,
-.inputfile + label:hover,
-.btn-default:hover {
+.inputfile + label:hover {
   color: $white;
   background: $cyan;
 
