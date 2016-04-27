@@ -2,7 +2,7 @@
   <span class="fa fa-chevron-left">&nbsp;&nbsp;&nbsp;</span>Back to all articles
 <% end %><br /><br />
 
-<h2 class="panel-title-no-margins">
+<h2 class="no-margins">
   <%= @article.name %>
   <% if can? :update, @article %>
     <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-default' %>

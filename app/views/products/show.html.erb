@@ -11,7 +11,7 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 class="panel-title-no-margins">
+        <h2 class="no-margins">
           <%= @product.name %>
         </h2>
         <% if can? :update, @product %>
@@ -28,12 +28,12 @@
         <h4>Created</h4>
         <p><%= local_time_ago(@product.created_at) %></p>
         
-        <h3 class="panel-title-no-margins">Categories</h3>
+        <h3 class="no-margins">Categories</h3>
         <% @product.categories.each do |category| %>
           <%= render partial: 'categories/category_link', locals: { category: category } %>
         <% end %>
             
-        <h3 class="panel-title-no-margins">Tags</h3>
+        <h3 class="no-margins">Tags</h3>
         <%= render @product.tags.order(name: :asc) %>
         
       </div>
