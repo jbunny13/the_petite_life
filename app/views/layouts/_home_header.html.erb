@@ -40,13 +40,13 @@
       if ( scrollTop > 32 && arrowShown ) {
         arrowShown = false;
         $scrollDown.toggleClass('fadeOut', !arrowShown);
-        $scrollDown.toggleClass('bounce', arrowShown);
+        $scrollDown.toggleClass('fadeInUp', arrowShown);
         $scrollDown.css({ 'display': 'none' })
         console.log('hello arrow')
       } else if (scrollTop <= 32 && !arrowShown) {
         arrowShown = true;
         $scrollDown.toggleClass('fadeOut', !arrowShown);
-        $scrollDown.toggleClass('bounce', arrowShown);
+        $scrollDown.toggleClass('fadeInUp', arrowShown);
         $scrollDown.css({ 'display': 'block' })
         console.log('goodbye arrow');
       }
