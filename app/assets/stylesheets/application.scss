@@ -1,11 +1,12 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import "animate";
 @import "bootstrap_variables";
 @import "bootstrap";
+@import "bootstrap_overrides";
 @import "select2";
 @import "select2-bootstrap";
 @import "redactor-rails/css/redactor";
-@import "bootstrap_overrides";
 @import "globals";
 @import "forms";
