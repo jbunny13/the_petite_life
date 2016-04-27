@@ -15,30 +15,16 @@
 
 .select2-container--bootstrap .select2-selection {
   border-radius: 0;
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
-  transition: all 0.30s ease-in-out;
+  @include transition(all 0.5s ease);
   outline: none;
   border: 1px solid $cyan;
 
   &:hover {
-    -webkit-box-shadow: 0 0 5px $pink;
-    -moz-box-shadow: 0 0 5px $pink;
-    -ms-box-shadow: 0 0 5px $pink;
-    -o-box-shadow: 0 0 5px $pink;
-    box-shadow: 0 0 5px $pink;
-    border: 1px solid $pink;
+    @include box-shadow(0 0 5px $cyan);
   }
 
   &:focus {
-    -webkit-box-shadow: 0 0 5px $cyan;
-    -moz-box-shadow: 0 0 5px $cyan;
-    -ms-box-shadow: 0 0 5px $cyan;
-    -o-box-shadow: 0 0 5px $cyan;
-    box-shadow: 0 0 5px $cyan;
-    border: 1px solid $cyan;
+    @include box-shadow(0 0 5px $pink);
   }
 }
 

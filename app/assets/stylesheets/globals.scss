@@ -1,3 +1,18 @@
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin box-shadow($box-shadow) {
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+  -ms-box-shadow: $box-shadow;
+  -o-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
 footer {
   margin-top: 80px;
   color: $black;
@@ -39,6 +54,8 @@ footer {
   line-height: 1.42857143;
   background-color: $white;
   padding: 0 10px;
+  border: 1px solid $pink;
+  @include box-shadow(0 0 3px $pink);
 
   &-image-container {
     padding: 10px 0;
@@ -70,11 +87,7 @@ footer {
   }
 
   &-action-icons {
-    -webkit-transition: opacity 0.5s ease;
-    -moz-transition: opacity 0.5s ease;
-    -ms-transition: opacity 0.5s ease;      
-    -o-transition: opacity 0.5s ease;
-    transition: opacity 0.5s ease;      
+    @include transition(opacity 0.5s ease);
     opacity: 0;
     position: absolute;
     bottom: 10px;
@@ -88,13 +101,36 @@ footer {
     .card-action-icons {
       opacity: 1;
     }
-    -webkit-box-shadow: 0 0 5px $cyan;
-    -moz-box-shadow: 0 0 5px $cyan;
-    -ms-box-shadow: 0 0 5px $cyan;
-    -o-box-shadow: 0 0 5px $cyan;
-    box-shadow: 0 0 5px $cyan;
+    @include box-shadow(0 0 5px $cyan);
     border: 1px solid $cyan;
   }  
+}
+
+.fw-normal {
+  font-weight: normal;
+}
+
+.label-tag {
+  line-height: 1.1;
+  background-color: $cyan;
+  display: inline-block;
+  max-width: 100%;
+  margin: 4px 4px 0px 0px;
+  font-size: 83%;
+  font-weight: bold;
+  color: $white;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.15em;
+  padding: 5px;
+}
+
+a.label-tag:hover,
+a.label-tag:focus {
+  color: $white;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #redactor-modal-box {
@@ -116,11 +152,7 @@ footer {
 }
 
 #redactor-droparea {
-  -webkit-box-shadow: 0 0 3px $pink;
-  -moz-box-shadow: 0 0 3px $pink;
-  -ms-box-shadow: 0 0 3px $pink;
-  -o-box-shadow: 0 0 3px $pink;
-  box-shadow: 0 0 3px $pink;
+  @include box-shadow(0 0 3px $pink);
   border: 1px solid $pink;
   padding: 5%;
 }
@@ -182,11 +214,7 @@ footer {
 #search-btn:hover {
   color: $white;
   background-color: $black;
-  -webkit-box-shadow: 0 0 5px $cyan;
-  -moz-box-shadow: 0 0 5px $cyan;
-  -ms-box-shadow: 0 0 5px $cyan;
-  -o-box-shadow: 0 0 5px $cyan;
-  box-shadow: 0 0 5px $cyan;
+  @include box-shadow(0 0 5px $cyan);
   border: 1px solid $cyan;
 }
 
@@ -197,11 +225,7 @@ input[type="password"],
 textarea,
 .redactor-box,
 .inputfile + label {
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
-  transition: all 0.30s ease-in-out;
+  @include transition(all 0.5s ease-in-out);
   outline: none;
   border: 1px solid $cyan;
 }
@@ -215,11 +239,7 @@ textarea:hover,
 .redactor-box:hover,
 .inputfile:hover + label,
 .inputfile + label:hover {
-  -webkit-box-shadow: 0 0 5px $pink;
-  -moz-box-shadow: 0 0 5px $pink;
-  -ms-box-shadow: 0 0 5px $pink;
-  -o-box-shadow: 0 0 5px $pink;
-  box-shadow: 0 0 5px $pink;
+  @include box-shadow(0 0 5px $pink);
   border: 1px solid $pink;
 }
 
@@ -245,10 +265,6 @@ textarea:focus,
 .inputfile:focus + label,
 .inputfile + label:focus,
 .btn-default:hover {
-  -webkit-box-shadow: 0 0 5px $cyan;
-  -moz-box-shadow: 0 0 5px $cyan;
-  -ms-box-shadow: 0 0 5px $cyan;
-  -o-box-shadow: 0 0 5px $cyan;
-  box-shadow: 0 0 5px $cyan;
+  @include box-shadow(0 0 5px $cyan);
   border: 1px solid $cyan;
 }
