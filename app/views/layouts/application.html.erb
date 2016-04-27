@@ -16,8 +16,11 @@
     <% else %>
       <%= render 'layouts/header' %>
     <% end %>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+    <div class="container">
+      <%= render 'layouts/messages' %>
+      <%= render 'layouts/search' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
