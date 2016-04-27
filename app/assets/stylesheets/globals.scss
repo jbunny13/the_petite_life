@@ -13,10 +13,35 @@
   -o-box-shadow: $box-shadow;
   box-shadow: $box-shadow;
 }
+
+@mixin horizontal-bar-dimensions {
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
+
+.horizontal-bar-black {
+  @include horizontal-bar-dimensions();
+  background: $charcoal-black;
+  position: absolute;
+  top: 1000px;
+}
+
+.horizontal-bar-cyan {
+  @include horizontal-bar-dimensions();
+  background: $cyan;
+  position: absolute;
+  top: 1000px;
+}
+
+.horizontal-bar-pink {
+  @include horizontal-bar-dimensions();
+  background: $pink;
+}
+
 footer {
-  margin-top: 80px;
+  margin-top: 4%;
   color: $black;
-  text-shadow: 0 0.5px 0.5px $pink;
   h4 {
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
@@ -24,6 +49,7 @@ footer {
   a { 
     color: $gray; 
     text-shadow: none;
+    font-size: 0.9em;
   }
 }
 
