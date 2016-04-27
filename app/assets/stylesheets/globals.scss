@@ -65,6 +65,22 @@ body {
   -webkit-transform: translateX(-50%);
 }
 
+.navbar {
+  z-index: 2000;
+
+  &.animated {
+    @include animation(0.6s, 0.1s, 1);
+  }
+
+  &.navbar-home {
+    display: none;
+
+    &.animated {
+      @include animation(1s, 0.1s, 1);
+    }    
+  }
+}
+
 .banner {
   position: absolute;
   right: 0;
@@ -94,6 +110,12 @@ body {
       @include animation(2s, 0.8s, 1);
     }
   }
+
+  &-nav {
+  height: 270px;
+  }
+}
+
 }
 
 .horizontal-bar-black {

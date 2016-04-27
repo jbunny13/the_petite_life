@@ -1,0 +1,58 @@
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-home scrolled animated">
+  <div class="container-fluid">
+    <%= render 'layouts/nav_header' %>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse">
+      <%= render 'layouts/nav_links' %>
+      <%= render 'layouts/signup_login' %>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<script>
+  $(document).ready(function() {
+    var fixedNavShown = false;
+    var $navBar = $('.navbar-home');
+    var $window = $(window);
+    var arrowShown = true;
+    var $scrollDown = $('.scroll-down');
+
+    var handleScroll = function() {
+      var scrollTop = $window.scrollTop();
+
+      if ( scrollTop > 270 && !fixedNavShown ) {
+        fixedNavShown = true;
+        $navBar.toggleClass('fadeInDown', fixedNavShown);
+        $navBar.toggleClass('fadeOutUp', !fixedNavShown);
+        $navBar.css({ 'display': 'block' })
+        console.log('hello nav')
+      } else if ( scrollTop <= 270 && fixedNavShown ) {
+        fixedNavShown = false;
+        $navBar.toggleClass('fadeInDown', fixedNavShown);
+        $navBar.toggleClass('fadeOutUp', !fixedNavShown);
+        console.log('goodbye nav');
+      }
+    }
+
+     var scrollArrow = function() {
+      var scrollTop = $window.scrollTop();
+
+      if ( scrollTop > 32 && arrowShown ) {
+        arrowShown = false;
+        $scrollDown.toggleClass('fadeOut', !arrowShown);
+        $scrollDown.toggleClass('bounce', arrowShown);
+        $scrollDown.css({ 'display': 'none' })
+        console.log('hello arrow')
+      } else if (scrollTop <= 32 && !arrowShown) {
+        arrowShown = true;
+        $scrollDown.toggleClass('fadeOut', !arrowShown);
+        $scrollDown.toggleClass('bounce', arrowShown);
+        $scrollDown.css({ 'display': 'block' })
+        console.log('goodbye arrow');
+      }
+    }
+
+    $(window).on('scroll', _.throttle(handleScroll, 100));
+    $(window).on('scroll', _.throttle(scrollArrow, 100));
+  });
+</script>
