@@ -1,0 +1,118 @@
+// primary nav: black text logo on white bg
+.navbar {
+  z-index: 2000;
+  @include box-shadow(0px 1px 4px 0px $cyan);
+
+  &.animated {
+    @include animation(0.6s, 0.1s, 1);
+  }
+
+  &-fixed-top {
+    padding: 3px 5px 3px 13px; 
+  }
+
+  &-header {
+    padding-right: 10px;
+  }
+
+  &-brand {
+    font-size: 40px;
+  }
+
+  &-brand-logo {
+    background: url('tpl-logo-black-small-lotus-365x70.png') no-repeat;
+    width: 365px;
+    height: 70px;
+
+    &-hover-preload {
+      background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat -9999px -9999px;
+    }
+  }
+
+  &-toggle {
+    z-index: 3;
+    background-color: $black;
+  }
+
+  .dropdown.btn-group {
+    min-width: 100%;
+    right: 5px;
+  }
+}
+
+// nav links
+.navbar,
+.navbar-nav > li > a,
+.navbar-btn.navbar-right > div > a,
+#sign-in-sign-up > li > a {
+  @include transition(all 0.5s ease-in-out);
+}
+
+// when nav is collapsed and hamburger nav is in use
+.navbar-collapse.collapse.in {
+  max-height: none;
+  overflow: visible;
+
+  .dropdown .dropdown-menu {
+    @include transition(all 0.5s ease-in-out);
+    min-width: auto;
+    float: none;
+    left: auto;
+    right: 15px;
+    margin: -1px 0 0;
+    border: 1px solid $cyan;
+
+    &#sign-in-sign-up {
+      min-width: 100%;
+      left: 0;
+      right: initial;
+    }
+  }
+
+  .dropdown.btn-group {
+    right: -10px;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    @include box-shadow(0 0 5px $cyan);
+  }
+}
+
+// scrolled nav: white text logo with black bg
+.navbar.scrolled {
+  background: $black;
+  @include box-shadow(0px 1px 4px 0px $cyan);
+  
+  .navbar-brand-logo {
+    background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
+  }
+
+  &.navbar-inverse .navbar-nav > li > a {
+    color: $white;
+    
+    &:hover,
+    &:focus {
+      color: $pink;
+    }
+  }
+
+  &.navbar-inverse .navbar-nav > .active > a {
+    color: $cyan;
+
+    &:hover,
+    &:focus,
+    &:visited {
+      color: $cyan;
+    }
+  }
+}
+
+// home page nav: uses scrolled nav (white text logo on black bg)
+.navbar-home {
+  display: none;
+
+  &.animated {
+    @include animation(1s, 0.1s, 1);
+  }    
+}

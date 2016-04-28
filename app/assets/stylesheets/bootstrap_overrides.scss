@@ -1,10 +1,10 @@
-$cyan: #00e5e6;
-$black: #000000;
-$charcoal-black: #1e1e1e;
-$pink: #F300FF;
-$gray: #8c8c8c;
-$white: #ffffff;
-$almost-white: #f5f5f5;
+// $cyan: #00e5e6;
+// $black: #000000;
+// $charcoal-black: #1e1e1e;
+// $pink: #F300FF;
+// $gray: #8c8c8c;
+// $white: #ffffff;
+// $almost-white: #f5f5f5;
 
 .cyan-text { color: $cyan }
 .black-text { color: $black }
@@ -75,55 +75,6 @@ h4,
 h5,
 h6 {
   font-family: "Montserrat";
-}
-
-.navbar-fixed-top {
-  padding: 3px 5px 3px 10px; 
-}
-
-.navbar-brand {
-  font-size: 40px;
-}
-
-.navbar-brand-logo {
-  background: url('tpl-logo-black-small-lotus-365x70.png') no-repeat;
-  width: 365px;
-  height: 70px;
-}
-
-.preload-hover-navbar-brand-logo {
-  background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat -9999px -9999px;
-}
-
-.navbar,
-.black-text,
-.navbar-inverse .navbar-nav > li > a {
-  @include transition(all 0.5s ease-in-out);
-}
-
-.navbar.scrolled {
-  background: $black;
-  @include box-shadow(0px 1px 4px 0px $cyan);
-  
-  .navbar-brand-logo {
-    background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
-  }
-
-  &.navbar-inverse .navbar-nav > li > a {
-    color: $white;
-    &:hover {
-      color: $cyan;
-    }
-  }
-
-  &.navbar-inverse .navbar-nav > .active > a {
-    color: $pink;
-  }
-}
-
-.navbar-toggle {
-  z-index: 3;
-  background-color: $black;
 }
 
 .btn-default {
