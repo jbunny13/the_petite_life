@@ -40,6 +40,9 @@
   animation-iteration-count: $animation-iteration-count;
 }
 
+
+
+
 body {
   padding-top: 4%;
   color: $black;
@@ -48,13 +51,13 @@ body {
 }
 
 .visually-hidden {
-  position: absolute !important;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
-  padding:0 !important;
-  border:0 !important;
-  height: 1px !important; 
-  width: 1px !important; 
+  padding:0;
+  border:0;
+  height: 1px; 
+  width: 1px; 
   overflow: hidden;
 }
 
@@ -135,6 +138,7 @@ body {
 .horizontal-bar-pink {
   @include horizontal-bar-dimensions();
   background: $pink;
+  position: absolute;
 }
 
 .push-content-down {
@@ -189,8 +193,8 @@ footer {
   line-height: 1.42857143;
   background-color: $white;
   padding: 0 10px;
-  border: 1px solid $pink;
-  @include box-shadow(0 0 3px $pink);
+  border: 1px solid $cyan;
+  @include box-shadow(0 0 3px $cyan);
 
   &-image-container {
     padding: 10px 0;
@@ -236,8 +240,8 @@ footer {
     .card-action-icons {
       opacity: 1;
     }
-    @include box-shadow(0 0 5px $cyan);
-    border: 1px solid $cyan;
+    @include box-shadow(0 0 5px $pink);
+    border: 1px solid $pink;
   }  
 }
 
@@ -273,7 +277,7 @@ a.label-tag:focus {
 }
 
 #redactor-modal {
-  width: 30% !important;
+  width: 30%;
   color: $white;
   background: $black;
 
@@ -287,8 +291,8 @@ a.label-tag:focus {
 }
 
 #redactor-droparea {
-  @include box-shadow(0 0 3px $pink);
-  border: 1px solid $pink;
+  @include box-shadow(0 0 3px $cyan);
+  border: 1px solid $cyan;
   padding: 5%;
 }
 
@@ -335,13 +339,6 @@ a.label-tag:focus {
       color: $pink;
     }
   }
-}
-
-.search {
-  width: 600px;
-  // display: block;
-  // margin-left: auto;
-  // margin-right: auto;
 }
 
 #search-field,
