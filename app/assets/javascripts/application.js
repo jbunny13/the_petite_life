@@ -9,4 +9,3 @@
 //= require select2-full
 //= require turbolinks
 //= require redactor-rails
-//= require redactor-rails/plugins/table
