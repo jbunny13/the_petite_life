@@ -1,7 +1,7 @@
-<div class="form-container">
-  <h1>Editing Resource</h1>
-  <%= render 'form' %>
-  <br />
-  <%= link_to 'Show this reference', @reference %> | 
-  <%= link_to 'Back to all references', references_path %>
+<% title "Edit #{@reference.name}" %>
+
+<div class="text-center header-short">
+  <h1>Edit Resource</h1>
+  <%= render 'shared/icon_show', path: @reference %>
 </div>
+<%= render 'form' %>

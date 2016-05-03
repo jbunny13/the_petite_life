@@ -1,12 +1,32 @@
-<h4><%= link_to reference.name, reference.uri, target: 'blank' %></h4>
+<div class="col-sm-6 col-md-3">
+  <div class="text-center">
+    <div class="shadows card-resource">
+      <div class="card-resource-title">
+        <h4><%= link_to reference.name, reference.uri, target: 'blank' %></h4>
+      </div>
 
-[
-  <%= link_to 'Details', reference_path(reference) %>
-  <% if can? :update, reference %>
-    | <%= link_to 'Edit', edit_reference_path(reference) %>
-  <% end %> 
-  
-  <% if can? :destroy, reference %>
-     | <%= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-]
+      <div class="card-resource-description">
+        <p><%= reference.description %></p>
+      </div>
+      
+      <div class="card-action-icons">
+        <%= link_to reference_path(reference) do %>
+          <%= render 'shared/icon_info' %>
+        <% end %>
+        <div class="spacing"></div>
+        <% if can? :update, reference %>
+          <%= link_to edit_reference_path(reference) do %>
+            <%= render 'shared/icon_edit' %>
+          <% end %>
+        <% end %>
+        <div class="spacing"></div>
+        <% if can? :destroy, reference %>
+          <%= link_to reference, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= render 'shared/icon_delete' %>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
