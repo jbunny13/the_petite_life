@@ -2,7 +2,7 @@
 <div class="spacing"></div>
 <b><%= review.user.full_name %></b>
 <em><%= local_time_ago(review.created_at) %></em>
-
+<br><br>
 <div class="text-justify"><%= simple_format(review.content) %></div>
 <% if can? :update, review %>
   <%= link_to edit_product_review_path(@product, review) do %>

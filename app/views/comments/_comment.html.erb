@@ -1,6 +1,6 @@
 <b><%= comment.user.full_name %></b>
 <em><%= local_time_ago(comment.created_at) %></em>
-
+<br><br>
 <div class="text-justify"><%= simple_format(comment.content) %></div>
 <% if can? :update, comment %>
   <%= link_to edit_article_comment_path(@article, comment) do %>
