@@ -1,0 +1,4 @@
+<div class="field">
+  <h3><%= f.label :tag_list, 'Tags' %></h3>
+  <%= f.select :tag_list, options_for_select(ActsAsTaggableOn::Tag.all.order(name: :asc).pluck(:name), resource.tag_list), {}, { multiple: true, class: 'taggable' } %>
+</div>
