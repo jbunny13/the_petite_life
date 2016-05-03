@@ -1,27 +1,9 @@
 <%= form_for([@article, @comment], html: { role: 'form'}) do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'forms/errors', resource: @comment, resource_name: 'comment' %>
   
   <div class="form-group">
-
-    <div class="field">
-      <p>User: <%= current_user.full_name %></p>
-    </div>
-
-    <div class="field">
-      <%= f.label :content %><br>
-      <%= f.text_area :content, autofocus: true, class: 'form-control input-lg', rows: 5 %><br />
-    </div>
-    
-    <%= f.submit 'Save', data: { disable_with: 'Please wait' }, class: 'btn btn-default' %>
+    <%= render 'forms/created_by', f: f, field_label: 'Added By', resource: @comment %>
+    <%= render 'forms/content', f: f, field_label: 'Comment' %>
+    <%= render 'forms/submit', f: f, label: 'Save' %>
   </div>
 <% end %>

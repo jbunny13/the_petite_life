@@ -1,6 +1,7 @@
-<div class="form-container">
+<% title 'New Comment' %>
+
+<div class="text-center header-short">
   <h1>New Comment</h1>
-  <%= render 'form' %>
-  <br />
-  <%= link_to 'Back to article', article_path(@article) %>
+  <%= render 'shared/icon_show', path: article_path(@article) %>
 </div>
+<%= render 'form' %>
