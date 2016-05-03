@@ -21,12 +21,12 @@
   }
 
   &-brand-logo {
-    background: url('tpl-logo-black-small-lotus-365x70.png') no-repeat;
+    background: asset-url('tpl-logo-black-small-lotus-365x70.png') no-repeat;
     width: 365px;
     height: 70px;
 
     &-hover-preload {
-      background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat -9999px -9999px;
+      background: asset-url('tpl-logo-white-small-lotus-365x70.png') no-repeat -9999px -9999px;
     }
   }
 
@@ -68,7 +68,7 @@
   @include box-shadow-glow(0px 1px 4px 0px $cyan);
   
   .navbar-brand-logo {
-    background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
+    background: asset-url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
   }
 
   &.navbar-inverse .navbar-nav > li > a {
