@@ -6,12 +6,29 @@
   transition: $transition;
 }
 
-@mixin box-shadow($box-shadow) {
-  -webkit-box-shadow: $box-shadow;
-  -moz-box-shadow: $box-shadow;
-  -ms-box-shadow: $box-shadow;
-  -o-box-shadow: $box-shadow;
-  box-shadow: $box-shadow;
+@mixin box-shadow($box-shadow-first, $box-shadow-second) {
+  -webkit-box-shadow: $box-shadow-first, $box-shadow-second;
+  -moz-box-shadow: $box-shadow-first, $box-shadow-second;
+  -ms-box-shadow: $box-shadow-first, $box-shadow-second;
+  -o-box-shadow: $box-shadow-first, $box-shadow-second;
+  box-shadow: $box-shadow-first, $box-shadow-second;
+}
+
+@mixin shadows {
+  @include box-shadow(0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12));
+  border: 1px solid $black;
+}
+
+@mixin shadows-hover {
+  @include box-shadow(0 5px 11px 0 rgba(0,0,0,0.32),0 4px 15px 0 rgba(0,0,0,0.24));
+}
+
+@mixin text-shadow {
+  text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.16);
+}
+
+@mixin text-shadow-hover {
+  text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.32);
 }
 
 @mixin horizontal-bar-dimensions {
@@ -40,14 +57,58 @@
   animation-iteration-count: $animation-iteration-count;
 }
 
+.cyan-text { color: $cyan }
+.black-text { color: $black }
+.pink-text { color: $pink }
+.white-text { color: $white }
 
-
+html {
+  position: relative;
+  min-height: 100%;
+}
 
 body {
-  padding-top: 4%;
   color: $black;
   font-size: 16px;
   height: 100%;
+  margin-bottom: 120px;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding-top: 5%;
+  width: 100%;
+  height: 120px;
+  color: $black;
+  h4 {
+    font-family: "Lato";
+  }
+
+  a { 
+    color: $gray; 
+    text-shadow: none;
+    font-size: 0.9em;
+  }
+}
+
+a {
+  @include transition(all 0.8s ease-in-out);
+}
+
+
+
+#main-content {
+  margin-top: 120px;
+}
+
+.header {
+  margin: 30px 0 0 0;
+
+  &-short {
+    margin: 0 0 40px 0;    
+  }
 }
 
 .visually-hidden {
@@ -117,27 +178,20 @@ body {
   }
 
   &.animated {
-    @include animation(2s, 2s, 1);
+    @include animation(2s, 1s, 1);
   }
-}
-
-.horizontal-bar-black {
-  @include horizontal-bar-dimensions();
-  background: $charcoal-black;
-  position: absolute;
-  top: 1000px;
 }
 
 .horizontal-bar-cyan {
   @include horizontal-bar-dimensions();
-  background: $cyan;
+  background-color: $cyan;
   position: absolute;
   top: 1000px;
 }
 
 .horizontal-bar-pink {
   @include horizontal-bar-dimensions();
-  background: $pink;
+  background-color: $pink;
   position: absolute;
 }
 
@@ -152,20 +206,6 @@ body {
   max-width: 100%;
 }
 
-footer {
-  margin-top: 4%;
-  color: $black;
-  h4 {
-    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-
-  a { 
-    color: $gray; 
-    text-shadow: none;
-    font-size: 0.9em;
-  }
-}
-
 .no-margins {
   margin-top: 0;
   margin-bottom: 0;
@@ -173,15 +213,31 @@ footer {
 
 .behave-your-width-img {
   max-width: 100%;
+  @include shadows;
+  border: 0;
 }
 
-.header {
-  margin: 70px 0 70px 0;
+.spacer-row {
+  margin-bottom: 15px;
 }
 
-.add-btn {
-  font-weight: bold;
-  margin-bottom: 10px;
+.shadows {
+  @include shadows;
+
+  &:hover {
+    @include shadows-hover;
+  }
+}
+
+.shadow-box {
+  @extend .shadows;
+  border: 1px solid $white;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .card {
@@ -193,8 +249,7 @@ footer {
   line-height: 1.42857143;
   background-color: $white;
   padding: 0 10px;
-  border: 1px solid $cyan;
-  @include box-shadow(0 0 3px $cyan);
+  border: 1px solid $white;
 
   &-image-container {
     padding: 10px 0;
@@ -213,8 +268,7 @@ footer {
     left: 0;
     right: 0;
     margin: 0 auto;
-    color: $black;
-    max-width: 90%
+    max-width: 100%;
   }
 
   &-rating-container {
@@ -226,183 +280,206 @@ footer {
   }
 
   &-action-icons {
-    @include transition(opacity 0.5s ease-in-out);
+    @include transition(opacity 0.5s ease);
     opacity: 0;
     position: absolute;
     bottom: 10px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    font-size: 80%;
   }
 
   &:hover {
     .card-action-icons {
       opacity: 1;
     }
-    @include box-shadow(0 0 5px $pink);
-    border: 1px solid $pink;
-  }  
+  }
+
+  &-resource {
+    @extend .card;
+    height: 230px;
+
+    &-title {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    &-description {
+      position: absolute;
+      top: 90px;
+      left: 5px;
+      right: 5px;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+  }
 }
 
-.fw-normal {
-  font-weight: normal;
+.taggable {
+  width: 100%;
 }
 
 .label-tag {
+  font-family: "Lato";
   line-height: 1.1;
   background-color: $cyan;
   display: inline-block;
   max-width: 100%;
   margin: 4px 4px 0px 0px;
-  font-size: 83%;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: normal;
   color: $white;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: 0.15em;
+  border-radius: 0;
   padding: 5px;
-}
-
-a.label-tag:hover,
-a.label-tag:focus {
-  color: $white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#redactor-modal-box {
-  text-align: center;
-}
-
-#redactor-modal {
-  width: 30%;
-  color: $white;
-  background: $black;
-
-  section {
-    padding: 5%;
-  }
-
-  header {
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-}
-
-#redactor-droparea {
-  @include box-shadow(0 0 3px $cyan);
   border: 1px solid $cyan;
-  padding: 5%;
-}
 
-#redactor-droparea-placeholder {
-  &:before {
-    font-family: FontAwesome;
-    font-size: 300%;
-    content: "\f0ee";
-  }
-  
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: normal;
-  color: $white;
-  background: $black;
-}
-
-.inputfile {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-
-  + label {
-    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: normal;
-  }
-
-  + label[for="article_image"],
-  + label[for="product_image"] {
-    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: normal;
-    color: $white;
-    background: $black;
-    text-align: center;
-    width: 15%;
-    padding: 0.5%;
+  &-big {
+    @extend .label-tag;
+    font-size: 32px;
 
     &:hover {
-      color: $pink;
+      @include shadows;
+      border: 1px solid $cyan;
     }
   }
 }
 
-#search-field,
-#search-btn {
-  color: $white;
-  background-color: $black;
-}
- 
-#search-field:focus,
-#search-field:hover,
-#search-btn:focus,
-#search-btn:hover {
-  color: $white;
-  background-color: $black;
-  @include box-shadow(0 0 5px $cyan);
-  border: 1px solid $cyan;
+a.label-tag {
+  &:visited,
+  &:hover,
+  &:focus {
+    color: $white;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
-input,
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea,
-.redactor-box,
-.inputfile + label {
-  @include transition(all 0.5s ease-in-out);
-  outline: none;
-  border: 1px solid $cyan;
+.label-category {
+  font-family: "Lato";
+  line-height: 1.1;
+  background-color: $pink;
+  display: inline-block;
+  max-width: 100%;
+  margin: 4px 4px 0px 0px;
+  font-size: 16px;
+  font-weight: normal;
+  color: $white;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  padding: 5px;
+  border: 1px solid $pink;
+  @include transition(all 0.5s ease);
+
+  &-checkbox {
+    @extend .label-category;
+    max-width: none;
+    width: 100px;
+    text-align: left;
+  }
 }
 
-input:hover,
-input[type="text"]:hover,
-input[type="email"]:hover,
-input[type="password"]:hover,
-input[type="submit"]:hover,
-textarea:hover,
-.redactor-box:hover,
-.inputfile:hover + label,
-.inputfile + label:hover {
-  @include box-shadow(0 0 5px $pink);
+a.label-category {
+  &:visited,
+  &:hover,
+  &:focus {
+    color: $white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.search,
+.btn:not(.btn-search),
+.btn-default:not(.btn-search),
+.dropdown .dropdown-menu,
+.pagination > li > a {
+  font-size: 16px;
+  @include transition(all 0.5s ease);
+  color: $white;
+  background-color: $black;
+
+  &.active,
+  &:active,
+  &:focus,
+  &:hover,
+  #account-menu:hover,
+  .dropdown:hover .dropdown-menu {
+    color: $pink;
+  }
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.sort {
+  &-menu {
+    min-width: 123px;
+  }
+
+  &-dropdown {
+    min-width: 123px;
+    margin-top: 0;
+  }
+}
+
+.pink-glow {
+  @include box-shadow-glow(0px 0px 3px $pink);
   border: 1px solid $pink;
 }
 
-input[type="submit"]:hover,
-.inputfile:hover + label,
-.inputfile + label:hover {
-  color: $white;
-  background: $cyan;
+.cyan-glow {
+  @include box-shadow-glow(0px 0px 3px $cyan);
+  border: 1px solid $cyan;
 
-  i,
-  span,
-  a { color: $white }
+  &:hover {
+    @include box-shadow-glow(0px 0px 6px $cyan);
+  }
 }
 
-input:focus,
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="submit"]:focus,
-textarea:focus,
-.redactor-box:focus,
-.inputfile:focus + label,
-.inputfile + label:focus,
-.btn-default:hover {
-  @include box-shadow(0 0 5px $cyan);
-  border: 1px solid $cyan;
+.padding-top-20 {
+  padding-top: 20px;
+}
+
+.pagination > li.active > a:hover {
+    cursor: not-allowed;
+  }
+
+.spacing {
+  display: inline-block;
+  width: 10px;
+}
+
+.btn-100 {
+  width: 100%;
+}
+
+.fa-lg {
+  line-height: 1.5em;
+}
+
+.fa.fa-link.fa-lg:before{
+  letter-spacing: 4px;
+}
+
+.fa.fa-folder-open.fa-lg:before {
+  letter-spacing: 1px;
+}
+
+.fa.fa-tag.fa-lg:before {
+  letter-spacing: 6px;
+}
+
+.pagination-info {
+  font-size: 14px;
+  line-height: 0;
 }

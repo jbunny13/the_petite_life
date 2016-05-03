@@ -1,36 +1,44 @@
-// $cyan: #00e5e6;
-// $black: #000000;
-// $charcoal-black: #1e1e1e;
-// $pink: #F300FF;
-// $gray: #8c8c8c;
-// $white: #ffffff;
-// $almost-white: #f5f5f5;
-
-.cyan-text { color: $cyan }
-.black-text { color: $black }
-.pink-text { color: $pink }
-.white-text { color: $white }
-
-.alert {
-  margin-bottom: 0;
-  margin-top: 30px;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+@mixin box-shadow-glow($box-shadow-glow) {
+  -webkit-box-shadow: $box-shadow-glow;
+  -moz-box-shadow: $box-shadow-glow;
+  -ms-box-shadow: $box-shadow-glow;
+  -o-box-shadow: $box-shadow-glow;
+  box-shadow: $box-shadow-glow;
 }
 
-.alert-error,
-.alert-alert,
-.alert-info,
-.alert-success,
-.alert-notice,
-.alert-warning,
-.alert-danger {
-  background-color: $white;
-  border-color: $cyan;
-  color: $black;
-  text-align: left;
-  font-weight: bold;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat";
+}
+
+label {
+  font-weight: normal;
+}
+
+.alert {
+  margin: 30px 15px 15px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  &-error,
+  &-alert,
+  &-info,
+  &-success,
+  &-notice,
+  &-warning,
+  &-danger {
+    background-color: $white;
+    border-color: $pink;
+    @include box-shadow-glow(0px 0px 5px $pink);
+    color: $black;
+    text-align: left;
+    font-weight: bold;
+  }
 }
 
 .close {
@@ -44,39 +52,14 @@
   margin-top: 20px;
 }
 
-a {
-  @include transition(all 0.5s ease-in-out);
-
-  &:focus {
-    color: $cyan;
-    text-decoration: none;
-  }
+.pagination {
+  margin: 15px 0;
 }
 
-@media (min-width: 800px) {
-  .dropdown .dropdown-menu {
-    @include transition(all 0.5s ease-in-out);
-    min-width: 100%;
-    margin: -1px 0 0;
-    border: 1px solid $cyan;
-  }
-  
-  .dropdown:hover .dropdown-menu {
-    display: block;
-    @include box-shadow(0 0 5px $cyan);
-  }
+.panel-default > .panel-heading {
+  color: $black;
 }
 
-.navbar,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Montserrat";
-}
-
-.btn-default {
-  font-size: .95em;
+hr {
+  border-top: 1px solid #9A9A9A;
 }

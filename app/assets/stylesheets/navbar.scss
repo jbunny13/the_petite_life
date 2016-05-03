@@ -1,7 +1,7 @@
 // primary nav: black text logo on white bg
 .navbar {
   z-index: 2000;
-  @include box-shadow(0px 1px 4px 0px $cyan);
+  @include box-shadow-glow(0px 1px 4px 0px $cyan);
 
   &.animated {
     @include animation(0.6s, 0.1s, 1);
@@ -16,6 +16,7 @@
   }
 
   &-brand {
+    font-family: "Montserrat";
     font-size: 40px;
   }
 
@@ -29,60 +30,42 @@
     }
   }
 
+  &-nav {
+    font-family: "Lato";
+    font-size: 18px;
+  }
+
   &-toggle {
     z-index: 3;
     background-color: $black;
   }
 
-  .dropdown.btn-group {
-    min-width: 100%;
-    right: 5px;
-  }
-}
-
-// nav links
-.navbar,
-.navbar-nav > li > a,
-.navbar-btn.navbar-right > div > a,
-#sign-in-sign-up > li > a {
-  @include transition(all 0.5s ease-in-out);
-}
-
-// when nav is collapsed and hamburger nav is in use
-.navbar-collapse.collapse.in {
-  max-height: none;
-  overflow: visible;
-
-  .dropdown .dropdown-menu {
-    @include transition(all 0.5s ease-in-out);
-    min-width: auto;
-    float: none;
-    left: auto;
-    right: 15px;
-    margin: -1px 0 0;
-    border: 1px solid $cyan;
-
-    &#sign-in-sign-up {
+  .dropdown {
+    
+    &.btn-group {
       min-width: 100%;
-      left: 0;
-      right: initial;
+      right: 5px;
     }
-  }
 
-  .dropdown.btn-group {
-    right: -10px;
-  }
+    .dropdown-menu {
+      min-width: 100%;
+      margin: -1px 0 0;
 
-  .dropdown:hover .dropdown-menu {
-    display: block;
-    @include box-shadow(0 0 5px $cyan);
+      &#account-logout-dropdown {
+        min-width: 100%;
+      }
+    }
+
+    &:hover .dropdown-menu {
+      display: block;
+    }
   }
 }
 
 // scrolled nav: white text logo with black bg
 .navbar.scrolled {
   background: $black;
-  @include box-shadow(0px 1px 4px 0px $cyan);
+  @include box-shadow-glow(0px 1px 4px 0px $cyan);
   
   .navbar-brand-logo {
     background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
@@ -105,6 +88,41 @@
     &:visited {
       color: $cyan;
     }
+  }
+}
+
+// nav links
+.navbar,
+.navbar-nav > li > a,
+.navbar-btn.navbar-right > div > a,
+#account-logout-dropdown > li > a {
+  @include transition(all 0.5s ease-in-out);
+}
+
+// when nav is collapsed and hamburger nav is in use
+.navbar-collapse.collapse.in {
+  max-height: none;
+  overflow: visible;
+
+  .navbar-btn.navbar-right {
+    float: right;
+  }
+
+  .dropdown.btn-group {
+    right: -15px;
+
+    #account-menu {
+      color: $white;
+      background: $black;
+    }
+  }
+
+  .dropdown-menu {
+    @include transition(all 0.5s ease-in-out);
+    min-width: auto;
+    left: initial;
+    right: 0;
+    margin: -1px 0 0;
   }
 }
 
