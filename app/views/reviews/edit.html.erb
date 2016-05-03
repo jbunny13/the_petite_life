@@ -1,6 +1,7 @@
-<div class="form-container">
-  <h1>Editing Review</h1>
-  <%= render 'form' %>
-  <br />
-  <%= link_to 'Back to product', product_path(@product) %>
+<% title 'Edit Review' %>
+
+<div class="text-center header-short">
+  <h1>Edit Review</h1>
+  <%= render 'shared/icon_show', path: product_path(@product) %>
 </div>
+<%= render 'form' %>

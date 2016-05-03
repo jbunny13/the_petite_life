@@ -1,40 +1,24 @@
 <%= form_for([@product, @review], html: { role: 'form'}) do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-      <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'forms/errors', resource: @review, resource_name: 'review' %>
   
   <div class="form-group">
+    <%= render 'forms/created_by', f: f, field_label: 'Added By', resource: @review %>
     <div class="field">
+      <h3>Rating</h3>
       <div id="star-rating" data-score="<%= @review.rating %>"></div>
     </div>
 
-    <div class="field">
-      <%= f.label :content %><br>
-      <%= f.text_area :content %>
-    </div>
-
-      <%= f.submit 'Save', data: { disable_with: 'Please wait' }, class: 'btn btn-default' %>
+    <%= render 'forms/content', f: f, field_label: 'Review' %>
+    <%= render 'forms/submit', f: f, label: 'Save' %>
   </div>
 <% end %>
 
 <script>
-  // Cache the node.
   $rating = $('#star-rating');
 
   $rating.raty({
-    // Initial score
     score: $rating.data('score'),
-    // Path to icon assets
     path: '',
-    // Name of input that will be created to store the new score
     scoreName: 'review[rating]'
   });
  </script>

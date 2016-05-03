@@ -1,39 +1,29 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="no-margins">Reviews</h3>
+<div class="shadow-box">
+  <div class="row spacer-row text-center">
+    <h2>Reviews</h2>
+    <div class="star-rating" data-score= <%= @product.average_rating %> ></div>
+    <p><em>(<%= pluralize(@product.reviews.length, "Review") %>)</em></p>
+    <div class="padding-top-20"></div>
+    <%= link_to new_product_review_path(@product), class: 'shadows btn btn-default' do %>
+      <i class="fa fa-plus fa-lg"></i>&nbsp; Review
+    <% end %>
   </div>
 
   <div class="panel-body">
-    <div class="star-rating" data-score= <%= @product.average_rating %> ></div>
-    <p><em>(<%= pluralize(@product.reviews.length, "Review") %>)</em></p>
-
-    <h4 class="panel-title">What do you think of <%= @product.name %>?</h4>
-    <p>Share your thoughts with the community.</p>
-
-    <%= link_to "Write a review", new_product_review_path(@product), class: 'btn btn-default' %>
-
-    <br />
     <hr>
-  
-    <div class="num_entries">
+    <div id="reviews">
+      <%= render @reviews %>
+    </div>
+    <br>
+
+    <div class="num_entries pagination-info text-center">
       <%= page_entries_info @reviews, remote: true %>
     </div>
 
-    <div class="paginate">
+    <div class="paginate text-center">
       <%= paginate @reviews, remote: true %>
-    </div>
-
-    <div id="reviews">
-      <%= render @reviews %>
-      <hr>
     </div>
   </div>
 </div>
 
-<script>
-$('.star-rating').raty({
-  path: '',
-  readOnly: true,
-  score: function() { return $(this).attr('data-score') }
-});
-</script>
+<%= render 'shared/star_rating_read_only' %>
