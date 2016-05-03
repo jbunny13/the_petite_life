@@ -1,6 +1,7 @@
-<h1>Editing Tag</h1>
+<% title "Edit #{@tag.name}" %>
 
+<div class="text-center header-short">
+  <h1>Edit Tag</h1>
+  <%= render 'shared/icon_show', path: @tag %>
+</div>
 <%= render 'form' %>
-
-<%= link_to 'Show', @tag %> |
-<%= link_to 'Back', tags_path %>
