@@ -299,9 +299,9 @@
       }
 
       if (this.opt.cancelPlace === 'left') {
-        this.self.prepend('&#160;').prepend(cancel);
+        this.self.prepend('').prepend(cancel);
       } else {
-        this.self.append('&#160;').append(cancel);
+        this.self.append('').append(cancel);
       }
 
       this.cancel = cancel;
@@ -328,7 +328,7 @@
         $('<' + this.opt.starType + ' />', attrs).appendTo(this);
 
         if (this.opt.space) {
-          this.self.append(i < this.opt.number ? '&#160;' : '');
+          this.self.append(i < this.opt.number ? '' : '');
         }
       }
 
