@@ -1,7 +1,7 @@
-<div class="form-container">
-  <h1>Editing Category</h1>
-  <%= render 'form' %>
-  <br />
-  <%= link_to 'Show this category', @category %> |
-  <%= link_to 'Back to all categories', categories_path %>
+<% title "Edit #{@category.name}" %>
+
+<div class="text-center header-short">
+  <h1>Edit Category</h1>
+  <%= render 'shared/icon_show', path: @category %>
 </div>
+<%= render 'form' %>

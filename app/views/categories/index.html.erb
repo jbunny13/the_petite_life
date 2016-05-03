@@ -1,55 +1,17 @@
-<center>
+<% title 'All Categories' %>
+
+<div class="row text-center header-short">
   <h1>All Categories</h1>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+  </div>
   <% if can? :create, Category %>
-    <p>
-      Looks like you can add a new category!<br />
-      <%= link_to 'Add new category', new_category_path, class:'btn btn-default' %><br />
-    </p>
+    <div class="col-xs-12 col-sm-6 col-md-1 col-md-offset-5">
+      <%= link_to new_category_path, class:'shadows btn btn-default pull-right' do %>
+        <i class="fa fa-plus fa-lg"></i>&nbsp; Category
+    <% end %>
+    </div>
   <% end %>
-
-  <h2><% @categories.each do |category| %>
-    <%= link_to category.name, category_path(category) %>&nbsp;&nbsp;
-  <% end %></h2>
-</center>
-
-<div class="container-fluid">
-  <h3>Articles</h3>
-  <div class="num_entries-articles">
-    <%= page_entries_info @articles, remote: true %>
-  </div>
-  <div class="paginate-articles">
-    <%= paginate @articles, param_name: 'article', remote: true %>
-    <br /><br />
-  </div>
-  <div id="articles">
-    <%= render @articles %>
-  </div>
 </div>
 
-<div class="container-fluid">
-  <h3>Products</h3>
-  <div class="num_entries-products">
-    <%= page_entries_info @products, remote: true %>
-  </div>
-  <div class="paginate-products">
-    <%= paginate @products, param_name: 'product', remote: true %>
-    <br /><br />
-  </div>
-  <div id="products">
-    <%= render @products %>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <h3>Resources</h3>
-  <div class="num_entries-references">
-    <%= page_entries_info @references, entry_name: 'resource', remote: true %>
-  </div>
-  <div class="paginate-references">
-    <%= paginate @references, param_name: 'resource', remote: true %>
-    <br /><br />
-  </div>
-  <div id="references">
-    <%= render @references %>
-  </div>
-</div>
+<%= render 'shared/category_tag' %>
+<%= render 'shared/star_rating_read_only' %>

@@ -9,3 +9,9 @@ $('.num_entries-products').html('<%= escape_javascript(page_entries_info(@produc
 $('#references').html('<%= escape_javascript render @references %>');
 $('.paginate-references').html('<%= escape_javascript(paginate(@references, param_name: 'resource', remote: true).to_s) %>');
 $('.num_entries-references').html('<%= escape_javascript(page_entries_info(@references, remote: true).to_s) %>');
+
+$('.star-rating').raty({
+  path: '',
+  readOnly: true,
+  score: function() { return $(this).attr('data-score') }
+});
