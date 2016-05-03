@@ -1,14 +1,12 @@
-<div class="container">
-  <div class="header row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-      <%= form_tag search_path, method: :get, html: { role: 'search' } do %>
-        <div class="input-group input-group-lg so-centered">
-          <%= text_field_tag :query, params[:query], id: 'search-field', class: 'form-control', placeholder: "What petite-friendly things are you looking for?", maxlength: 40 %>
-          <div class="input-group-btn">
-            <button type="submit" id="search-btn" class="btn btn-default"><span class="fa fa-search"></span></button>
-          </div>
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_tag search_path, method: :get, html: { role: 'search' } do %>
+      <div class="input-group input-group-lg shadows search">
+        <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: "What petite-friendly things are you looking for?", maxlength: 40 %>
+        <div class="input-group-btn">
+          <button type="submit" class="shadows btn btn-default btn-search"><span class="fa fa-search"></span></button>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

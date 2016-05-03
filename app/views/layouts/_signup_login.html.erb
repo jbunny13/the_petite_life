@@ -2,14 +2,14 @@
 <div class="navbar-btn navbar-right">
   <div class="dropdown btn-group">
     <% if user_signed_in? %>
-      <%= link_to edit_user_registration_path, class: 'btn btn-default dropdown-toggle', data: { toggle: 'dropdown' }, html: { role: 'button' }, aria: { expanded: true } do %>
+      <%= link_to edit_user_registration_path, class: 'shadows btn btn-default dropdown-toggle', id: 'account-menu', data: { toggle: 'dropdown' }, html: { role: 'button' }, aria: { expanded: true } do %>
         <i class="fa fa-user fw"></i>
         &nbsp;
         <span><%= current_user.full_name %></span>
         &nbsp;
         <span class="fa fa-caret-down"></span>
       <% end %>
-      <ul id="sign-in-sign-up" class="dropdown-menu">
+      <ul id="account-logout-dropdown" class="dropdown-menu shadows">
         <li>
           <%= link_to 'Account', edit_user_registration_path %>
         </li>
@@ -20,8 +20,8 @@
     </div>
   <% else %>
     <div class="btn-group open">
-      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-default' %>
-      <%= link_to "Log In", new_user_session_path, class: 'btn btn-default' %>
+      <%= link_to "Sign Up", new_user_registration_path, class: 'shadows btn btn-default' %>
+      <%= link_to "Log In", new_user_session_path, class: 'shadows btn btn-default' %>
     </div>
   <% end %>
 </div>
