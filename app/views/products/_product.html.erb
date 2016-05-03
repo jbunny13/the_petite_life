@@ -1,32 +1,32 @@
 <div class="col-sm-6 col-md-3">
   <div class="text-center">
-      <div class="card">
-        <%= link_to product do %>
-          <div class="card-image-container">
-            <%= image_tag product.image.url(:thumb), class: 'card-image' %>
-          </div>
-      
-          <h4 class="card-title"><%= product.name %></h4>
-        <% end %>
-
-        <div class="card-rating-container">
-          <div class="star-rating" data-score= <%= product.average_rating %> ></div>
-          <p>(<%= pluralize(product.reviews.length, "Review") %>)</p>
+    <div class="shadows card">
+      <%= link_to product do %>
+        <div class="card-image-container">
+          <%= image_tag product.image.url(:thumb), class: 'card-image' %>
         </div>
+    
+        <h4 class="card-title"><%= product.name %></h4>
+      <% end %>
 
-        <div class="card-action-icons">
-          <% if can? :update, product %>
-            <%= link_to edit_product_path(product) do %>
-              <span class="fa fa-pencil fa-lg"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-            <% end %>
-          <% end %>
-          
-          <% if can? :destroy, product %>
-             <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <span class="fa fa-trash-o fa-lg"></span>
-            <% end %>
-          <% end %>          
-        </div>
+      <div class="card-rating-container">
+        <div class="star-rating" data-score= <%= product.average_rating %> ></div>
+        <p>(<%= pluralize(product.reviews.length, "Review") %>)</p>
       </div>
+
+      <div class="card-action-icons">
+        <% if can? :update, product %>
+          <%= link_to edit_product_path(product) do %>
+            <%= render 'shared/icon_edit' %>
+          <% end %>
+        <% end %>
+        <div class="spacing"></div>
+        <% if can? :destroy, product %>
+           <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= render 'shared/icon_delete' %>
+          <% end %>
+        <% end %>          
+      </div>
+    </div>
   </div>
 </div>

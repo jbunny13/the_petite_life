@@ -1,47 +1,44 @@
-<div>
-  <%= link_to products_path, class: 'btn btn-default' do %>
-    <span class="fa fa-chevron-left">&nbsp;&nbsp;&nbsp;</span>Back to all products
-  <% end %><br /><br />
-</div>
+<% title @product.name %>
 
-<div class="row">
-  <div class="col-md-6">
-    <center><%= image_tag @product.image.url(:medium) %></center>
-  </div>
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h2 class="no-margins">
-          <%= @product.name %>
-        </h2>
+<div class="shadow-box">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center header-short">
+        <h1><%= @product.name %></h1>
         <% if can? :update, @product %>
-            <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-default' %>
+          <%= link_to edit_product_path(@product) do %>
+            <%= render 'shared/icon_edit' %>
           <% end %>
-
-          <% if can? :destroy, @product %>
-            <%= link_to 'Delete', @product, class: 'btn btn-default', method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-
-        <h4>Added By</h4>
-        <p><%= @product.user.full_name %></p>
-        
-        <h4>Created</h4>
-        <p><%= local_time_ago(@product.created_at) %></p>
-        
-        <h3 class="no-margins">Categories</h3>
-        <% @product.categories.each do |category| %>
-          <%= render partial: 'categories/category_link', locals: { category: category } %>
         <% end %>
-            
-        <h3 class="no-margins">Tags</h3>
-        <%= render @product.tags.order(name: :asc) %>
-        
-      </div>
-      <div class="panel-body">
-        <p><%= sanitize(@product.description, tags: %w(code pre div p ul ol table dl blockquote pre a object embed video audio img figure iframe hr dd dl dt h1 h2 h3 h4 h5 h6 span label br i b del strike u param mark cite small li sup sub big figcaption strong em tr td th tbody thead), attributes: %w(href src style)) %></p>
+        <div class="spacing"></div>
+        <% if can? :destroy, @product %>
+          <%= link_to @product, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= render 'shared/icon_delete' %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <%= image_tag(@product.image.url(:medium), class: 'center-block') %>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <%= render 'shared/category_link', resource: @product %>
+      <%= render 'shared/tag_link', resource: @product %>
+      <h3>Added By</h3>
+      <p><%= @product.user.full_name %></p>
+      <h3>Added On</h3>
+      <p><%= local_time_ago(@product.created_at) %></p>
+      <h3>Description</h3>
+      <div class="text-justify">
+        <%= sanitize(@product.description, tags: %w(code pre div p ul ol table dl blockquote pre a object embed video audio img figure iframe hr dd dl dt h1 h2 h3 h4 h5 h6 span label br i b del strike u param mark cite small li sup sub big figcaption strong em tr td th tbody thead), attributes: %w(href src style)) %>
+      </div>
+      <br>
+    </div>
+  </div>
 </div>
-<br />
+<br><br>
+
 <%= render template: 'reviews/index' %>

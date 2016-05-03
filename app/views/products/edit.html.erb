@@ -1,7 +1,7 @@
-<div class="form-container">
-  <h1>Editing Product</h1>
-  <%= render 'form' %>
-  <br />
-  <%= link_to 'Show this product', @product %> |
-  <%= link_to 'Back to all products', products_path %>
+<% title "Edit #{@product.name}" %>
+
+<div class="text-center header-short">
+  <h1>Edit Product</h1>
+  <%= render 'shared/icon_show', path: @product %>
 </div>
+<%= render 'form' %>
