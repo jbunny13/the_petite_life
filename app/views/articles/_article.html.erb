@@ -1,18 +1,30 @@
 <div class="col-sm-6 col-md-3">
-  <center>
-    <div class="thumbnail">
-      <%= link_to (image_tag article.image.url(:thumb), class: 'image'), article %>
-      
-      <div class="caption">
-        <h4><%= article.name %></h4>
+  <div class="text-center">
+    <div class="shadows card">
+      <%= link_to article do %>
+        <div class="card-image-container">
+          <%= image_tag article.image.url(:thumb), class: 'card-image' %>
+        </div>
+
+        <h4 class="card-title"><%= article.name %></h4>
+      <% end %>
+
+      <div class="card-rating-container">
+      </div>
+
+      <div class="card-action-icons">
         <% if can? :update, article %>
-            <%= link_to 'Edit', edit_article_path(article) %>
+            <%= link_to edit_article_path(article) do %>
+              <%= render 'shared/icon_edit' %>
+            <% end %>
         <% end %>
-        
+        <div class="spacing"></div>
         <% if can? :destroy, article %>
-           | <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= render 'shared/icon_delete' %>
+          <% end %>
         <% end %>
       </div>
     </div>
-  </center>
+  </div>
 </div>
