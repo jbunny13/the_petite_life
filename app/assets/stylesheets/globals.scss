@@ -268,7 +268,7 @@ a {
     left: 0;
     right: 0;
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 90%;
   }
 
   &-rating-container {
@@ -297,15 +297,15 @@ a {
 
   &-resource {
     @extend .card;
-    height: 230px;
+    height: 240px;
 
     &-title {
       position: absolute;
-      top: 20px;
+      top: 10px;
       left: 0;
       right: 0;
       margin: 0 auto;
-      max-width: 100%;
+      max-width: 90%;
     }
 
     &-description {
@@ -314,7 +314,7 @@ a {
       left: 5px;
       right: 5px;
       margin: 0 auto;
-      max-width: 100%;
+      max-width: 90%;
     }
   }
 }
