@@ -1,32 +1,29 @@
-<div class="form-container">
-  <%= devise_error_messages! %>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form'}) do |f| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h2>Log in</h2>
-    </div>
+<% title 'Log In' %>
 
-    <div class="panel-body">
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: 'form-control input-lg' %>
-      </div>
 
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control input-lg' %>
-      </div>
-
-      <%= f.submit 'Log in', class: 'btn btn-default btn-lg' %>
-      <% if devise_mapping.rememberable? -%>
-        <div class="checkbox">
-          <label>
-            <%= f.check_box :remember_me %> Remember me
-          </label>
+<%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form'}) do |f| %>
+  <div class="shadow-box">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-center header-short">
+          <h1>Log In</h1>
         </div>
-      <% end -%>
-      <div><%= render "devise/shared/links" %></div>
+        <div class="form-group">
+          <%= render 'devise/shared/email', f: f %>
+          <%= render 'devise/shared/password', f: f, field: :password, label: 'Password' %>
+          <%= render 'forms/submit', f: f, label: 'Log In' %>
+          <br><br>
+          <% if devise_mapping.rememberable? %>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, 'Remember Me' %>
+        <% end %>
+        </div>
+        <div class="text-center">
+          <br>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
     </div>
   </div>
-  <% end %>
-</div>
+<% end %>

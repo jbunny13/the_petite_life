@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @comments = @article.comments.order(created_at: :desc).page(params[:page]).per(10)
+    @comments = @article.comments.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
     respond_with(@article)
   end
 

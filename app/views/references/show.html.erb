@@ -1,38 +1,30 @@
-<div class="row">
-  <%= link_to references_path, class: 'btn btn-default' do %>
-    <span class="fa fa-chevron-left">&nbsp;&nbsp;&nbsp;</span>Back to all resources
-  <% end %><br /><br />
-</div>
+<% title @reference.name %>
 
-<div class="row">
-  <h3 class="panel-title-1">Resource Name</h3>
-  <p><%= @reference.name %></p>
-
-  <h3 class="panel-title-1">URL</h3>
-  <p><%= link_to @reference.uri, @reference.uri %></p>
-
-  <h3 class="panel-title-1">Added By</h3>
-  <p><%= @reference.user.full_name %></p>
-
-  <h3 class="panel-title-1">Added On</h3>
-  <p><%= local_time_ago(@reference.created_at) %></p>
-
-  <h3 class="panel-title-1">Categories</h3>
-  <% @reference.categories.each do |category| %>
-    <%= render partial: 'categories/category_link', locals: { category: category } %>
-  <% end %>
-  <br />
-  
-  <h3 class="panel-title-1">Tags</h3>
-  <%= render @reference.tags.order(name: :asc) %>
-
-  <p><br />
-    <% if can? :update, @reference %>
-      <br /><%= link_to 'Edit', edit_reference_path(@reference), class: 'btn btn-default' %>
-    <% end %>
-
-    <% if can? :destroy, @reference %>
-      <%= link_to 'Delete', @reference, class: 'btn btn-default',  method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-  </p>
+<div class="row shadow-box">
+  <div class="col-xs-12">
+    <div class="text-center header-short">
+      <h1><%= @reference.name %></h1>
+      <% if can? :update, @reference %>
+        <%= link_to edit_reference_path(@reference) do %>
+          <%= render 'shared/icon_edit' %>
+        <% end %>
+      <% end %>
+      <div class="spacing"></div>
+      <% if can? :destroy, @reference %>
+        <%= link_to @reference, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <%= render 'shared/icon_delete' %>
+        <% end %>
+      <% end %>
+    </div>
+    <h3>URL</h3>
+    <h4><%= link_to @reference.uri, @reference.uri %></h4>
+    <h3>Short Description</h3>
+    <div class="text-justify"><%= @reference.description %></div>
+    <%= render 'shared/category_link', resource: @reference %>
+    <%= render 'shared/tag_link', resource: @reference %>
+    <h3>Added By</h3>
+    <p><%= @reference.user.full_name %></p>
+    <h3>Added On</h3>
+    <p><%= local_time_ago(@reference.created_at) %></p>
+  </div>
 </div>

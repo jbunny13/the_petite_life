@@ -1,0 +1,136 @@
+// primary nav: black text logo on white bg
+.navbar {
+  z-index: 2000;
+  @include box-shadow-glow(0px 1px 4px 0px $cyan);
+
+  &.animated {
+    @include animation(0.6s, 0.1s, 1);
+  }
+
+  &-fixed-top {
+    padding: 3px 5px 3px 13px; 
+  }
+
+  &-header {
+    padding-right: 10px;
+  }
+
+  &-brand {
+    font-family: "Montserrat";
+    font-size: 40px;
+  }
+
+  &-brand-logo {
+    background: url('tpl-logo-black-small-lotus-365x70.png') no-repeat;
+    width: 365px;
+    height: 70px;
+
+    &-hover-preload {
+      background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat -9999px -9999px;
+    }
+  }
+
+  &-nav {
+    font-family: "Lato";
+    font-size: 18px;
+  }
+
+  &-toggle {
+    z-index: 3;
+    background-color: $black;
+  }
+
+  .dropdown {
+    
+    &.btn-group {
+      min-width: 100%;
+      right: 5px;
+    }
+
+    .dropdown-menu {
+      min-width: 100%;
+      margin: -1px 0 0;
+
+      &#account-logout-dropdown {
+        min-width: 100%;
+      }
+    }
+
+    &:hover .dropdown-menu {
+      display: block;
+    }
+  }
+}
+
+// scrolled nav: white text logo with black bg
+.navbar.scrolled {
+  background: $black;
+  @include box-shadow-glow(0px 1px 4px 0px $cyan);
+  
+  .navbar-brand-logo {
+    background: url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
+  }
+
+  &.navbar-inverse .navbar-nav > li > a {
+    color: $white;
+    
+    &:hover,
+    &:focus {
+      color: $pink;
+    }
+  }
+
+  &.navbar-inverse .navbar-nav > .active > a {
+    color: $cyan;
+
+    &:hover,
+    &:focus,
+    &:visited {
+      color: $cyan;
+    }
+  }
+}
+
+// nav links
+.navbar,
+.navbar-nav > li > a,
+.navbar-btn.navbar-right > div > a,
+#account-logout-dropdown > li > a {
+  @include transition(all 0.5s ease-in-out);
+}
+
+// when nav is collapsed and hamburger nav is in use
+.navbar-collapse.collapse.in {
+  max-height: none;
+  overflow: visible;
+
+  .navbar-btn.navbar-right {
+    float: right;
+  }
+
+  .dropdown.btn-group {
+    right: -15px;
+
+    #account-menu {
+      color: $white;
+      background: $black;
+    }
+  }
+
+  .dropdown-menu {
+    @include transition(all 0.5s ease-in-out);
+    min-width: auto;
+    left: initial;
+    right: 0;
+    margin: -1px 0 0;
+  }
+}
+
+// home page nav: uses scrolled nav (white text logo on black bg)
+.navbar-home {
+  display: none;
+
+  &.animated {
+    @include animation(1s, 0.1s, 1);
+  }    
+}

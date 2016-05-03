@@ -1,25 +1,33 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top animated">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">
-        <span class="cyan-text">The</span> 
-        <span class="black-text">Petite </span>
-        <span class="pink-text">Life</span>
-      </a>
-    </div><!-- /navbar-header -->
-
+    <%= render 'layouts/nav_header' %>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse">
-        <%= render 'layouts/nav_links' %>
-        <%= render 'layouts/search' %>
-        <%= render 'layouts/signup_login' %>
+    <div class="collapse navbar-collapse text-right">
+      <%= render 'layouts/nav_links' %>
+      <%= render 'layouts/signup_login' %>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<script>
+  $(document).ready(function() {
+    var fixedNavShown = false;
+    var $navBar = $('.navbar');
+    var $window = $(window);
+
+    var handleScroll = function() {
+      var scrollTop = $window.scrollTop();
+
+      if ( scrollTop > 0 && !fixedNavShown ) {
+        fixedNavShown = true;
+        $navBar.toggleClass('scrolled', fixedNavShown);
+
+      } else if ( scrollTop == 0 && fixedNavShown ) {
+        fixedNavShown = false;
+        $navBar.toggleClass('scrolled', fixedNavShown);
+      }
+    }
+
+    $(window).on('scroll', _.throttle(handleScroll, 100));
+  });
+</script>

@@ -2,10 +2,10 @@
   <li><%= active_link_to 'About', about_path, wrap_tag: 'li', active: :exclusive %></li>
 
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-      Categories <span class="caret"></span>
+    <a href="/categories" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      Categories <span class="fa fa-caret-down"></span>
     </a>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu shadows">
       <li><%= active_link_to 'All', categories_path, wrap_tag: 'li', active: :exclusive %></li>
       <% Category.all.each do |category| %>
         <li><%= active_link_to category.name, category_path(category), wrap_tag: 'li', active: :exclusive %></li>

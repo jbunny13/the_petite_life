@@ -1,65 +1,21 @@
 <%= form_for @article, html: { multipart: true, role: 'form' } do |f| %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+  <%= render 'forms/errors', resource: @article, resource_name: 'article' %>
 
-      <ul>
-      <% @article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <div class="field">
-      <%= f.label :name, 'Article Title' %><br>
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :user_id, 'Author' %><br>
-      <p class="form-control-static"><%= current_user.full_name %></p><br />
-    </div>
-
-    <div class="field">
-      <p><b>Categories</b></p>
-      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
-        <%= b.check_box %>
-        <%= b.label class: 'fw-normal' %><br />
-      <% end %><br />
-    </div>
-
-    <%= render 'shared/form_tags', f: f, resource: @article %>
-
-    <div class="field">
-      <%= f.label :image %><br />
-      <% if @article.image.exists? %>
-        <%= image_tag @article.image.url(:thumb) %><br /><br />
-      <% end %>
-      <div class="file-input-button">
-        <%= f.file_field :image, class: 'btn btn-default form-control' %><br />
-      </div>
-    </div>
-
-    <div class="field">
-      <%= f.label :content %><br>
-      <%= f.text_area :content, autofocus: true, class: 'redactor form-control input-lg' %>
-    </div>
+  <div class="form-group">    
+    <%= render 'forms/created_by', f: f, field_label: 'Author', resource: @article %>
+    <%= render 'forms/title', f: f, title: 'Article Title' %>
+    <%= render 'forms/categories', f: f %>
+    <%= render 'forms/tags', f: f, resource: @article %>
+    <%= render 'forms/featured_image', f: f, resource: @article %>
+    <%= render 'forms/wysiwyg', f: f, field: :content %>
+    <%= render 'forms/submit', f: f, label: 'Save' %>
   </div>
-
-  <%= f.submit 'Save', data: { disable_with: "Submitting..." }, class: 'btn btn-default' %>
 <% end %>
 
-<script>
-  $(document).on('page:update', function() {
+<%= render 'shared/select2_taggable_script' %>
 
-    $('select.taggable').select2({
-      theme: "bootstrap",
-      tags: true,
-      multiple: true,
-      placeholder: 'Start typing to select or add a tag'
-    }); 
-
-  });
-</script>
+<style>
+.re-icon.re-file {
+  display:none;
+}
+</style>

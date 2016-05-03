@@ -1,0 +1,8 @@
+<div class="field">
+  <h3><%= f.label :category_ids, 'Categories' %></h3>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+    <%= b.check_box %>
+    <%= b.label class: 'label-category-checkbox' %>
+  <% end %>
+  <br>
+</div>

@@ -1,0 +1,5 @@
+<i class="fa fa-tag fa-lg" alt="Tags" title="Tags"></i>
+<% resource.tags.order(name: :asc).each do |tag| %>
+  <%= link_to tag.name, tag_path(tag), class: 'shadows label-tag' %>
+<% end %>
+<br>

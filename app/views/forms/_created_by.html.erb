@@ -1,0 +1,8 @@
+<div class="field">
+  <h3><%= f.label :user_id, field_label %></h3>
+  <% if controller.action_name == 'update' || controller.action_name == 'edit' %>
+    <%= f.text_field :user_id, class: 'form-control input-lg', value: resource.user.full_name, disabled: true %>
+  <% else %>
+    <%= f.text_field :user_id, class: 'form-control input-lg', value: current_user.full_name, disabled: true %>
+  <% end %>
+</div>

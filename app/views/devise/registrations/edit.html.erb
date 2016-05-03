@@ -1,61 +1,49 @@
-<div class="form-container">
-  <%= devise_error_messages! %>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, role: 'form'}) do |f| %>  
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3>Edit <%= resource_name.to_s.humanize %></h3>
-    </div>
+<% title 'Edit Account' %>
 
-    <div class="panel-body">
-      <div class="form-group">
+<%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, role: 'form'}) do |f| %>  
+  <div class="shadow-box">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-center header-short">
+          <h1>Edit Account</h1>
+        </div>
+        <div class="form-group">
+          <%= render 'devise/shared/first_name', f: f %>
+          <%= render 'devise/shared/last_name', f: f %>
+          <%= render 'devise/shared/email', f: f %>
 
-        <p class="text-right">Permissions: <%= current_user.role.capitalize %></p>
-
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name, autofocus: true, class: 'form-control input-lg' %>
-
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name, class: 'form-control input-lg' %>
-
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control input-lg' %>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting on email confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting on email confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+        </div>
+        <br>
+        <div class="form-group">
+          <h3 class="text-center cyan-text"><em>Leave these fields blank if you don't want to change your password.</em></h3>
+          <%= render 'devise/shared/password_length_estimate', f: f %>
+          <%= render 'devise/shared/password_confirmation', f: f %>
+        </div>
+        <br>
+        <div class="form-group">
+          <h3 class="text-center pink-text"><em>You must enter your current password to make changes.</em></h3>
+          <%= render 'devise/shared/password', f: f, field: :current_password, label: 'Current Password' %>
+        </div>
+        <%= render 'forms/submit', f: f, label: 'Save' %>
       </div>
-      
-      <div class="form-group">
-        <p><em>Leave these fields blank if you don't want to change your password.</em></p>
-        
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: 'off', class: 'form-control input-lg estimate-password' %>
-        
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: 'form-control  input-lg' %>
-      </div>
-      
-      <div class="form-group">
-        <p><em>You must enter your current password to make changes.</em></p>
-        
-        <%= f.label :current_password %>
-        <%= f.password_field :current_password, class: 'form-control input-lg' %>
-      </div>
-
-      <%= f.submit 'Update', class: 'btn btn-default btn-lg' %>
     </div>
   </div>
-  <% end %>
+<% end %>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3>Cancel Account</h3>
-    </div>
-    
-    <div class="panel-body">
-      <p>We're sad to see you go!</p>
-      
-      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-default btn-lg' %>
+  <div class="shadow-box">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-center header-short">
+          <h1>Cancel Account</h1>
+          <h4>We're sad to see you go!</h4>
+        </div>
+        <div class="form-group">
+          <%= link_to 'Delete Account', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'shadows btn btn-default btn-100' %>
+      </div>
     </div>
   </div>
 </div>

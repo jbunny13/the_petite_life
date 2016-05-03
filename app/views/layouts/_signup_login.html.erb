@@ -1,11 +1,28 @@
 <!-- User sign up / login -->
-<ul class="nav navbar-nav navbar-right">
-  <% if user_signed_in? %>
-    <li><%= active_link_to current_user.full_name, edit_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
-    <li><%= active_link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+<div class="navbar-btn navbar-right">
+  <div class="dropdown btn-group">
+    <% if user_signed_in? %>
+      <%= link_to edit_user_registration_path, class: 'shadows btn btn-default dropdown-toggle', id: 'account-menu', data: { toggle: 'dropdown' }, html: { role: 'button' }, aria: { expanded: true } do %>
+        <i class="fa fa-user fw"></i>
+        &nbsp;
+        <span><%= current_user.full_name %></span>
+        &nbsp;
+        <span class="fa fa-caret-down"></span>
+      <% end %>
+      <ul id="account-logout-dropdown" class="dropdown-menu shadows">
+        <li>
+          <%= link_to 'Account', edit_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+        </li>
+        </ul>
+    </div>
   <% else %>
-    <li><%= active_link_to "Sign Up", new_user_registration_path, wrap_tag: 'li', active: :exclusive %></li>
-    <li><%= active_link_to "Log In", new_user_session_path, wrap_tag: 'li', active: :exclusive  %></li>
+    <div class="btn-group open">
+      <%= link_to "Sign Up", new_user_registration_path, class: 'shadows btn btn-default' %>
+      <%= link_to "Log In", new_user_session_path, class: 'shadows btn btn-default' %>
+    </div>
   <% end %>
-</ul>
+</div>
 <!-- /.signup-login -->

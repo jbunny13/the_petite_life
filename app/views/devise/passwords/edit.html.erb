@@ -1,22 +1,24 @@
-<div class="form-container">
-  <%= devise_error_messages! %>
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, role: 'form' }) do |f| %>
-  <%= f.hidden_field :reset_password_token %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h2>Change your password</h2>
-    </div>
+<% title 'Change Your Password' %>
 
-    <div class="panel-body">
-      <div class="form-group">
-        <%= f.label :password, 'New password' %>
-        <%= f.password_field :password, autofocus: true, autocomplete: 'off', class: 'form-control input-lg estimate-password' %>
-        <%= f.label :password_confirmation, 'Confirm new password' %>
-        <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control input-lg' %>
+<%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, role: 'form' }) do |f| %>
+  <%= f.hidden_field :reset_password_token %>
+  <div class="shadow-box">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-center header-short">
+          <h1>Change Your Password</h1>
+        </div>
+        <div class="form-group">
+          <%= render 'devise/shared/password_length_estimate', f: f %>
+          <%= render 'devise/shared/password_confirmation', f: f %>
+          <%= render 'forms/submit', f: f, label: 'Change My Password' %>
+        </div>
+        <div class="text-center">
+          <br>
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
-      
-      <%= f.submit 'Change my password', class: 'btn btn-default btn-lg' %>
     </div>
   </div>
-  <% end -%>
-</div>
+<% end %>

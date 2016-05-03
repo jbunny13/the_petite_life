@@ -1,45 +1,8 @@
-<center>
-  <h1>Tagged <span class="label-tag"><%= @tag.name %></span></h1>
-</center>
-<div class="container-fluid">
-<div class="row">
-  <h2>Articles</h2>
-  <div class="num_entries-articles">
-    <%= page_entries_info @articles, param_name: 'article', remote: true %>
-  </div>
-  <div class="paginate-articles">
-    <%= paginate @articles, param_name: 'article', remote: true %>
-    <br /><br />
-  </div>
-  <div id="articles">
-    <%= render @articles %>
-  </div>
+<% title @tag.name %>
+
+<div class="text-center header-short">
+  <h1>Tagged <span class="shadows label-tag-big"><%= @tag.name %></span></h1>
 </div>
 
-<div class="row">
-  <h2>Products</h2>
-  <div class="num_entries-products">
-    <%= page_entries_info @products, param_name: 'product', remote: true %>
-  </div>
-  <div class="paginate-products">
-    <%= paginate @products, param_name: 'product', remote: true %>
-    <br /><br />
-  </div>
-  <div id="products">
-    <%= render @products %>
-  </div>
-</div>
-
-<div class="row">
-  <h2>Resources</h2>
-  <div class="num_entries-references">
-    <%= page_entries_info @references, param_name: 'resource', entry_name: 'resource', remote: true %>
-  </div>
-  <div class="paginate-references">
-    <%= paginate @references, param_name: 'resource', remote: true %>
-    <br /><br />
-  </div>
-  <div id="references">
-    <%= render @references %>
-  </div>
-</div>
+<%= render 'shared/category_tag' %>
+<%= render 'shared/star_rating_read_only' %>

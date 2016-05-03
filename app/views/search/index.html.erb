@@ -1,0 +1,66 @@
+<% title 'Search Results' %>
+
+<div class="row">
+  <h2>Search Results</h2>
+  <h3>Products</h3>
+  <div id="num_entries-products">
+    <%= page_entries_info @product_results, entry_name: 'product', remote: true %>
+  </div>
+  <div id="paginate-products">
+    <%= paginate @product_results, param_name: 'product', remote: true %>
+    <br><br>
+  </div>
+  <div id="products">
+    <%= render partial: 'products/product', collection: @product_results %>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Articles</h3>
+  <div id="num_entries-articles">
+    <%= page_entries_info @article_results, entry_name: 'article', remote: true %>
+  </div>
+  <div id="paginate-articles">
+    <%= paginate @article_results, param_name: 'article', remote: true %>
+    <br><br>
+  </div>
+  <div id="articles">
+    <%= render partial: 'articles/article', collection: @article_results %>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Resources</h3>
+  <div id="num_entries-references">
+    <%= page_entries_info @reference_results, entry_name: 'resource', remote: true %>
+  </div>
+  <div id="paginate-references">
+    <%= paginate @reference_results, param_name: 'resource', remote: true %>
+    <br><br>
+  </div>
+  <div id="references">
+    <%= render partial: 'references/reference', collection: @reference_results %>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Tags</h3>
+  <div id="num_entries-tags">
+    <%= page_entries_info @tag_results, entry_name: 'tag', remote: true %>
+  </div>
+  <div id="paginate-tags">
+    <%= paginate @tag_results, param_name: 'tag', remote: true %>
+    <br><br>
+  </div>
+  <div id="tags">
+    <h4><%= render partial: 'acts_as_taggable_on/tags/tag', collection: @tag_results %></h4>
+  </div>
+</div>
+
+<script>
+  $('.star-rating').raty({
+    path: '',
+    readOnly: true,
+    score: function() { return $(this).attr('data-score') }
+  });
+</script>

@@ -1,11 +1,9 @@
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
+//= require select2-full
 //= require bootstrap-sprockets
 //= require raty
 //= require zxcvbn
 //= require global
 //= require local_time
-//= require select2-full
-//= require turbolinks
 //= require redactor-rails

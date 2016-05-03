@@ -1,20 +1,22 @@
-<div class="form-container">
-  <%= devise_error_messages! %>
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, role: 'form'}) do |f| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h2>Forgot your password?</h2>      
-    </div>
+<% title 'Forgot Your Password?' %>
 
-    <div class="panel-body">
-      <div class="form-group">
-        <p>We'll send you instructions to reset your password.</p>
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: 'form-control input-lg' %>
+<%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, role: 'form'}) do |f| %>
+  <div class="shadow-box">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="text-center header-short">
+          <h1>Forgot Your Password?</h1>
+        </div>
+        <div class="form-group">
+          <%= render 'devise/shared/email', f: f %>
+          <%= render 'forms/submit', f: f, label: 'Reset Password' %>
+        </div>
+        <div class="text-center">
+          <br>
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
-      
-      <%= f.submit 'Reset password', class: 'btn btn-default btn-lg' %>
     </div>
   </div>
-  <% end -%>
-</div>
+<% end %>

@@ -299,9 +299,9 @@
       }
 
       if (this.opt.cancelPlace === 'left') {
-        this.self.prepend('&#160;').prepend(cancel);
+        this.self.prepend('').prepend(cancel);
       } else {
-        this.self.append('&#160;').append(cancel);
+        this.self.append('').append(cancel);
       }
 
       this.cancel = cancel;
@@ -328,7 +328,7 @@
         $('<' + this.opt.starType + ' />', attrs).appendTo(this);
 
         if (this.opt.space) {
-          this.self.append(i < this.opt.number ? '&#160;' : '');
+          this.self.append(i < this.opt.number ? '' : '');
         }
       }
 
@@ -745,10 +745,10 @@
     scoreName    : 'score',
     single       : false,
     space        : true,
-    starHalf     : '<%= image_path('star-half.png') %>',
-    starOff      : '<%= image_path('star-off.png') %>',
-    starOn       : '<%= image_path('star-on.png') %>',
-    starType     : 'img',
+    starHalf     : 'fa fa-fw fa-star-half-o fa-lg',
+    starOff      : 'fa fa-fw fa-star-o fa-lg',
+    starOn       : 'fa fa-fw fa-star fa-lg',
+    starType     : 'i',
     target       : undefined,
     targetFormat : '{score}',
     targetKeep   : false,

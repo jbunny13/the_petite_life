@@ -1,60 +1,15 @@
 <%= form_for(@reference, html: { role: 'form'}) do |f| %>
-  <% if @reference.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@reference.errors.count, 'error') %> prohibited this reference from being saved:</h2>
-
-      <ul>
-      <% @reference.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'forms/errors', resource: @reference, resource_name: 'resource' %>
 
   <div class="form-group">
-    <div class="field">
-      <%= f.label :name, 'Resource Name' %><br />
-      <%= f.text_field :name, class: 'form-control' %><br />
-    </div>
-    
-    <div class="field">
-      <%= f.label :uri, 'Resource URL' %><br />
-      <%= f.text_field :uri, class: 'form-control' %><br />
-    </div>
-
-    <div class="field">
-      <%= f.label :user_id, 'Added By' %><br />
-      <p class="form-control-static"><%= current_user.full_name %></p><br />
-    </div>
-
-    <div class="field">
-      <p><b>Categories</b></p>
-      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
-        <%= b.check_box %>
-        <%= b.label class: 'fw-normal' %><br />
-      <% end %><br />
-    </div>
-
-    <div class="field">
-      <%= f.label :tag_list, 'Tags: allowed characters include [ a-z, 0-9, - ]' %>
-      <%= f.select :tag_list, options_for_select(ActsAsTaggableOn::Tag.all.order(name: :asc).pluck(:name), @reference.tag_list), {}, { multiple: true, class: 'taggable', style: 'width: 100%;' } %>
-      <br />
-      <br />
-    </div>
-
-    <%= f.submit 'Save', data: { disable_with: 'Submitting...' }, class: 'btn btn-default' %>
+    <%= render 'forms/created_by', f: f, field_label: 'Added By', resource: @reference %>
+    <%= render 'forms/title', f: f, title: 'Resource Name' %>
+    <%= render 'forms/uri', f: f, title: 'Resource URL' %>
+    <%= render 'forms/categories', f: f %>
+    <%= render 'forms/tags', f: f, resource: @reference %>
+    <%= render 'forms/short_description', f: f, field: :description %>
+    <%= render 'forms/submit', f: f, label: 'Save' %>
   </div>
 <% end %>
 
-<script>
-  $(document).ready(function() {
-
-    $('select.taggable').select2({
-      theme: 'bootstrap',
-      tags: true,
-      multiple: true,
-      placeholder: 'Start typing to select or add a tag'
-    }); 
-
-  });
-</script>
+<%= render 'shared/select2_taggable_script' %>

@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
   include ValidateTag
 
   has_attached_file :image,
-    styles: { medium: "400x500>", thumb: "250x200>" },
+    styles: { medium: "400x500>", thumb: "250x200" },
     default_url: "missing.png"
   validates_attachment :image,
     content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },

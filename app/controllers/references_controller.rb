@@ -11,11 +11,11 @@ class ReferencesController < ApplicationController
     sort = params[:sort]
     case sort
       when 'by_name'
-        @references = @references.page(params[:pageish]).per(5)
+        @references = @references.page(params[:pageish]).per(8)
       when 'most_recent'
-        @references = @references.most_recent.page(params[:page]).per(5)
+        @references = @references.most_recent.page(params[:page]).per(8)
       else
-        @references = @references.page(params[:page]).per(5)
+        @references = @references.page(params[:page]).per(8)
     end
     respond_with(@references)
   end
@@ -37,6 +37,7 @@ class ReferencesController < ApplicationController
     @reference.user_id = current_user.id
     
     if @reference.save
+      flash[:notice] = "Resource was successfully created."
       respond_with(@reference)
     else
       render 'new'
@@ -45,12 +46,17 @@ class ReferencesController < ApplicationController
 
   def update
     @reference.slug = nil
-    @reference.update(reference_params)
-    respond_with(@reference)
+    if @reference.update(reference_params)
+      flash[:notice] = "Resource was successfully updated."
+      respond_with(@reference)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     @reference.destroy
+    flash[:notice] = "Resource was successfully destroyed."
     redirect_to references_path
   end
 
@@ -61,6 +67,6 @@ class ReferencesController < ApplicationController
     end
 
     def reference_params
-      params.require(:reference).permit(:name, :uri, :user_id, :slug, tag_list: [], category_ids: [])
+      params.require(:reference).permit(:name, :uri, :user_id, :slug, :description, tag_list: [], category_ids: [])
     end
 end

@@ -5,11 +5,10 @@ class Ability
     user ||= User.new
 
     if user.role? :user
-      can :read, [Product, Review, Article, Comment, Reference, Category, ActsAsTaggableOn::Tag]
-      can :create, [Product, Review, Article, Comment, Reference, Category, ActsAsTaggableOn::Tag]
+      can :read, Category
+      can [:read, :create], [Product, Review, Article, Comment, Reference, ActsAsTaggableOn::Tag]
       can :update, [Product, Review, Article, Comment, Reference], user_id: user.id
-      can :update, [Category, ActsAsTaggableOn::Tag]
-      can :destroy, [Review, Comment, Reference], user_id: user.id
+      can :destroy, [Product, Review, Article, Comment, Reference], user_id: user.id
     end
 
     if user.role? :contributor

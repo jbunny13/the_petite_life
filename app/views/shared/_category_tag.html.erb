@@ -1,0 +1,41 @@
+<div class="text-center">
+  <h2>Articles</h2>
+  <div id="articles" class="row spacer-row">
+    <%= render @articles %>
+  </div>
+  <div class="num_entries-articles pagination-info">
+    <%= page_entries_info @articles, param_name: 'article', remote: true %>
+  </div>
+  <div class="paginate-articles">
+    <%= paginate @articles, param_name: 'article', remote: true %>
+    <br><br>
+  </div>
+</div>
+
+<div class="text-center">
+  <h2>Products</h2>
+  <div id="products" class="row spacer-row">
+    <%= render @products %>
+  </div>
+  <div class="num_entries-products pagination-info">
+    <%= page_entries_info @products, param_name: 'product', remote: true %>
+  </div>
+  <div class="paginate-products">
+    <%= paginate @products, param_name: 'product', remote: true %>
+    <br><br>
+  </div>
+</div>
+
+<div class="text-center">
+  <h2>Resources</h2>
+  <div id="references" class="row spacer-row">
+    <%= render @references %>
+  </div>
+  <div class="num_entries-references pagination-info">
+    <%= page_entries_info @references, param_name: 'resource', entry_name: 'resource', remote: true %>
+  </div>
+  <div class="paginate-references">
+    <%= paginate @references, param_name: 'resource', remote: true %>
+    <br><br>
+  </div>
+</div>

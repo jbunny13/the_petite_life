@@ -1,6 +1,7 @@
-<div class="form-container">
-  <h1>Editing Comment</h1>
-  <%= render 'form' %>
-  <br />
-  <%= link_to 'Back to article', article_path(@article) %>
+<% title 'Edit Comment' %>
+
+<div class="text-center header-short">
+  <h1>Edit Comment</h1>
+  <%= render 'shared/icon_show', path: article_path(@article) %>
 </div>
+<%= render 'form' %>

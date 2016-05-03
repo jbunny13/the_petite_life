@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Petite Life</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <title>
+      <%= if content_for?(:title) then yield(:title) + ' | ' end %>
+      The Petite Life
+    </title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'https://cdn.jsdelivr.net/lodash/4.11.2/lodash.min.js' %>
+    <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, inital-scale=1">
   </head>
   <body>
-    <%= render 'layouts/header' %>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
+    <% if current_page?(root_path) %>
+      <%= render 'layouts/home_header' %>
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
+
+    <div id="main-content" class="container">
+     <% if controller.action_name == 'index' || controller.action_name == 'show' %>
+        <%= render 'layouts/search' %>
+        <div class="header"></div>
+      <% end %>
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+    </div>
+
     <%= render 'layouts/footer' %>
   </body>
 </html>

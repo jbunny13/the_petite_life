@@ -1,39 +1,32 @@
-<div class="container-fluid">
-  <center>
-    <h1>Resources</h1>
-    <% if can? :create, Reference %>
-      <p>Looks like you can add a new resource!<br />
-      <%= link_to 'Add new resource', new_reference_path, class:'btn btn-default' %>
-      <br /></p>
+<% title 'Resources' %>
+
+<div class="row spacer-row text-center">
+  <h1 class="text-center">Resources</h1>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="pull-left">
+      <%= link_to 'Recent', references_path(sort: 'most_recent'), remote: true, class: 'shadows btn btn-default' %>
+      <%= link_to 'Name (A-Z)', references_path(sort: 'by_name'), remote: true, class: 'shadows btn btn-default' %>
+    </div>
+  </div>
+
+  <% if can? :create, Reference %>
+    <div class="col-xs-12 col-sm-6 col-md-1 col-md-offset-5">
+      <%= link_to new_reference_path, class:'shadows btn btn-default pull-right' do %>
+        <i class="fa fa-plus fa-lg"></i>&nbsp; Resource
     <% end %>
-  </center>
+    </div>
+  <% end %>
+</div>
 
-  <div class="text-right">
-    <b>Sort By: </b>
-    <%= link_to 'Most Recent', references_path(sort: 'most_recent') %> | 
-    <%= link_to 'Name (A-Z)', references_path(sort: 'by_name') %>
-  </div><br /><br />
+<div id="references" class="row">
+  <%= render @references %>
+  <br><br>
+</div>
 
-  <div class="num_entries">
-    <%= page_entries_info @references, entry_name: 'resource', remote: true %>
-  </div>
+<div class="num_entries text-center">
+  <%= page_entries_info @references, entry_name: 'resource', remote: true %>
+</div>
 
-  <div class="paginate">
-    <%= paginate @references, remote: true %>
-    <br /><br />
-  </div>
-
-  <div id="references" class="row">
-    <%= render @references %>
-    <br /><br />
-  </div>
-
-  <div class="num_entries">
-    <%= page_entries_info @references, entry_name: 'resource', remote: true %>
-  </div>
-
-  <div class="paginate">
-    <%= paginate @references, remote: true %>
-    <br /><br />
-  </div>
+<div class="paginate text-center">
+  <%= paginate @references, remote: true %>
 </div>

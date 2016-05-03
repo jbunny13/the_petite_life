@@ -1,0 +1,5 @@
+<i class="fa fa-folder-open fa-lg" alt="Categories" title="Categories"></i>
+<% resource.categories.order(name: :asc).each do |category| %>
+  <%= link_to category.name, category_path(category), class: 'shadows label-category' %>
+<% end %>
+<br>
