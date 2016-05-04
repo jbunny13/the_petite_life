@@ -4,7 +4,7 @@
   <%= f.label :image, 'Choose File' %>
   <% if resource.image.exists? %>
     <br>
-    <%= image_tag(resource.image.url(:thumb), class: 'center-block') %>
+    <%= image_tag(resource.image.url(:thumb), class: 'center-block img-responsive') %>
     <br>
   <% end %>
 </div>

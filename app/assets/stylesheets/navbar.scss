@@ -1,3 +1,12 @@
+// nav links
+.navbar,
+.navbar-nav > li > a,
+.navbar-btn.navbar-right > div > a,
+.navbar .dropdown,
+#account-logout-dropdown > li > a {
+  @include transition(all 0.5s ease-in-out);
+}
+
 // primary nav: black text logo on white bg
 .navbar {
   z-index: 2000;
@@ -39,30 +48,23 @@
     z-index: 3;
     background-color: $black;
   }
+}
 
-  .dropdown {
-    
-    &.btn-group {
-      min-width: 100%;
-      right: 5px;
-    }
+// dropdown menu width + remove gap
+.dropdown {
+  .dropdown-menu {
+    min-width: 100%;
+    margin: -1px 0 0;
+    color: $white;
+    background-color: $black;
 
-    .dropdown-menu {
-      min-width: 100%;
-      margin: -1px 0 0;
-
-      &#account-logout-dropdown {
-        min-width: 100%;
-      }
-    }
-
-    &:hover .dropdown-menu {
-      display: block;
+    &#account-logout-dropdown {
+      // min-width: 100%;
     }
   }
 }
 
-// scrolled nav: white text logo with black bg
+// scrolled nav: white text logo on black bg
 .navbar.scrolled {
   background: $black;
   @include box-shadow-glow(0px 1px 4px 0px $cyan);
@@ -91,38 +93,60 @@
   }
 }
 
-// nav links
-.navbar,
-.navbar-nav > li > a,
-.navbar-btn.navbar-right > div > a,
-#account-logout-dropdown > li > a {
-  @include transition(all 0.5s ease-in-out);
-}
-
-// when nav is collapsed and hamburger nav is in use
+// collapsed nav, hamburger menu
 .navbar-collapse.collapse.in {
   max-height: none;
   overflow: visible;
 
-  .navbar-btn.navbar-right {
-    float: right;
+  .navbar-nav {
+    padding-right: 15px;
   }
 
-  .dropdown.btn-group {
-    right: -15px;
+  .navbar-btn.navbar-right {
+    margin-left: -10px;
+  }
+}
 
-    #account-menu {
-      color: $white;
-      background: $black;
+// collapsed nav, hamburger menu, scrolled (white text logo on black bg)
+.navbar.scrolled {
+  .navbar-collapse.collapse.in {
+  }
+}
+
+// mobile optimization
+@media(max-width:480px) {
+  .navbar {
+    min-height: 60px;
+
+    &-brand-logo {
+      background: asset-url('tpl-logo-black-small-lotus-209x40.png') no-repeat;
+      width: 209px;
+      height: 40px;
+      position: absolute;
+      top: 17px;
+
+      &-hover-preload {
+        background: asset-url('tpl-logo-white-small-lotus-209x40.png') no-repeat -9999px -9999px;    
+      }
+    }
+
+    &.scrolled {
+      .navbar-brand-logo {
+        background: asset-url('tpl-logo-white-small-lotus-209x40.png') no-repeat;
+      }
     }
   }
+}
 
-  .dropdown-menu {
-    @include transition(all 0.5s ease-in-out);
-    min-width: auto;
-    left: initial;
-    right: 0;
-    margin: -1px 0 0;
+// override weird Bootstrap rules
+@media (max-width: 990px) {
+  .navbar-inverse .navbar-nav .open .dropdown-menu {
+    color: $white;
+    background-color: $black;
+
+    > li > a {
+      color: $white;
+    }
   }
 }
 

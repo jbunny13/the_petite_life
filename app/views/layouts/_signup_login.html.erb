@@ -1,6 +1,6 @@
 <!-- User sign up / login -->
 <div class="navbar-btn navbar-right">
-  <div class="dropdown btn-group">
+  <div class="dropdown">
     <% if user_signed_in? %>
       <%= link_to edit_user_registration_path, class: 'shadows btn btn-default dropdown-toggle', id: 'account-menu', data: { toggle: 'dropdown' }, html: { role: 'button' }, aria: { expanded: true } do %>
         <i class="fa fa-user fw"></i>

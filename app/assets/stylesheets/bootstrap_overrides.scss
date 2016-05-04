@@ -63,3 +63,10 @@ label {
 hr {
   border-top: 1px solid #9A9A9A;
 }
+
+// dropdown menu open on hover
+@media(min-width:1070px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
