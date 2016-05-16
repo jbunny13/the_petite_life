@@ -22,7 +22,12 @@
         The community needs your help to grow. To start contributing, please <%= link_to "Sign Up", new_user_registration_path, class: 'shadows btn btn-default' %>
       </p>
     </div>
-    <div class="col-md-2">
-    </div>
-  </div><br><br> 
+    <div class="col-md-2"></div>
 </div>
+
+ <div class="row text-center">
+  <h3>Here are some recommended products:</h3>
+  <%= render @products %>
+</div>
+
+<%= render 'shared/star_rating_read_only' %>
