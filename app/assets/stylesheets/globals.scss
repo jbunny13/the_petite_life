@@ -31,12 +31,6 @@
   text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.32);
 }
 
-@mixin horizontal-bar-dimensions {
-  left: 0;
-  width: 100%;
-  height: 30px;
-}
-
 @mixin animation($animation-duration, $animation-delay, $animation-iteration-count) {
   -webkit-animation-duration: $animation-duration;
   -moz-animation-duration: $animation-duration;
@@ -78,20 +72,18 @@ footer {
   position: absolute;
   left: 0;
   bottom: 0;
-  padding-top: 5%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 0 15px 0 15px;
   width: 100%;
-  height: 120px;
-  color: $black;
+  height: 400px;
+  color: $white;
+  @include box-shadow-glow(0px 0px 4px 1px $cyan);
   h4 {
     font-family: "Lato";
   }
 
   a { 
-    color: $gray; 
-    text-shadow: none;
-    font-size: 0.9em;
+    color: $gray;
+    font-size: 0.8em;
   }
 }
 
@@ -99,10 +91,9 @@ a {
   @include transition(all 0.8s ease-in-out);
 }
 
-
-
 #main-content {
   margin-top: 120px;
+  margin-bottom: 400px;
 }
 
 .header {
@@ -135,83 +126,18 @@ a {
   position: absolute;
   right: 0;
   left: 0;
-  top: 0;
-  height: 1000px;
+  bottom: 0;
+  padding-top: 310px;
+  height: 400px;
   z-index: 1200;
   max-width: 100%;
-  background: asset-url('unsplash-greg-rakozy-bw.jpg') no-repeat center center;
+  background: asset-url('unsplash-greg-rakozy-bw-cropped.jpg') no-repeat center center;
   -ms-background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-
-  &.animated {
-    @include animation(2s, 0.3s, 1);
-  }
-
-  &-logo {
-  display: block;
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-
-    &.animated {
-      @include animation(2s, 0.8s, 1);
-    }
-  }
-
-  &-nav {
-  height: 270px;
-  }
 }
-
-.scroll-down {
-  position: fixed;
-  bottom: -2px;
-  z-index: 1220;
-  max-width: 100%;
-  left: 49%;
-  background-color: rgba(226, 228, 221, 0.1);
-  padding: 3px 3px 0 3px;
-  
-  .fa.fa-angle-double-down {
-    font-size: 50px;
-  }
-
-  &.animated {
-    @include animation(2s, 1s, 1);
-  }
-}
-
-.horizontal-bar-cyan {
-  @include horizontal-bar-dimensions();
-  background-color: $cyan;
-  position: absolute;
-  top: 1000px;
-}
-
-.horizontal-bar-pink {
-  @include horizontal-bar-dimensions();
-  background-color: $pink;
-  position: absolute;
-}
-
-.push-content-down {
-  height: 950px;
-}
-
-.content {
-  padding-top: 50px;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-}
-
-.no-margins {
-  margin-top: 0;
-  margin-bottom: 0;
- }
 
 .behave-your-width-img {
   max-width: 100%;
