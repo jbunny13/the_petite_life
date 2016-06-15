@@ -7,7 +7,7 @@
   @include transition(all 0.5s ease-in-out);
 }
 
-// primary nav: black text logo on white bg
+// primary nav: white text logo on black bg
 .navbar {
   z-index: 2000;
   @include box-shadow-glow(0px 1px 4px 0px $cyan);
@@ -30,13 +30,9 @@
   }
 
   &-brand-logo {
-    background: asset-url('tpl-logo-black-small-lotus-365x70.png') no-repeat;
+    background: asset-url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
     width: 365px;
     height: 70px;
-
-    &-hover-preload {
-      background: asset-url('tpl-logo-white-small-lotus-365x70.png') no-repeat -9999px -9999px;
-    }
   }
 
   &-nav {
@@ -64,35 +60,6 @@
   }
 }
 
-// scrolled nav: white text logo on black bg
-.navbar.scrolled {
-  background: $black;
-  @include box-shadow-glow(0px 1px 4px 0px $cyan);
-  
-  .navbar-brand-logo {
-    background: asset-url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
-  }
-
-  &.navbar-inverse .navbar-nav > li > a {
-    color: $white;
-    
-    &:hover,
-    &:focus {
-      color: $pink;
-    }
-  }
-
-  &.navbar-inverse .navbar-nav > .active > a {
-    color: $cyan;
-
-    &:hover,
-    &:focus,
-    &:visited {
-      color: $cyan;
-    }
-  }
-}
-
 // collapsed nav, hamburger menu
 .navbar-collapse.collapse.in {
   max-height: none;
@@ -107,33 +74,17 @@
   }
 }
 
-// collapsed nav, hamburger menu, scrolled (white text logo on black bg)
-.navbar.scrolled {
-  .navbar-collapse.collapse.in {
-  }
-}
-
 // mobile optimization
 @media(max-width:480px) {
   .navbar {
     min-height: 60px;
 
     &-brand-logo {
-      background: asset-url('tpl-logo-black-small-lotus-209x40.png') no-repeat;
+      background: asset-url('tpl-logo-white-small-lotus-209x40.png') no-repeat;
       width: 209px;
       height: 40px;
       position: absolute;
       top: 17px;
-
-      &-hover-preload {
-        background: asset-url('tpl-logo-white-small-lotus-209x40.png') no-repeat -9999px -9999px;    
-      }
-    }
-
-    &.scrolled {
-      .navbar-brand-logo {
-        background: asset-url('tpl-logo-white-small-lotus-209x40.png') no-repeat;
-      }
     }
   }
 }
@@ -148,13 +99,4 @@
       color: $white;
     }
   }
-}
-
-// home page nav: uses scrolled nav (white text logo on black bg)
-.navbar-home {
-  display: none;
-
-  &.animated {
-    @include animation(1s, 0.1s, 1);
-  }    
 }

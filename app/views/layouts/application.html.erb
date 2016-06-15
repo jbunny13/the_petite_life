@@ -8,20 +8,16 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag 'https://cdn.jsdelivr.net/lodash/4.11.2/lodash.min.js' %>
     <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, inital-scale=1">
   </head>
   <body>
-    <% if current_page?(root_path) %>
-      <%= render 'layouts/home_header' %>
-    <% else %>
-      <%= render 'layouts/header' %>
-    <% end %>
 
+    <%= render 'layouts/header' %>
+    
     <div id="main-content" class="container">
-     <% if controller.action_name == 'index' || controller.action_name == 'show' %>
+     <% if controller.action_name == 'index' || controller.action_name == 'show' || controller.action_name == 'home' %>
         <%= render 'layouts/search' %>
         <div class="header"></div>
       <% end %>
