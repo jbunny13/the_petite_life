@@ -17,7 +17,7 @@
   }
 
   &-fixed-top {
-    padding: 3px 5px 3px 13px; 
+    padding: 3px 5px 3px 13px;
   }
 
   &-header {
@@ -25,14 +25,7 @@
   }
 
   &-brand {
-    font-family: "Montserrat";
     font-size: 40px;
-  }
-
-  &-brand-logo {
-    background: asset-url('tpl-logo-white-small-lotus-365x70.png') no-repeat;
-    width: 365px;
-    height: 70px;
   }
 
   &-nav {
