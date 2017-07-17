@@ -23,3 +23,5 @@ erd.pdf
 
 # Ignore SimpleCov results
 /coverage
+
+/.idea
